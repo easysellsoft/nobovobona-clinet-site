@@ -31,6 +31,7 @@ import LiveClock from "../LiveClock/LiveClock";
 import useAuth from "./../../../Hooks/useAuth";
 import MainRoutes from "./MainRoutes/MainRoutes";
 import Login from "../../Authentication/Login/Login";
+import Footer from './../../Footer/Footer';
 //end
 const drawerWidth = 240;
 
@@ -259,6 +260,7 @@ function Home() {
         <Outlet />
         {/* <h3 className="text-primary">hii</h3> */}
         <Login></Login>
+        <Footer></Footer>
       </Box>
     </Box>
   );

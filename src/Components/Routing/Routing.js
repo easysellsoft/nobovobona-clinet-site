@@ -96,39 +96,9 @@ const Routing = () => {
               // <Home></Home>
             }
           >
-            {/* <Route path="/" element={<AdminHome />} /> */}
-            {/* <Route path="/issue" element={<Issue />} />
-            <Route path="/section" element={<Section />} />
-            <Route path="/writer" element={<Writer />} />
-            <Route path="/menu" element={<Menu />} />
-            <Route path="/article" element={<Article />} />
-            <Route path="/add_page" element={<AddPage />} />
-            <Route path="/orders" element={<Orders />} />
-            <Route path="/rate" element={<Rate />} />
-            <Route path="/payment" element={<Payment />} />
-            <Route path="/messages" element={<Messages />} />
-            <Route path="/users" element={<Users />} />
-            <Route path="/others" element={<Others />} /> */}
-
-            {/*            
-            <Route path="/whatsapp_report" element={<WhatsappReport />} />
-           
-            <Route path="/otp_record" element={<OtpReportPage />} />
-            <Route path="/sms_reports" element={<SmsReportPage />} /> */}
-
-            {/* <Route path="/AdminDashboard" element={<AdminDashboard />} />
-            <Route path="/message" element={<Message />} /> */}
-            {/* nested route set  */}
-            {/* <Route path="/adminProjectRateDetails" element={<ProjectRate />} />
-            <Route path="/investment" element={<Investment />} />
-            <Route path="/suppliers" element={<Suppliers />} />
-            <Route path="/newPayment" element={<NewPayment />} />
-            <Route path="/receivedPayment" element={<ReceivedPayment />} />
-            <Route path="/paymentMethod" element={<PaymentMethod />} /> */}
-            {/* nested route set end */}
-            {/* <Route path="/projectRateAdd" element={<ProjectRateAdd />} /> */}
+            
           </Route>
-          <Route path="/login" element={<Login />} />
+          {/* <Route path="/login" element={<Login />} /> */}
           {/* <Route path="/register" element={<Register />} /> */}
         </Routes>
         {/* scrolling back to top  */}
@@ -154,27 +124,20 @@ const Routing = () => {
         </div>
       </Box>
       {/* footer  */}
-      <Box
+      {/* <Box
         sx={[
           {
-            position: "relative",
-            bottom: 0,
-            width: "100%",
-            // height: "100vh",
-            height: "50px",
-            zIndex: "999",
-
-            //          position: "relative",
+            // position: "relative",
+            // bottom: 0,
             // width: "100%",
-            // bottom:" 0",
-            // color: "white",
-            // backgroundColor: "#202020",
-            // fontSize: "12px"
+            // // height: "100vh",
+            // height: "Auto",
+            // zIndex: "999",
           },
         ]}
       >
         <Footer />
-      </Box>
+      </Box> */}
     </>
   );
 };
