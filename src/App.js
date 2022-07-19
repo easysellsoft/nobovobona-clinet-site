@@ -1,23 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { BrowserRouter } from "react-router-dom";
+import React, { Suspense } from "react";
+// import { Spinner } from "react-bootstrap";
+import AuthProvider from "./Context/AuthProvider";
+import { Box } from "@mui/material";
+import loading from "./Components/Vendors/Images/loading.gif";
+const Routing = React.lazy(() => import("./Components/Routing/Routing.js"));
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div>
+      <AuthProvider>
+        <Suspense
+          fallback={
+            <Box
+              sx={{
+                height: "100vh",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                flexDirection: "column",
+              }}
+            >
+         
+              <img
+                src={loading}
+                alt="loading"
+                style={{
+                  width: "200px",
+                  height: "200px",
+                }}
+              />
+            </Box>
+          }
         >
-          Learn React
-        </a>
-      </header>
+          <BrowserRouter>
+            <Routing />
+          </BrowserRouter>
+        </Suspense>
+      </AuthProvider>
     </div>
   );
 }
