@@ -224,6 +224,7 @@ function Home() {
             }}
           >
             <LiveClock />
+            
           </Box>
 
           {/* profile click information  */}
@@ -248,7 +249,7 @@ function Home() {
         component="main"
         sx={{
           flexGrow: 1,
-          px: 2,
+          // px: 2,
           pb: 0,
           width: "100%",
           overflow: "auto",

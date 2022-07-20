@@ -72,7 +72,7 @@ const Footer = () => {
     >
       <Container maxWidth="lg">
         <Grid container spacing={2}>
-          <Grid item xs={4}>
+          <Grid item sm={6} md={4}>
             <Typography sx={{ mb: 1 }} variant="h6" component="div">
               Text only
             </Typography>
@@ -80,7 +80,7 @@ const Footer = () => {
               support@nobovobona.com
             </Typography>
           </Grid>
-          <Grid item xs={4}>
+          <Grid item md={4} sm={6}>
             <Typography sx={{ mb: 1 }} variant="h6" component="div">
               COMPANY INFO
             </Typography>
@@ -100,7 +100,7 @@ const Footer = () => {
               Terms & Conditions
             </Typography>
           </Grid>
-          <Grid item xs={4} sx={{ textAlign: "left" }}>
+          <Grid item md={4} sm={6} >
             <Typography
               align="left"
               sx={{ mb: 1 }}
@@ -118,11 +118,14 @@ const Footer = () => {
           </Grid>
         </Grid>
         <Grid sx={{ mt: "20px" }} container spacing={2}>
-          <Grid item xs={12} md={6} sx={{ display: "flex" }}>
-            <Box sx={{ mr: "8px" }} component="div" display="inline">
-              Payment Methods
-            </Box>
-            <Box component="div" display="inline">
+          <Grid item md={4} sm={6}>
+            <Box
+              component="div"
+              sx={{ mr: "8px", display: "flex", alignItems: "center" }}
+            >
+              <Typography sx={{ mr: "8px" }} variant="subtitle2">
+                PAYMENT METHODS
+              </Typography>
               <ImageList
                 // sx={{ width: 100, height: 150 }}
                 cols={3}
@@ -143,10 +146,18 @@ const Footer = () => {
             </Box>
           </Grid>
           <Grid item xs={12} md={6} sx={{ display: "flex" }}>
-            <Box sx={{ mr: "8px" }} component="div" display="inline">
+            {/* <Box sx={{ mr: "8px" }} component="div" display="inline">
               Payment Methods
-            </Box>
-            <Box component="div" display="inline">
+            </Box> */}
+            <Box
+              component="div"
+              sx={{ mr: "8px", display: "flex", alignItems: "center" }}
+              // display="flex"
+              // align-items="center"
+            >
+              <Typography sx={{ mr: "8px" }} variant="subtitle2">
+                BUY WITH CONFIDENCE
+              </Typography>
               <ImageList
                 // sx={{ width: 100, height: 150 }}
                 cols={3}
