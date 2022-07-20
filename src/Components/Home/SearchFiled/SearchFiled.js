@@ -3,6 +3,7 @@ import { useState } from "react";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 import TextField from "@mui/material/TextField";
+// function SearchFiled({setSearchQuery}) {
 function SearchFiled({setSearchQuery}) {
   return (
     <div>
@@ -10,16 +11,20 @@ function SearchFiled({setSearchQuery}) {
         <TextField
           id="search-bar"
           className="text"
-          onInput={(e) => {
-            setSearchQuery(e.target.value);
-          }}
-          label="Enter a city name"
+          //   onInput={(e) => {
+          //     setSearchQuery(e.target.value);
+          //   }}
+          label="Search Here"
           variant="outlined"
           placeholder="Search..."
           size="small"
         />
-        <IconButton type="submit" aria-label="search">
-          <SearchIcon style={{ fill: "blue" }} />
+        <IconButton
+          sx={{ backgroundColor: "#000", borderRadius:"0" }}
+          type="submit"
+          aria-label="search"
+        >
+          <SearchIcon style={{ fill: "blue"}} />
         </IconButton>
       </form>
     </div>

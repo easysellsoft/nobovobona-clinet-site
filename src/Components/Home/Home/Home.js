@@ -28,11 +28,29 @@ import { Avatar, Chip, ListItem, Tooltip } from "@mui/material";
 // import Badge from "@mui/material/Badge";
 
 import LiveClock from "../LiveClock/LiveClock";
+import SearchField from "../SearchFiled/SearchFiled";
 import useAuth from "./../../../Hooks/useAuth";
 import MainRoutes from "./MainRoutes/MainRoutes";
 import Login from "../../Authentication/Login/Login";
 import Footer from './../../Footer/Footer';
+import Header from './../../Header/Navbar';
+import Navbar from "./Navbar";
+
 //end
+//ffff
+// import React, { useState } from "react";
+import {
+  // AppBar,
+  // Button,
+  Tab,
+  Tabs,
+  // Toolbar,
+  // Typography,
+  useMediaQuery,
+  // useTheme,
+} from "@mui/material";
+import AddBusinessRoundedIcon from "@mui/icons-material/AddBusinessRounded";
+import DrawerComp from "./Drawer";
 const drawerWidth = 240;
 
 
@@ -142,23 +160,30 @@ function Home() {
   //     window.innerWidth > 600 ? setOpen(true) : setOpen(false);
   //   });
   // }, []);
+   const [value, setValue] = React.useState();
+  //  const theme = useTheme();
+  //  console.log(theme);
+   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
+   console.log(isMatch);
 
   return (
-    <Box
-    // sx={{ display: "flex" }}
-    >
+    <Box>
       <CssBaseline />
-      <AppBar
-      // position="fixed"
-      // open={open}
-      // sx={{
-      //   backgroundColor: "white",
-      //   borderBottom: "1px solid #e8e8e8",
-      //   boxShadow: "none",
-      // }}
-      >
-        <Toolbar>
-          {/* <IconButton
+      <Box>
+        <AppBar
+          // position="static"
+          component="header"
+          sx={{ backgroundColor: "#fff" }}
+          // position="fixed"
+          // open={open}
+          // sx={{
+          //   backgroundColor: "white",
+          //   borderBottom: "1px solid #e8e8e8",
+          //   boxShadow: "none",
+          // }}
+        >
+          <Toolbar>
+            {/* <IconButton
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
@@ -171,79 +196,108 @@ function Home() {
           >
             <MenuIcon />
           </IconButton> */}
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{
-              display: { xs: "none", sm: "block" },
-              color: "#1BB096",
-              fontWeight: "bold",
-              fontSize: "1.5rem",
-
-              textTransform: "uppercase",
-              cursor: "pointer",
-            }}
-            onClick={() => {
-              navigate("/");
-            }}
-          >
-            Admin
-          </Typography>
-
-          <Box sx={{ flexGrow: 1 }} />
-
-          <Box sx={{ flexGrow: 1 }} />
-
-          {/* show battery lavel  */}
-          <Box
-            sx={[
-              {
-                color: "#000",
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{
+                // display: { xs: "none", sm: "block" },
+                color: "#1BB096",
                 fontWeight: "bold",
-                mx: 2,
-                "@media screen and (max-width: 768px)": {
-                  display: "none",
-                },
-              },
-            ]}
-          >
-            <GiBatteryPackAlt
-              style={{
-                fontSize: "1.2rem",
-                marginTop: "0.2rem",
+                fontSize: "1.5rem",
+
+                textTransform: "uppercase",
+                cursor: "pointer",
               }}
-            />
-            {battery}%
-          </Box>
-
-          {/* show live clock  */}
-          <Box
-            sx={{
-              display: {
-                xs: "none",
-                sm: "none",
-                md: "flex",
-              },
-              flexDirection: "column",
-              alignItems: "center"
-            }}
-          >
-            <LiveClock />
-            <span
-              style={{
-                color: "#000",
-                fontSize: "1rem",
-                marginRight: "1rem",
-                fontWeight: "bold",
+              onClick={() => {
+                navigate("/");
               }}
             >
-              <span>{date}</span>
-            </span>
-          </Box>
+              Logo
+            </Typography>
+            <Box sx={{ flexGrow: 1 }} />
+            <Box sx={{ marginLeft: "auto" }}>
+              <Typography
+                variant="subtitle2"
+                noWrap
+                component="div"
+                sx={{
+                  display: { xs: "none", sm: "block" },
+                  color: "#777",
+                  width: "250px",
+                  fontWeight: "bold",
+                  // fontSize: "1.5rem",
 
-          {/* profile click information  */}
-          {/* <Box>
+                  textTransform: "uppercase",
+                  cursor: "pointer",
+                }}
+              >
+                Trending Now:
+                .............,.................................................................................................................................................
+              </Typography>
+            </Box>
+            <Box sx={{ flexGrow: 1 }} />
+            <Box sx={{ flexGrow: 1 }} />
+            <Box
+            // sx={{
+            //   display: {
+            //     // xs: "none",
+            //     // sm: "none",
+            //     md: "flex",
+            //   },
+            //   flexDirection: "column",
+            //   alignItems: "center",
+            // }}
+            >
+              <SearchField></SearchField>
+            </Box>
+            {/* show battery lavel  */}
+            <Box
+              sx={[
+                {
+                  color: "#000",
+                  fontWeight: "bold",
+                  mx: 2,
+                  "@media screen and (max-width: 768px)": {
+                    display: "none",
+                  },
+                },
+              ]}
+            >
+              <GiBatteryPackAlt
+                style={{
+                  fontSize: "1.2rem",
+                  marginTop: "0.2rem",
+                }}
+              />
+              {battery}%
+            </Box>
+            {/* show live clock  */}
+            <Box
+              sx={{
+                display: {
+                  xs: "none",
+                  sm: "none",
+                  md: "flex",
+                },
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <LiveClock />
+              <span
+                style={{
+                  color: "#000",
+                  fontSize: "1rem",
+                  marginRight: "1rem",
+                  fontWeight: "bold",
+                }}
+              >
+                <span>{date}</span>
+              </span>
+            </Box>
+            {/* profile click information  */}
+            {/* <Box>
             <Tooltip title={user?.c_info} arrow placement="right-start">
               <Button id="demo-positioned-button">
                 <Chip
@@ -254,11 +308,51 @@ function Home() {
               </Button>
             </Tooltip>
           </Box> */}
+            <Box sx={{ display: { xs: "flex", md: "none" } }}></Box>
+          </Toolbar>
+        </AppBar>
+      </Box>
 
-          <Box sx={{ display: { xs: "flex", md: "none" } }}></Box>
+      {/* end  */}
+      <Box>{/* <Header></Header> */}</Box>
+      <AppBar
+        // position="static"
+        component="footer"
+        sx={{ background: "#063970" }}
+      >
+        <Toolbar>
+          <AddBusinessRoundedIcon sx={{ transform: "scale(2)" }} />
+          {isMatch ? (
+            <>
+              <Typography sx={{ fontSize: "2rem", paddingLeft: "10%" }}>
+                Shoppee
+              </Typography>
+              <DrawerComp />
+            </>
+          ) : (
+            <>
+              <Tabs
+                sx={{ marginLeft: "auto" }}
+                indicatorColor="secondary"
+                textColor="inherit"
+                value={value}
+                onChange={(e, value) => setValue(value)}
+              >
+                <Tab label="Products" />
+                <Tab label="Services" />
+                <Tab label="About Us" />
+                <Tab label="Contact" />
+              </Tabs>
+              <Button sx={{ marginLeft: "auto" }} variant="contained">
+                Login
+              </Button>
+              <Button sx={{ marginLeft: "10px" }} variant="contained">
+                SignUp
+              </Button>
+            </>
+          )}
         </Toolbar>
       </AppBar>
-      {/* end  */}
 
       <Box
         component="main"
@@ -272,9 +366,12 @@ function Home() {
           color: "black",
         }}
       >
+        {/* <Header></Header> */}
         <DrawerHeader />
         <Outlet />
-        {/* <h3 className="text-primary">hii</h3> */}
+        {/* <Header></Header> */}
+        <Navbar />
+
         <Login></Login>
         <Footer></Footer>
       </Box>
