@@ -109,6 +109,10 @@ function Home() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
   const [battery, setBattery] = React.useState(0);
+  const current = new Date();
+    const date = `${current.getDate()}/${
+      current.getMonth() + 1
+    }/${current.getFullYear()}`;
   //show battery level
   navigator.getBattery().then(function (battery) {
     // console.log(battery);
@@ -219,16 +223,27 @@ function Home() {
               display: {
                 xs: "none",
                 sm: "none",
-                md: "block",
+                md: "flex",
               },
+              flexDirection: "column",
+              alignItems: "center"
             }}
           >
             <LiveClock />
-            
+            <span
+              style={{
+                color: "#000",
+                fontSize: "1rem",
+                marginRight: "1rem",
+                fontWeight: "bold",
+              }}
+            >
+              <span>{date}</span>
+            </span>
           </Box>
 
           {/* profile click information  */}
-          <Box>
+          {/* <Box>
             <Tooltip title={user?.c_info} arrow placement="right-start">
               <Button id="demo-positioned-button">
                 <Chip
@@ -238,13 +253,13 @@ function Home() {
                 />
               </Button>
             </Tooltip>
-          </Box>
+          </Box> */}
 
           <Box sx={{ display: { xs: "flex", md: "none" } }}></Box>
         </Toolbar>
       </AppBar>
       {/* end  */}
-     
+
       <Box
         component="main"
         sx={{
@@ -254,7 +269,7 @@ function Home() {
           width: "100%",
           overflow: "auto",
           minHeight: "90vh",
-          color: "black"
+          color: "black",
         }}
       >
         <DrawerHeader />
