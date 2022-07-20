@@ -171,7 +171,7 @@ function Home() {
       <CssBaseline />
       <Box>
         <AppBar
-          // position="static"
+          position="static"
           component="header"
           sx={{ backgroundColor: "#fff" }}
           // position="fixed"
@@ -314,9 +314,9 @@ function Home() {
       </Box>
 
       {/* end  */}
-      <Box>{/* <Header></Header> */}</Box>
+      {/* <Header></Header> */}
       <AppBar
-        // position="static"
+        position="static"
         component="footer"
         sx={{ background: "#063970" }}
       >
@@ -341,6 +341,13 @@ function Home() {
                 <Tab label="Products" />
                 <Tab label="Services" />
                 <Tab label="About Us" />
+                <Tab label="Contact" />
+                <Tab label="Contact" />
+                <Tab label="Contact" />
+                <Tab label="Contact" />
+                <Tab label="Contact" />
+                <Tab label="Contact" />
+                <Tab label="Contact" />
                 <Tab label="Contact" />
               </Tabs>
               <Button sx={{ marginLeft: "auto" }} variant="contained">
@@ -367,10 +374,10 @@ function Home() {
         }}
       >
         {/* <Header></Header> */}
-        <DrawerHeader />
-        <Outlet />
+        {/* <DrawerHeader />
+        <Outlet /> */}
         {/* <Header></Header> */}
-        <Navbar />
+        {/* <Navbar /> */}
 
         <Login></Login>
         <Footer></Footer>
