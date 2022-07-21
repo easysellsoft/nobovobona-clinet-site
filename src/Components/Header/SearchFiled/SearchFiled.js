@@ -9,6 +9,7 @@ function SearchFiled({setSearchQuery}) {
     <div>
       <form>
         <TextField
+          sx={{ display: { xs: "none", sm: "inline-block" } }}
           id="search-bar"
           className="text"
           //   onInput={(e) => {
@@ -20,11 +21,11 @@ function SearchFiled({setSearchQuery}) {
           size="small"
         />
         <IconButton
-          sx={{ backgroundColor: "#000", borderRadius:"0" }}
+          sx={{ backgroundColor: "#000", borderRadius: "0", marginRight:"12px" }}
           type="submit"
           aria-label="search"
         >
-          <SearchIcon style={{ fill: "blue"}} />
+          <SearchIcon style={{ fill: "blue" }} />
         </IconButton>
       </form>
     </div>

@@ -133,10 +133,12 @@ const Login = () => {
   return (
     <div
       style={{
+        position: "relative",
         backgroundImage: `url(${bgImage})`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
+        // height: "100vh"
         height: window.innerHeight >= 500 ? "calc(100vh - 0px)" : "calc(100vh)",
       }}
     >

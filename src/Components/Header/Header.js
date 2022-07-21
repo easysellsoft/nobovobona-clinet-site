@@ -249,7 +249,7 @@ const Header = () => {
               //   alignItems: "center",
               // }}
               >
-                <SearchField></SearchField>
+                <SearchField ></SearchField>
               </Box>
               {/* show battery lavel  */}
               <Box
