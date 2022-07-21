@@ -137,7 +137,6 @@ const Login = () => {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
-        position:"relative",
         height: window.innerHeight >= 500 ? "calc(100vh - 0px)" : "calc(100vh)",
       }}
     >

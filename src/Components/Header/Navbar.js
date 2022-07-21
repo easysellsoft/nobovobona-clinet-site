@@ -20,8 +20,8 @@ const Navbar = () => {
 
   return (
     <React.Fragment>
-  
-      <AppBar sx={{ background: "#063970" }}>
+      {/* <h3>Header</h3> */}
+      <AppBar position="static" sx={{ background: "#063970" }}>
         <Toolbar>
           <AddBusinessRoundedIcon sx={{ transform: "scale(2)" }} />
           {isMatch ? (
@@ -44,13 +44,19 @@ const Navbar = () => {
                 <Tab label="Services" />
                 <Tab label="About Us" />
                 <Tab label="Contact" />
+                <Tab label="Services" />
+                <Tab label="About Us" />
+                <Tab label="Contact" />
+                <Tab label="Services" />
+                <Tab label="About Us" />
+                <Tab label="Contact" />
               </Tabs>
-              <Button sx={{ marginLeft: "auto" }} variant="contained">
+              {/* <Button sx={{ marginLeft: "auto" }} variant="contained">
                 Login
               </Button>
               <Button sx={{ marginLeft: "10px" }} variant="contained">
                 SignUp
-              </Button>
+              </Button> */}
             </>
           )}
         </Toolbar>

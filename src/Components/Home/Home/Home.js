@@ -28,54 +28,32 @@ import { Avatar, Chip, ListItem, Tooltip } from "@mui/material";
 // import Badge from "@mui/material/Badge";
 
 import LiveClock from "../LiveClock/LiveClock";
-import SearchField from "../SearchFiled/SearchFiled";
 import useAuth from "./../../../Hooks/useAuth";
 import MainRoutes from "./MainRoutes/MainRoutes";
-import Login from "../../Authentication/Login/Login";
-import Footer from './../../Footer/Footer';
-import Header from './../../Header/Navbar';
-import Navbar from "./Navbar";
-
 //end
-//ffff
-// import React, { useState } from "react";
-import {
-  // AppBar,
-  // Button,
-  Tab,
-  Tabs,
-  // Toolbar,
-  // Typography,
-  useMediaQuery,
-  // useTheme,
-} from "@mui/material";
-import AddBusinessRoundedIcon from "@mui/icons-material/AddBusinessRounded";
-import DrawerComp from "./Drawer";
-const drawerWidth = 240;
+// const drawerWidth = 240;
+const drawerWidth = 300;
 
+const openedMixin = (theme) => ({
+  width: drawerWidth,
+  transition: theme.transitions.create("width", {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.enteringScreen,
+  }),
+  overflowX: "hidden",
+});
 
-// const drawerWidth = 300;
-
-// const openedMixin = (theme) => ({
-//   width: drawerWidth,
-//   transition: theme.transitions.create("width", {
-//     easing: theme.transitions.easing.sharp,
-//     duration: theme.transitions.duration.enteringScreen,
-//   }),
-//   overflowX: "hidden",
-// });
-
-// const closedMixin = (theme) => ({
-//   transition: theme.transitions.create("width", {
-//     easing: theme.transitions.easing.sharp,
-//     duration: theme.transitions.duration.leavingScreen,
-//   }),
-//   overflowX: "hidden",
-//   width: `calc(${theme.spacing(7)} + 1px)`,
-//   [theme.breakpoints.up("sm")]: {
-//     width: `calc(${theme.spacing(8)} + 1px)`,
-//   },
-// });
+const closedMixin = (theme) => ({
+  transition: theme.transitions.create("width", {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  overflowX: "hidden",
+  width: `calc(${theme.spacing(7)} + 1px)`,
+  [theme.breakpoints.up("sm")]: {
+    width: `calc(${theme.spacing(8)} + 1px)`,
+  },
+});
 
 const DrawerHeader = styled("div")(({ theme }) => ({
   width: "100",
@@ -112,25 +90,21 @@ const Drawer = styled(MuiDrawer, {
   width: drawerWidth,
   flexShrink: 0,
   whiteSpace: "nowrap",
-  // boxSizing: "border-box",
-  // ...(open && {
-  //   ...openedMixin(theme),
-  //   "& .MuiDrawer-paper": openedMixin(theme),
-  // }),
-  // ...(!open && {
-  //   ...closedMixin(theme),
-  //   "& .MuiDrawer-paper": closedMixin(theme),
-  // }),
+  boxSizing: "border-box",
+  ...(open && {
+    ...openedMixin(theme),
+    "& .MuiDrawer-paper": openedMixin(theme),
+  }),
+  ...(!open && {
+    ...closedMixin(theme),
+    "& .MuiDrawer-paper": closedMixin(theme),
+  }),
 }));
 
 function Home() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
   const [battery, setBattery] = React.useState(0);
-  const current = new Date();
-    const date = `${current.getDate()}/${
-      current.getMonth() + 1
-    }/${current.getFullYear()}`;
   //show battery level
   navigator.getBattery().then(function (battery) {
     // console.log(battery);
@@ -139,14 +113,14 @@ function Home() {
 
   const navigate = useNavigate();
 
-  // const handleDrawerOpen = () => {
-  //   setOpen(true);
-  // };
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
 
-  // const handleDrawerClose = () => {
-  //   setOpen(false);
-  
-  // };
+  const handleDrawerClose = () => {
+    setOpen(false);
+    // setNestedNavOpen(false);
+  };
 
   //get user information from localStorage
   const user = JSON.parse(localStorage.getItem("user"));
@@ -155,35 +129,26 @@ function Home() {
   const { pageRefresh, setPageRefresh } = useAuth();
 
   // update window innerWith every time the window is resized
-  // React.useEffect(() => {
-  //   window.addEventListener("resize", () => {
-  //     window.innerWidth > 600 ? setOpen(true) : setOpen(false);
-  //   });
-  // }, []);
-   const [value, setValue] = React.useState();
-  //  const theme = useTheme();
-  //  console.log(theme);
-   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
-   console.log(isMatch);
+  React.useEffect(() => {
+    window.addEventListener("resize", () => {
+      window.innerWidth > 600 ? setOpen(true) : setOpen(false);
+    });
+  }, []);
 
   return (
-    <Box>
+    <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <Box>
-        <AppBar
-          position="static"
-          component="header"
-          sx={{ backgroundColor: "#fff" }}
-          // position="fixed"
-          // open={open}
-          // sx={{
-          //   backgroundColor: "white",
-          //   borderBottom: "1px solid #e8e8e8",
-          //   boxShadow: "none",
-          // }}
-        >
-          <Toolbar>
-            {/* <IconButton
+      <AppBar
+        position="fixed"
+        open={open}
+        sx={{
+          backgroundColor: "white",
+          borderBottom: "1px solid #e8e8e8",
+          boxShadow: "none",
+        }}
+      >
+        <Toolbar>
+          <IconButton
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
@@ -195,109 +160,93 @@ function Home() {
             }}
           >
             <MenuIcon />
-          </IconButton> */}
-            <Typography
-              variant="h6"
-              noWrap
-              component="div"
-              sx={{
-                // display: { xs: "none", sm: "block" },
-                color: "#1BB096",
+          </IconButton>
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{
+              display: { xs: "none", sm: "block" },
+              color: "#1BB096",
+              fontWeight: "bold",
+              fontSize: "1.5rem",
+              // fontFamily: "heading",
+              textTransform: "uppercase",
+              cursor: "pointer",
+            }}
+            onClick={() => {
+              navigate("/");
+            }}
+          >
+            Admin
+          </Typography>
+
+          {/* <Box sx={{ flexGrow: 1 }} /> */}
+
+          {/* <TextField
+            type="search"
+            label="Search..."
+            variant="outlined"
+            size="small"
+            color="warning"
+            sx={{
+              ml: {
+                xs: "0",
+                md: 5,
+              },
+              display: { xs: "none", sm: "block" },
+              mr: 2,
+              // width: "40%",
+            }}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <SearchIcon />
+                </InputAdornment>
+              ),
+            }}
+          /> */}
+          <Box sx={{ flexGrow: 1 }} />
+
+          <Box sx={{ flexGrow: 1 }} />
+
+          {/* show battery lavel  */}
+          <Box
+            sx={[
+              {
+                color: "#000",
                 fontWeight: "bold",
-                fontSize: "1.5rem",
-
-                textTransform: "uppercase",
-                cursor: "pointer",
-              }}
-              onClick={() => {
-                navigate("/");
-              }}
-            >
-              Logo
-            </Typography>
-            <Box sx={{ flexGrow: 1 }} />
-            <Box sx={{ marginLeft: "auto" }}>
-              <Typography
-                variant="subtitle2"
-                noWrap
-                component="div"
-                sx={{
-                  display: { xs: "none", sm: "block" },
-                  color: "#777",
-                  width: "250px",
-                  fontWeight: "bold",
-                  // fontSize: "1.5rem",
-
-                  textTransform: "uppercase",
-                  cursor: "pointer",
-                }}
-              >
-                Trending Now:
-                .............,.................................................................................................................................................
-              </Typography>
-            </Box>
-            <Box sx={{ flexGrow: 1 }} />
-            <Box sx={{ flexGrow: 1 }} />
-            <Box
-            // sx={{
-            //   display: {
-            //     // xs: "none",
-            //     // sm: "none",
-            //     md: "flex",
-            //   },
-            //   flexDirection: "column",
-            //   alignItems: "center",
-            // }}
-            >
-              <SearchField></SearchField>
-            </Box>
-            {/* show battery lavel  */}
-            <Box
-              sx={[
-                {
-                  color: "#000",
-                  fontWeight: "bold",
-                  mx: 2,
-                  "@media screen and (max-width: 768px)": {
-                    display: "none",
-                  },
+                mx: 2,
+                "@media screen and (max-width: 768px)": {
+                  display: "none",
                 },
-              ]}
-            >
-              <GiBatteryPackAlt
-                style={{
-                  fontSize: "1.2rem",
-                  marginTop: "0.2rem",
-                }}
-              />
-              {battery}%
-            </Box>
-            {/* show live clock  */}
-            <Box
-              sx={{
-                display: {
-                  xs: "none",
-                  sm: "none",
-                  md: "flex",
-                },
-                flexDirection: "column",
-                alignItems: "center",
+              },
+            ]}
+          >
+            <GiBatteryPackAlt
+              style={{
+                fontSize: "1.2rem",
+                marginTop: "0.2rem",
               }}
-            >
-              <LiveClock />
-              <span
-                style={{
-                  color: "#000",
-                  fontSize: "1rem",
-                  marginRight: "1rem",
-                  fontWeight: "bold",
-                }}
-              >
-                <span>{date}</span>
-              </span>
-            </Box>
-            {/* profile click information  */}
-            {/* <Box>
+            />
+            {battery}%
+          </Box>
+
+          {/* show live clock  */}
+          <Box
+            sx={{
+              display: {
+                xs: "none",
+                sm: "none",
+                md: "block",
+              },
+            }}
+          >
+            <LiveClock />
+          </Box>
+
+          {/* profile click information  */}
+          <Box>
             <Tooltip title={user?.c_info} arrow placement="right-start">
               <Button id="demo-positioned-button">
                 <Chip
@@ -307,80 +256,93 @@ function Home() {
                 />
               </Button>
             </Tooltip>
-          </Box> */}
-            <Box sx={{ display: { xs: "flex", md: "none" } }}></Box>
-          </Toolbar>
-        </AppBar>
-      </Box>
+          </Box>
 
-      {/* end  */}
-      {/* <Header></Header> */}
-      <AppBar
-        position="static"
-        component="footer"
-        sx={{ background: "#063970" }}
-      >
-        <Toolbar>
-          <AddBusinessRoundedIcon sx={{ transform: "scale(2)" }} />
-          {isMatch ? (
-            <>
-              <Typography sx={{ fontSize: "2rem", paddingLeft: "10%" }}>
-                Shoppee
-              </Typography>
-              <DrawerComp />
-            </>
-          ) : (
-            <>
-              <Tabs
-                sx={{ marginLeft: "auto" }}
-                indicatorColor="secondary"
-                textColor="inherit"
-                value={value}
-                onChange={(e, value) => setValue(value)}
-              >
-                <Tab label="Products" />
-                <Tab label="Services" />
-                <Tab label="About Us" />
-                <Tab label="Contact" />
-                <Tab label="Contact" />
-                <Tab label="Contact" />
-                <Tab label="Contact" />
-                <Tab label="Contact" />
-                <Tab label="Contact" />
-                <Tab label="Contact" />
-                <Tab label="Contact" />
-              </Tabs>
-              <Button sx={{ marginLeft: "auto" }} variant="contained">
-                Login
-              </Button>
-              <Button sx={{ marginLeft: "10px" }} variant="contained">
-                SignUp
-              </Button>
-            </>
-          )}
+          <Box sx={{ display: { xs: "flex", md: "none" } }}></Box>
         </Toolbar>
       </AppBar>
+      {/* end  */}
+      <Drawer variant="permanent" open={open}>
+        <DrawerHeader>
+          <IconButton
+            onClick={handleDrawerClose}
+            style={{
+              color: "#000",
+            }}
+          >
+            {theme.direction === "rtl" ? (
+              <ChevronRightIcon />
+            ) : (
+              <ChevronLeftIcon />
+            )}
+          </IconButton>
+        </DrawerHeader>
+        <Divider />
+        {/* main routes  */}
+        <MainRoutes />
+        {/* end main routes  */}
 
+        <Divider />
+        <List>
+          {["LogOut"].map((text, index) => (
+            <ListItem
+              button
+              key={text}
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? "initial" : "center",
+                px: 2.5,
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 3 : "auto",
+                  justifyContent: "center",
+                }}
+              >
+                {index === 0 && (
+                  <Tooltip title="LogOut" arrow placement="right-start">
+                    <span
+                      style={{
+                        fontSize: "1.8rem",
+                      }}
+                    >
+                      <BiLogOutCircle
+                        color="#000"
+                        onClick={() => {
+                          localStorage.removeItem("user");
+                          localStorage.removeItem("ip");
+                          localStorage.removeItem("uniqId");
+                          localStorage.removeItem("temp");
+                          setPageRefresh(!pageRefresh);
+                          // window.location.reload();
+                          navigate("/login");
+                        }}
+                      />
+                    </span>
+                  </Tooltip>
+                )}
+              </ListItemIcon>
+              <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+            </ListItem>
+          ))}
+        </List>
+        <Divider />
+      </Drawer>
       <Box
         component="main"
         sx={{
           flexGrow: 1,
-          // px: 2,
+          px: 2,
           pb: 0,
           width: "100%",
           overflow: "auto",
-          minHeight: "90vh",
-          color: "black",
+          minHeight: "90vh"
         }}
       >
-        {/* <Header></Header> */}
-        {/* <DrawerHeader />
-        <Outlet /> */}
-        {/* <Header></Header> */}
-        {/* <Navbar /> */}
-
-        <Login></Login>
-        <Footer></Footer>
+        <DrawerHeader />
+        <Outlet />
       </Box>
     </Box>
   );
