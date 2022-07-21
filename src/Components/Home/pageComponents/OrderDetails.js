@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Typography } from "@mui/material";
+import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import React from "react";
 import { useAutocomplete } from "@mui/base/AutocompleteUnstyled";
 import { styled } from "@mui/material/styles";
@@ -71,7 +71,7 @@ const OrderDetails = () => {
       }}
     >
       <Container maxWidth="lg">
-        <Grid container spacing={2}>
+        <Grid sx={{ marginY: "20px" }} container spacing={2}>
           <Grid
             sx={{
               backgroundColor: "#000",
@@ -80,11 +80,11 @@ const OrderDetails = () => {
               padding: "20px",
             }}
             item
-            sm={6}
-            md={6}
+            sm={8}
+            md={8}
           >
             <Typography
-              sx={{ mb: 1, textAlign: "center" }}
+              sx={{ mb: 1, textAlign: "center", fontWeight: "bold" }}
               variant="h4"
               component="div"
             >
@@ -156,6 +156,7 @@ const OrderDetails = () => {
                 display: "flex",
                 justifyContent: "space-around",
                 width: "100%",
+                marginTop: "12px",
                 //   backgroundColor: "#000",
                 //   color: "#fff",
                 //   marginY: "20px",
@@ -210,30 +211,56 @@ const OrderDetails = () => {
             </Grid>
           </Grid>
 
-          {/* <Grid
+          {/* left grid start */}
+          <Grid
             sx={{
-              backgroundColor: "#000",
-              color: "#fff",
+              //   backgroundColor: "#000",
+              //   color: "#fff",
               marginY: "20px",
               padding: "20px",
             }}
             item
-            sm={6}
-            md={6}
+            sm={4}
+            md={4}
           >
-            <Box
-              component="img"
+            <Typography
               sx={{
-                height: 100,
-                width: "100%",
-                marginLeft: "10px",
-                // maxHeight: { xs: 233, md: 167 },
-                // maxWidth: { xs: 350, md: 250 },
+                mb: 1,
+                textAlign: "center",
+                fontWeight: "bold",
+                marginBottom: "30px",
               }}
-              alt="The house from the offer."
-              src="https://i.ytimg.com/vi/i09C02151PI/maxresdefault.jpg"
-            />
-          </Grid> */}
+              variant="h4"
+              component="div"
+            >
+              ORDER SUMMERY
+            </Typography>
+            <Typography
+              sx={{
+                marginBottom: "60px",
+                textAlign: "left",
+                fontWeight: "bold",
+              }}
+              variant="h6"
+              component="div"
+            >
+              1 Month Subscription : $50
+            </Typography>
+            <Typography
+              sx={{
+                marginBottom: "60px",
+                textAlign: "right",
+                fontWeight: "bold",
+              }}
+              variant="subtitle1"
+              component="div"
+            >
+              Total : $50
+            </Typography>
+            <Box sx={{ textAlign: "center" }}>
+              <Button variant="contained">Confirm Order</Button>
+            </Box>
+          </Grid>
         </Grid>
       </Container>
     </Box>
