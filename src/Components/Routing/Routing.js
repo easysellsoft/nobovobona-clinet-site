@@ -26,6 +26,7 @@ import MainHome from './../Home/MainHome/MainHome';
 // import Home from "../../ClientComponents/Home/Home";
 
 import Header from "./../Header/Header";
+import OrderDetails from "../Home/pageComponents/OrderDetails";
 
 const Login = React.lazy(() => import("./../Authentication/Login/Login"));
 const Error = React.lazy(() => import("../Error/Error"));
@@ -90,7 +91,7 @@ const Routing = () => {
           },
         ]}
       >
-        <Header/>
+        <Header />
         <Routes>
           <Route path="*" element={<Error />} />
           <Route
@@ -134,6 +135,15 @@ const Routing = () => {
             {/* nested route set end */}
             {/* <Route path="/projectRateAdd" element={<ProjectRateAdd />} /> */}
           </Route>
+          <Route
+            path="/product/:product_Id"
+            element={
+              <OrderDetails></OrderDetails>
+              // <RequireAuth>
+              //   <Inventory />
+              // </RequireAuth>
+            }
+          />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>

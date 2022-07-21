@@ -1,9 +1,9 @@
 import React from 'react';
-import Product from "../pageComponents/Product";
+import Products from "../pageComponents/Products";
 const MainHome = () => {
     return (
         <div>
-           <Product></Product>
+           <Products></Products>
         </div>
     );
 };
