@@ -1,5 +1,5 @@
 import * as React from "react";
-import { styled, useTheme } from "@mui/material/styles";
+import { makeStyles, styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar from "@mui/material/AppBar";
@@ -58,7 +58,6 @@ const closedMixin = (theme) => ({
 const DrawerHeader = styled("div")(({ theme }) => ({
   width: "100",
   display: "flex",
-
   alignItems: "center",
   justifyContent: "flex-end",
   padding: theme.spacing(0, 1),
@@ -114,7 +113,9 @@ function Home() {
   const navigate = useNavigate();
 
   const handleDrawerOpen = () => {
-    setOpen(true);
+    // setOpen(true);
+     setOpen(!open);
+   
   };
 
   const handleDrawerClose = () => {
@@ -139,7 +140,7 @@ function Home() {
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar
-        position="static"
+        position="fixed" //aita fixed e thakbe
         open={open}
         sx={{
           backgroundColor: "white",
@@ -262,12 +263,54 @@ function Home() {
         </Toolbar>
       </AppBar>
       {/* end  */}
-      <Drawer variant="permanent" open={open}>
-        <DrawerHeader>
-          <IconButton
+      {/* <Drawer variant="permanent" open={open}> */}
+      <Drawer
+        variant="permanent"
+        sx={{
+          "& .MuiDrawer-root": {
+            position: "static",
+          },
+          "& .MuiPaper-root": {
+            position: "static",
+          },
+        }}
+        open={open}
+      >
+        <DrawerHeader position="static">
+          {open ? (
+            <IconButton
+              onClick={handleDrawerClose}
+              style={{
+                color: "#000",
+                position: "fixed",
+              }}
+            >
+              {theme.direction === "rtl" ? (
+                <ChevronRightIcon />
+              ) : (
+                <ChevronLeftIcon />
+              )}
+            </IconButton>
+          ) : (
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              edge="start"
+              sx={{
+              
+                ...(open && { display: "none" }),
+                color: "text.primary",
+              }}
+            >
+              <MenuIcon />
+            </IconButton>
+          )}
+          {/* <IconButton
             onClick={handleDrawerClose}
             style={{
               color: "#000",
+              position: "fixed",
             }}
           >
             {theme.direction === "rtl" ? (
@@ -275,7 +318,21 @@ function Home() {
             ) : (
               <ChevronLeftIcon />
             )}
-          </IconButton>
+          </IconButton> */}
+
+          {/* <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            onClick={handleDrawerOpen}
+            edge="start"
+            sx={{
+              marginRight: 5,
+              ...(open && { display: "none" }),
+              color: "text.primary",
+            }}
+          >
+            <MenuIcon />
+          </IconButton> */}
         </DrawerHeader>
         <Divider />
         {/* main routes  */}
@@ -338,7 +395,7 @@ function Home() {
           pb: 0,
           width: "100%",
           overflow: "auto",
-          minHeight: "90vh"
+          minHeight: "90vh",
         }}
       >
         <DrawerHeader />
@@ -349,3 +406,5 @@ function Home() {
 }
 
 export default React.memo(Home);
+
+
