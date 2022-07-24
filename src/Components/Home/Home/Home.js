@@ -139,7 +139,7 @@ function Home() {
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar
-        position="fixed"
+        position="static"
         open={open}
         sx={{
           backgroundColor: "white",

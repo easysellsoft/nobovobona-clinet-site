@@ -103,7 +103,7 @@ const Routing = () => {
               <MainHome></MainHome>
             }
           >
-            {/* <Route path="/" element={<AdminHome />} /> */}
+            <Route path="/" element={<AdminHome />} />
             <Route path="/issue" element={<Issue />} />
             <Route path="/section" element={<Section />} />
             <Route path="/writer" element={<Writer />} />
@@ -144,9 +144,35 @@ const Routing = () => {
               // </RequireAuth>
             }
           />
+          <Route
+            path="/dashboard"
+            element={
+              // <PrivateRoute>
+              //   <Home />
+              // </PrivateRoute>
+              // <MainHome></MainHome>
+              <Home />
+            }
+          >
+            {/* <Route path="/" element={<AdminHome />} /> */}
+            <Route path="/dashboard/issue" element={<Issue />} />
+            <Route path="/dashboard/section" element={<Section />} />
+            <Route path="/dashboard/writer" element={<Writer />} />
+            <Route path="/dashboard/menu" element={<Menu />} />
+            <Route path="/dashboard/article" element={<Article />} />
+            <Route path="/dashboard/add_page" element={<AddPage />} />
+            <Route path="/dashboard/orders" element={<Orders />} />
+            <Route path="/dashboard/rate" element={<Rate />} />
+            <Route path="/dashboard/payment" element={<Payment />} />
+            <Route path="/dashboard/messages" element={<Messages />} />
+            <Route path="/dashboard/users" element={<Users />} />
+            <Route path="/dashboard/others" element={<Others />} />
+          </Route>
+          
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>
+        <Routes></Routes>
         {/* scrolling back to top  */}
         <div>
           <button

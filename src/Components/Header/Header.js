@@ -19,6 +19,7 @@ import ListItemText from "@mui/material/ListItemText";
 import { useNavigate } from "react-router-dom";
 import { GiBatteryPackAlt } from "react-icons/gi";
 import LoginIcon from "@mui/icons-material/Login";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 import { BiLogOutCircle } from "react-icons/bi";
 
@@ -29,6 +30,8 @@ import { Avatar, Chip, ListItem, Tooltip } from "@mui/material";
 // import Badge from "@mui/material/Badge";
 
 import LiveClock from "./LiveClock/LiveClock";
+// import useAuth from "./../../../Hooks/useAuth";
+
 import SearchField from "./SearchFiled/SearchFiled";
 // import useAuth from "./../../../Hooks/useAuth";
 // import MainRoutes from "./MainRoutes/MainRoutes";
@@ -52,6 +55,7 @@ import {
 } from "@mui/material";
 import AddBusinessRoundedIcon from "@mui/icons-material/AddBusinessRounded";
 import DrawerComp from "./Drawer";
+import useAuth from '../../Hooks/useAuth';
 // import Product from "./pageComponents/Product";
 
 const drawerWidth = 240;
@@ -126,64 +130,66 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 const Header = () => {
-    const theme = useTheme();
-    const [open, setOpen] = React.useState(true);
-    const [battery, setBattery] = React.useState(0);
-    const current = new Date();
-    const date = `${current.getDate()}/${
-      current.getMonth() + 1
-    }/${current.getFullYear()}`;
-    //show battery level
-    navigator.getBattery().then(function (battery) {
-      // console.log(battery);
-      setBattery(parseInt(battery.level * 100));
-    });
+  const theme = useTheme();
+  const [open, setOpen] = React.useState(true);
+  const [battery, setBattery] = React.useState(0);
+  const current = new Date();
+  const date = `${current.getDate()}/${
+    current.getMonth() + 1
+  }/${current.getFullYear()}`;
+  //show battery level
+  navigator.getBattery().then(function (battery) {
+    // console.log(battery);
+    setBattery(parseInt(battery.level * 100));
+  });
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    // const handleDrawerOpen = () => {
-    //   setOpen(true);
-    // };
+  // const handleDrawerOpen = () => {
+  //   setOpen(true);
+  // };
 
-    // const handleDrawerClose = () => {
-    //   setOpen(false);
+  // const handleDrawerClose = () => {
+  //   setOpen(false);
 
-    // };
+  // };
 
-    //get user information from localStorage
-    const user = JSON.parse(localStorage.getItem("user"));
+ 
 
-    // get data or object from context auth provider
-    // const { pageRefresh, setPageRefresh } = useAuth();
+  //get user information from localStorage
+  const user = JSON.parse(localStorage.getItem("user"));
 
-    // update window innerWith every time the window is resized
-    // React.useEffect(() => {
-    //   window.addEventListener("resize", () => {
-    //     window.innerWidth > 600 ? setOpen(true) : setOpen(false);
-    //   });
-    // }, []);
-    const [value, setValue] = React.useState();
-    //  const theme = useTheme();
-    //  console.log(theme);
-    const isMatch = useMediaQuery(theme.breakpoints.down("md"));
-    console.log(isMatch);
-    return (
+  // get data or object from context auth provider
+  const { pageRefresh, setPageRefresh } = useAuth();
+
+  // update window innerWith every time the window is resized
+  // React.useEffect(() => {
+  //   window.addEventListener("resize", () => {
+  //     window.innerWidth > 600 ? setOpen(true) : setOpen(false);
+  //   });
+  // }, []);
+  const [value, setValue] = React.useState();
+  //  const theme = useTheme();
+  //  console.log(theme);
+  const isMatch = useMediaQuery(theme.breakpoints.down("md"));
+  console.log(isMatch);
+  return (
+    <Box>
+      <CssBaseline />
       <Box>
-        <CssBaseline />
-        <Box>
-          <AppBar
-            position="static"
-            sx={{ backgroundColor: "#fff" }}
-            // position="fixed"
-            // open={open}
-            // sx={{
-            //   backgroundColor: "white",
-            //   borderBottom: "1px solid #e8e8e8",
-            //   boxShadow: "none",
-            // }}
-          >
-            <Toolbar>
-              {/* <IconButton
+        <AppBar
+          position="static"
+          sx={{ backgroundColor: "#fff" }}
+          // position="fixed"
+          // open={open}
+          // sx={{
+          //   backgroundColor: "white",
+          //   borderBottom: "1px solid #e8e8e8",
+          //   boxShadow: "none",
+          // }}
+        >
+          <Toolbar>
+            {/* <IconButton
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
@@ -196,106 +202,124 @@ const Header = () => {
           >
             <MenuIcon />
           </IconButton> */}
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{
+                // display: { xs: "none", sm: "block" },
+                color: "#1BB096",
+                fontWeight: "bold",
+                fontSize: "1.5rem",
+
+                textTransform: "uppercase",
+                cursor: "pointer",
+              }}
+              onClick={() => {
+                navigate("/");
+              }}
+            >
+              Logo
+            </Typography>
+            <Box sx={{ flexGrow: 1 }} />
+            <Box sx={{ marginLeft: "auto" }}>
               <Typography
-                variant="h6"
+                variant="subtitle2"
                 noWrap
                 component="div"
                 sx={{
-                  // display: { xs: "none", sm: "block" },
-                  color: "#1BB096",
+                  display: { xs: "none", sm: "block" },
+                  color: "#777",
+                  width: "250px",
                   fontWeight: "bold",
-                  fontSize: "1.5rem",
+                  // fontSize: "1.5rem",
 
                   textTransform: "uppercase",
                   cursor: "pointer",
                 }}
-                onClick={() => {
-                  navigate("/");
-                }}
               >
-                Logo
+                Trending Now:
+                .............,.................................................................................................................................................
               </Typography>
-              <Box sx={{ flexGrow: 1 }} />
-              <Box sx={{ marginLeft: "auto" }}>
-                <Typography
-                  variant="subtitle2"
-                  noWrap
-                  component="div"
-                  sx={{
-                    display: { xs: "none", sm: "block" },
-                    color: "#777",
-                    width: "250px",
-                    fontWeight: "bold",
-                    // fontSize: "1.5rem",
-
-                    textTransform: "uppercase",
-                    cursor: "pointer",
-                  }}
-                >
-                  Trending Now:
-                  .............,.................................................................................................................................................
-                </Typography>
-              </Box>
-              <Box sx={{ flexGrow: 1 }} />
-              <Box sx={{ flexGrow: 1 }} />
-              <Box
-              // sx={{
-              //   display: {
-              //     // xs: "none",
-              //     // sm: "none",
-              //     md: "flex",
-              //   },
-              //   flexDirection: "column",
-              //   alignItems: "center",
-              // }}
-              >
-                <SearchField ></SearchField>
-              </Box>
-              {/* show battery lavel  */}
-              <Box
-                sx={[
-                  {
-                    color: "#000",
-                    fontWeight: "bold",
-                    mx: 2,
-                    "@media screen and (max-width: 768px)": {
-                      display: "none",
-                    },
+            </Box>
+            <Box sx={{ flexGrow: 1 }} />
+            <Box sx={{ flexGrow: 1 }} />
+            <Box
+            // sx={{
+            //   display: {
+            //     // xs: "none",
+            //     // sm: "none",
+            //     md: "flex",
+            //   },
+            //   flexDirection: "column",
+            //   alignItems: "center",
+            // }}
+            >
+              <SearchField></SearchField>
+            </Box>
+            {/* show battery lavel  */}
+            <Box
+              sx={[
+                {
+                  color: "#000",
+                  fontWeight: "bold",
+                  mx: 2,
+                  "@media screen and (max-width: 768px)": {
+                    display: "none",
                   },
-                ]}
-              >
-                <GiBatteryPackAlt
-                  style={{
-                    fontSize: "1.2rem",
-                    marginTop: "0.2rem",
-                  }}
-                />
-                {battery}%
-              </Box>
-              {/* show live clock  */}
-              <Box
-                sx={{
-                  display: {
-                    xs: "none",
-                    sm: "none",
-                    md: "flex",
-                  },
-                  flexDirection: "column",
-                  alignItems: "center",
+                },
+              ]}
+            >
+              <GiBatteryPackAlt
+                style={{
+                  fontSize: "1.2rem",
+                  marginTop: "0.2rem",
+                }}
+              />
+              {battery}%
+            </Box>
+            {/* show live clock  */}
+            <Box
+              sx={{
+                display: {
+                  xs: "none",
+                  sm: "none",
+                  md: "flex",
+                },
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <LiveClock />
+              <span
+                style={{
+                  color: "#000",
+                  fontSize: "1rem",
+                  marginRight: "1rem",
+                  fontWeight: "bold",
                 }}
               >
-                <LiveClock />
-                <span
-                  style={{
-                    color: "#000",
-                    fontSize: "1rem",
-                    marginRight: "1rem",
-                    fontWeight: "bold",
-                  }}
-                >
-                  <span>{date}</span>
-                </span>
-              </Box>
+                <span>{date}</span>
+              </span>
+            </Box>
+            {user ? (
+              <Button
+                onClick={() => {
+                  localStorage.removeItem("user");
+                  localStorage.removeItem("ip");
+                  localStorage.removeItem("uniqId");
+                  localStorage.removeItem("temp");
+                  setPageRefresh(!pageRefresh);
+                  // window.location.reload();
+                  navigate("/login");
+                }}
+                sx={{ marginLeft: "auto" }}
+                variant="contained"
+              >
+                <LogoutIcon sx={{ marginRight: "10px" }} />
+                Log Out
+              </Button>
+            ) : (
               <Button
                 onClick={() => {
                   navigate("/login");
@@ -306,25 +330,25 @@ const Header = () => {
                 <LoginIcon sx={{ marginRight: "10px" }} />
                 Login
               </Button>
-              {/* profile click information  */}
-              {/* <Box>
-            <Tooltip title={user?.c_info} arrow placement="right-start">
-              <Button id="demo-positioned-button">
-                <Chip
-                  avatar={<Avatar alt="Natacha" src={user?.userpic} />}
-                  label={user?.uname}
-                  variant="outlined"
-                />
-              </Button>
-            </Tooltip>
-          </Box> */}
-              <Box sx={{ display: { xs: "flex", md: "none" } }}></Box>
-            </Toolbar>
-          </AppBar>
-            </Box>
-            <Navbar></Navbar>
+            )}
+            {/* <Button
+                onClick={() => {
+                  navigate("/login");
+                }}
+                sx={{ marginLeft: "auto" }}
+                variant="contained"
+              >
+                <LoginIcon sx={{ marginRight: "10px" }} />
+                Login
+              </Button> */}
+
+            <Box sx={{ display: { xs: "flex", md: "none" } }}></Box>
+          </Toolbar>
+        </AppBar>
       </Box>
-    );
+      <Navbar></Navbar>
+    </Box>
+  );
 };
 
 export default Header;
