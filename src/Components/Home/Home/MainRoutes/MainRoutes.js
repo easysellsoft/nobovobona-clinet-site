@@ -19,9 +19,9 @@ import { BiCircle } from "react-icons/bi";
 
 const listItemNav = [
   {
-    title: "Issue",
+    title: "Dashboard",
     icon: <HiHome />,
-    to: "/dashboard/issue",
+    to: "/dashboard/dashboard",
     nested: false,
   },
   {

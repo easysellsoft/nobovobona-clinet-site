@@ -11,13 +11,20 @@ import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import { useState } from "react";
-import { Box } from "@mui/material";
+import { Box, Card, CardActionArea, CardContent, CardMedia, Grid, Typography } from "@mui/material";
 import ButtonComp from "./../../Shared/Button/Button";
 import SearchIssue from "./SearchIssue";
 import AddIssue from "./AddIssue/AddIssue";
 import { TableFooter } from "@material-ui/core";
 import MTable from './components/MTable';
+import SortByAlphaIcon from "@mui/icons-material/SortByAlpha";
 
+
+
+const styleForButton = {
+  fontSize: "64px",
+
+};
 const Issue = () => {
   const [show, setShow] = useState(false);
   const [refresh, setRefresh] = useState(false);
@@ -39,41 +46,13 @@ const Issue = () => {
   const columns = [
     {
       id: 0,
-      label: "Serial",
+      label: "Method",
       minWidth: 60,
     },
 
-    { id: 1, label: "Cover Story ", minWidth: 60 },
-    { id: 2, label: "Cover Title", minWidth: 60 }, //name
-    { id: 3, label: "Cover Pic", minWidth: 60 }, //img_url
-    {
-      id: 4,
-      label: "Publish Date",
-      minWidth: 60,
-    },
-    {
-      id: 5,
-      label: "Poster Name", //poster
-      minWidth: 60,
-    },
-    {
-      id: 6,
-      label: "Posting Time", //time_stamp
-      minWidth: 60,
-    },
-    {
-      id: 7,
-      label: "Issue Refer",
-      minWidth: 60,
-    },
-    {
-      label: "Status",
-      minWidth: 60,
-    },
-    {
-      label: "Action",
-      minWidth: 60,
-    },
+    { id: 1, label: "Amount ", minWidth: 60 },
+    { id: 2, label: "Date", minWidth: 60 }, //name
+   
   ];
 
   useEffect(() => {
@@ -87,53 +66,385 @@ const Issue = () => {
   return (
     <div>
       {/* <AdminHome/> */}
-      <div style={{ width: "100%" }} className="mb-5 mt-5">
-        <Box
-          sx={{
-            mt: 2,
-            mb: 5,
-          }}
-        >
-          <Box
-            sx={[
-              {
-                display: "flex",
-                justifyContent: "flex-start",
-                alignItems: "start",
-                mt: 2,
-                flexWrap: "wrap",
-              },
-            ]}
-          >
-            <div
-              className="btn_prb"
-              onClick={() => {
-                setRefresh(!refresh);
-                if (show) {
-                  setShow(false);
-                }
-              }}
-            >
-              <ButtonComp title="Refresh" color="warning" refreshIco />
-            </div>
+      <Grid container sx={{ px: "30px" }} spacing={{ xs: 2, md: 3, lg: 4 }}>
+        <Grid item xs={6} md={4}>
+          <Card sx={{ maxWidth: 345 }}>
+            <CardActionArea sx={{ display: "flex" }}>
+              {/* <CardMedia
+                component="img"
+                height="140"
+                image="/static/images/cards/contemplative-reptile.jpg"
+                alt="green iguana"
+              /> */}
+              <SortByAlphaIcon style={styleForButton}></SortByAlphaIcon>
 
-            <div className="btn_prb" onClick={() => setShow(!show)}>
-              <ButtonComp title="Add" color="info" search show>
-                {/* toggle: {show ? "show" : "hide"} */}
-              </ButtonComp>
-            </div>
+              <CardContent
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Typography
+                  sx={{ fontWeight: "bold" }}
+                  gutterBottom
+                  variant="h5"
+                  component="div"
+                >
+                  1000
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Total Order
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+        </Grid>
+        <Grid item xs={6} md={4}>
+          <Card sx={{ maxWidth: 345 }}>
+            <CardActionArea sx={{ display: "flex" }}>
+              <SortByAlphaIcon style={styleForButton}></SortByAlphaIcon>
 
-            {/* {show && <div>Hi there</div>} */}
-            <div className="btn_prb">
-              <ButtonComp title="Export" color="primary" exportIco />
-            </div>
-          </Box>
-        </Box>
+              <CardContent
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Typography
+                  sx={{ fontWeight: "bold" }}
+                  gutterBottom
+                  variant="h5"
+                  component="div"
+                >
+                  45000
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Active Order
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+        </Grid>
+        <Grid item xs={6} md={4}>
+          <Card sx={{ maxWidth: 345 }}>
+            <CardActionArea sx={{ display: "flex" }}>
+              <SortByAlphaIcon style={styleForButton}></SortByAlphaIcon>
 
-        {show && <AddIssue></AddIssue>}
-      </div>
+              <CardContent
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Typography
+                  sx={{ fontWeight: "bold" }}
+                  gutterBottom
+                  variant="h5"
+                  component="div"
+                >
+                  7000
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Inactive Order
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+        </Grid>
+        <Grid item xs={6} md={4}>
+          <Card sx={{ maxWidth: 345 }}>
+            <CardActionArea sx={{ display: "flex" }}>
+              <SortByAlphaIcon style={styleForButton}></SortByAlphaIcon>
 
-      {!show && (
+              <CardContent
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Typography
+                  sx={{ fontWeight: "bold" }}
+                  gutterBottom
+                  variant="h5"
+                  component="div"
+                >
+                  6000
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Total Payment
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+        </Grid>
+        <Grid item xs={6} md={4}>
+          <Card sx={{ maxWidth: 345 }}>
+            <CardActionArea sx={{ display: "flex" }}>
+              {/* <CardMedia
+                component="img"
+                height="140"
+                image="/static/images/cards/contemplative-reptile.jpg"
+                alt="green iguana"
+              /> */}
+              <SortByAlphaIcon style={styleForButton}></SortByAlphaIcon>
+
+              <CardContent
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Typography
+                  sx={{ fontWeight: "bold" }}
+                  gutterBottom
+                  variant="h5"
+                  component="div"
+                >
+                  1000
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Pending Payment
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+        </Grid>
+        <Grid item xs={6} md={4}>
+          <Card sx={{ maxWidth: 345 }}>
+            <CardActionArea sx={{ display: "flex" }}>
+              {/* <CardMedia
+                component="img"
+                height="140"
+                image="/static/images/cards/contemplative-reptile.jpg"
+                alt="green iguana"
+              /> */}
+              <SortByAlphaIcon style={styleForButton}></SortByAlphaIcon>
+
+              <CardContent
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Typography
+                  sx={{ fontWeight: "bold" }}
+                  gutterBottom
+                  variant="h5"
+                  component="div"
+                >
+                  22000
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Total Subscription 
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+        </Grid>
+        <Grid item xs={6} md={4}>
+          <Card sx={{ maxWidth: 345 }}>
+            <CardActionArea sx={{ display: "flex" }}>
+              {/* <CardMedia
+                component="img"
+                height="140"
+                image="/static/images/cards/contemplative-reptile.jpg"
+                alt="green iguana"
+              /> */}
+              <SortByAlphaIcon style={styleForButton}></SortByAlphaIcon>
+
+              <CardContent
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Typography
+                  sx={{ fontWeight: "bold" }}
+                  gutterBottom
+                  variant="h5"
+                  component="div"
+                >
+                  12000
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Total Purchase
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+        </Grid>
+        <Grid item xs={6} md={4}>
+          <Card sx={{ maxWidth: 345 }}>
+            <CardActionArea sx={{ display: "flex" }}>
+              {/* <CardMedia
+                component="img"
+                height="140"
+                image="/static/images/cards/contemplative-reptile.jpg"
+                alt="green iguana"
+              /> */}
+              <SortByAlphaIcon style={styleForButton}></SortByAlphaIcon>
+
+              <CardContent
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Typography gutterBottom variant="h5" component="div">
+                  13000
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Shipment Pending
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+        </Grid>
+        <Grid item xs={6} md={4}>
+          <Card sx={{ maxWidth: 345 }}>
+            <CardActionArea sx={{ display: "flex" }}>
+              {/* <CardMedia
+                component="img"
+                height="140"
+                image="/static/images/cards/contemplative-reptile.jpg"
+                alt="green iguana"
+              /> */}
+              <SortByAlphaIcon style={styleForButton}></SortByAlphaIcon>
+
+              <CardContent
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Typography
+                  sx={{ fontWeight: "bold" }}
+                  gutterBottom
+                  variant="h5"
+                  component="div"
+                >
+                  1344
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Total Message
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+        </Grid>
+      </Grid>
+
+      {/* 
+      <Box sx={{ display: "flex", width: "100%" }}>
+      
+      
+      </Box> */}
+      <Grid container spacing={4}>
+        <Grid item xs={12} md={6}>
+          <Paper mt={2} pt={3} sx={{ width: "100%" }}>
+            <TableContainer sx={{ maxHeight: 540, my: "40px" }}>
+              <Table stickyHeader aria-label="sticky table">
+                <TableHead>
+                  <TableRow sx={{ borderColor: "text.primary" }}>
+                    <TableCell align="center" colSpan={12}>
+                      Table
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    {columns.map((column) => (
+                      <TableCell
+                        key={column.id}
+                        align={column.align}
+                        style={{
+                          top: 57,
+                          minWidth: column.minWidth,
+                          fontWeight: "bold",
+                        }}
+                      >
+                        {column.label}
+                      </TableCell>
+                    ))}
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  <TableRow>
+                    <TableCell align="left">A</TableCell>
+                    <TableCell align="left">V</TableCell>
+                    <TableCell align="left">C</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell align="left">A</TableCell>
+                    <TableCell align="left">V</TableCell>
+                    <TableCell align="left">C</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </Paper>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <Paper mt={2} pt={3} sx={{ width: "100%" }}>
+            <TableContainer sx={{ maxHeight: 540, my: "40px" }}>
+              <Table stickyHeader aria-label="sticky table">
+                <TableHead>
+                  <TableRow sx={{ borderColor: "text.primary" }}>
+                    <TableCell align="center" colSpan={12}>
+                      Table
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    {columns.map((column) => (
+                      <TableCell
+                        key={column.id}
+                        align={column.align}
+                        style={{
+                          top: 57,
+                          minWidth: column.minWidth,
+                          fontWeight: "bold",
+                        }}
+                      >
+                        {column.label}
+                      </TableCell>
+                    ))}
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  <TableRow>
+                    <TableCell align="left">A</TableCell>
+                    <TableCell align="left">V</TableCell>
+                    <TableCell align="left">C</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell align="left">A</TableCell>
+                    <TableCell align="left">V</TableCell>
+                    <TableCell align="left">C</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </Paper>
+        </Grid>
+      </Grid>
+
+      {/* {!show && (
         <div>
           <Paper mt={2} pt={3} sx={{ width: "100%", mt: "40px" }}>
             <TableContainer sx={{ maxHeight: 540 }}>
@@ -168,7 +479,7 @@ const Issue = () => {
                         <TableRow key={item.id}>
                           <TableCell align="left">{item.id}</TableCell>
                           <TableCell align="left">{item.cover_story}</TableCell>
-                          {/* <TableCell align="left">{item.deliver}</TableCell> */}
+                         
                           <TableCell align="left">{item.name}</TableCell>
                           <TableCell align="left">
                             <img
@@ -206,17 +517,17 @@ const Issue = () => {
                               >
                                 <div className="btn_prb">
                                   <ButtonComp
-                                    // title="Edit"
+                                  
                                     color="warning"
                                     className="mb-2"
                                     edit
-                                    // refreshIco
+                            
                                   />
                                 </div>
 
                                 <div className="btn_prb">
                                   <ButtonComp
-                                    // title="Publish"
+                                 
                                     color="primary"
                                     className="mb-2"
                                     publish
@@ -224,7 +535,7 @@ const Issue = () => {
                                 </div>
                                 <div className="btn_prb">
                                   <ButtonComp
-                                    // title="Delete"
+                              
                                     color="info"
                                     deleteIco
                                   ></ButtonComp>
@@ -249,8 +560,7 @@ const Issue = () => {
             />
           </Paper>
         </div>
-      )}
-      {/* <MTable></MTable> */}
+      )} */}
     </div>
   );
 };

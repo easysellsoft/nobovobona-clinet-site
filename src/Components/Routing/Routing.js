@@ -155,7 +155,7 @@ const Routing = () => {
             }
           >
             {/* <Route path="/" element={<AdminHome />} /> */}
-            <Route path="/dashboard/issue" element={<Issue />} />
+            <Route path="/dashboard/Dashboard" element={<Issue />} />
             <Route path="/dashboard/section" element={<Section />} />
             <Route path="/dashboard/writer" element={<Writer />} />
             <Route path="/dashboard/menu" element={<Menu />} />
@@ -168,7 +168,7 @@ const Routing = () => {
             <Route path="/dashboard/users" element={<Users />} />
             <Route path="/dashboard/others" element={<Others />} />
           </Route>
-          
+
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>

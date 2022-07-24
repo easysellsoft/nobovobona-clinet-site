@@ -139,7 +139,7 @@ function Home() {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-   
+      {/* Appbar remove kora hoyece aikhan theke .............. */}
       {/* end  */}
       {/* <Drawer variant="permanent" open={open}> */}
       <Drawer
@@ -176,7 +176,6 @@ function Home() {
               onClick={handleDrawerOpen}
               edge="start"
               sx={{
-              
                 ...(open && { display: "none" }),
                 color: "text.primary",
               }}
@@ -266,11 +265,14 @@ function Home() {
         <Divider />
       </Drawer>
       <Box
+        // bgColor="text.disabled"
         component="main"
         sx={{
+          bgcolor: "text.disabled",
           flexGrow: 1,
           px: 2,
           pb: 0,
+
           width: "100%",
           overflow: "auto",
           minHeight: "90vh",
