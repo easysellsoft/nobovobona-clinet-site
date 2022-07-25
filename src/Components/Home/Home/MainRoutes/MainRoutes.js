@@ -25,16 +25,28 @@ const listItemNav = [
     nested: false,
   },
   {
-    title: "Section",
+    title: "Order",
     icon: <MdDashboard />,
-    to: "/dashboard/section",
+    to: "/dashboard/order",
     nested: false,
   },
   {
-    title: "Writer",
+    title: "Payment",
     icon: <FaRegEnvelope />,
-    to: "/dashboard/writer",
-    nested: false,
+    to: "/dashboard/payment/history",
+    nested: true,
+    submenu: [
+      {
+        title: "History",
+        to: "/dashboard/payment/history",
+        icon: <BiCircle />,
+      },
+      {
+        title: "Method",
+        to: "/dashboard/payment/method",
+        icon: <BiCircle />,
+      },
+    ],
   },
 
   {

@@ -23,6 +23,7 @@ import Users from "./../Home/Users/Users";
 import Others from "./../Home/Others/Others";
 import Messages from "./../Home/Messages/Messages";
 import MainHome from './../Home/MainHome/MainHome';
+import Method from "./../Home/Method/Method";
 // import Home from "../../ClientComponents/Home/Home";
 
 import Header from "./../Header/Header";
@@ -54,6 +55,7 @@ const PaymentMethod = React.lazy(() =>
 const ProjectRate = React.lazy(() =>
   import("./../Home/ProjectRate/ProjectRate.js")
 );
+
 
 
 
@@ -155,9 +157,10 @@ const Routing = () => {
             }
           >
             {/* <Route path="/" element={<AdminHome />} /> */}
-            <Route path="/dashboard/Dashboard" element={<Issue />} />
-            <Route path="/dashboard/section" element={<Section />} />
-            <Route path="/dashboard/writer" element={<Writer />} />
+            <Route path="/dashboard/dashboard" element={<Issue />} />
+            <Route path="/dashboard/order" element={<Section />} />
+            <Route path="/dashboard/payment/history" element={<Writer />} />
+            <Route path="/dashboard/payment/method" element={<Method />} />
             <Route path="/dashboard/menu" element={<Menu />} />
             <Route path="/dashboard/article" element={<Article />} />
             <Route path="/dashboard/add_page" element={<AddPage />} />

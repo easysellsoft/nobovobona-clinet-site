@@ -268,7 +268,7 @@ function Home() {
         // bgColor="text.disabled"
         component="main"
         sx={{
-          bgcolor: "text.disabled",
+          bgcolor: "#FBFAFA",
           flexGrow: 1,
           px: 2,
           pb: 0,

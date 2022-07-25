@@ -43,7 +43,7 @@ const rows = [
   createData("Cupcake", 305, 3.7, 67, 4.3, "A", "B", "C"),
   createData("Gingerbread", 356, 16.0, 49, 3.9, "A", "B", "C"),
 ];
-function AddSection() {
+function MethodTable() {
 
   const [section, setSection] = useState("");
    const [selected, setSelected] = React.useState(false);
@@ -65,14 +65,10 @@ function AddSection() {
                   <CheckIcon sx={{ color: "#241f1f" }} />
                 </ToggleButton>
               </StyledTableCell>
-              <StyledTableCell> Order</StyledTableCell>
-              <StyledTableCell align="right">Order Name</StyledTableCell>
-              <StyledTableCell align="right">Service</StyledTableCell>
-              <StyledTableCell align="right">Status</StyledTableCell>
-              <StyledTableCell align="right">Total</StyledTableCell>
-
-              <StyledTableCell align="right">Sender</StyledTableCell>
-              <StyledTableCell align="right">Created</StyledTableCell>
+              <StyledTableCell>Serial</StyledTableCell>
+              <StyledTableCell align="right">Account</StyledTableCell>
+              <StyledTableCell align="right">Gateway</StyledTableCell>
+              <StyledTableCell align="right">Status </StyledTableCell>
               <StyledTableCell align="right">Action</StyledTableCell>
             </TableRow>
           </TableHead>
@@ -97,9 +93,7 @@ function AddSection() {
                 <StyledTableCell align="right">{row.fat}</StyledTableCell>
                 <StyledTableCell align="right">{row.carbs}</StyledTableCell>
                 <StyledTableCell align="right">{row.protein}</StyledTableCell>
-                <StyledTableCell align="right">{row.ex1}</StyledTableCell>
-                <StyledTableCell align="right">{row.ex2}</StyledTableCell>
-                <StyledTableCell align="right">{row.ex3}</StyledTableCell>
+            
               </StyledTableRow>
             ))}
           </TableBody>
@@ -109,5 +103,5 @@ function AddSection() {
   );
 }
 
-export default AddSection;
+export default MethodTable;
 
