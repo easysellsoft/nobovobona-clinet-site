@@ -1,504 +1,108 @@
 import React, { useEffect, useState } from "react";
-import { makeStyles } from "@material-ui/core";
-import PeopleOutlineTwoToneIcon from "@material-ui/icons/PeopleOutlineTwoTone";
+import { styled } from "@mui/material/styles";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell, { tableCellClasses } from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import CheckIcon from "@mui/icons-material/Check";
+import ToggleButton from "@mui/material/ToggleButton";
 
-// import PageHeader from "../components/PageHeader";
-import { Grid, InputAdornment, Select, TextareaAutosize } from "@mui/material";
-import { FormLabel } from "@mui/material";
-import { TextField } from "@mui/material";
-import { Box } from "@mui/material";
-import { FormControl } from "@mui/material/";
-import { FormGroup } from "@mui/material/";
-import { Button } from "@mui/material";
-import PageHeader from "../Issue/components/PageHeader";
-import { SettingsInputCompositeRounded } from "@material-ui/icons";
-import Visibility from "@mui/icons-material/Visibility";
-
-import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
-const useStyles = makeStyles({
-  appMain: {
-    paddingLeft: "10px",
-    paddingRight: "20px",
-    width: "100%",
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    // backgroundColor:  theme.palette.common.black,
+    backgroundColor: "#778179f2",
+    color: theme.palette.common.white,
   },
-});
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 14,
+  },
+}));
+
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  "&:nth-of-type(odd)": {
+    backgroundColor: theme.palette.action.hover,
+  },
+  // hide last border
+  "&:last-child td, &:last-child th": {
+    border: 0,
+  },
+}));
+
+function createData(name, calories, fat, carbs, protein, ex1, ex2) {
+  return { name, calories, fat, carbs, protein, ex1, ex2 };
+}
+
+const rows = [
+  createData("Frozen yoghurt", 159, 6.0, 24, 4.0, "A", "B"),
+  createData("Ice cream sandwich", 237, 9.0, 37, 4.3, "A", "B"),
+  createData("Eclair", 262, 16.0, 24, 6.0, "A", "B"),
+  createData("Cupcake", 305, 3.7, 67, 4.3, "A", "B"),
+  createData("Gingerbread", 356, 16.0, 49, 3.9, "A", "B"),
+];
 function AddArticle() {
-  const [cn_details, setCn_details] = useState("");
-  const [writer, setWriter] = useState("");
-  const [article_type, setArticle_type] = useState("");
-  const [article_title, setArticle_title] = useState("");
-  const [hard_file, setHard_file] = useState("");
-  const [text_info, setTextInfo] = useState("");
-  const [page_no, setPageNo] = useState("");
-  const [info_file, setInfoFile] = useState("");
-  const [userId, setUserId] = useState("");
-  const [publish_status, setPublish_status] = useState("");
-  const [cn_status, setCn_status] = useState(null);
-  const [cn_status_section, setCn_status_section] = useState(null);
-  // const [cn_status_writer, setCn_status_writer] = useState("7079366c73773279");
-  const [cn_status_writer, setCn_status_writer] = useState(null);
-  // const [showPassword, setShowPassword] = useState(false);
-  // const [publish_date, setPublish_date] = useState("");
-  const [ar_file, setAr_file] = useState(null);
-  const [imageUrl, setImageUrl] = useState(null);
-  const formData = new FormData();
-  const classes = useStyles();
-  const [issues, setIssues] = useState([]);
-  const [sections, setSections] = useState([]);
-  const [writers, setWriters] = useState([]);
-  // const currencies = [
-  //   {
-  //     value: "0",
-  //     label: "Select",
-  //   },
-  //   {
-  //     value: "1",
-  //     label: "Publish",
-  //   },
-  //   {
-  //     value: "2",
-  //     label: "Unpublish",
-  //   },
-  // ];
-  const publishes = [
-    {
-      value: "0",
-      label: "Select",
-    },
-    {
-      value: "1",
-      label: "Publish",
-    },
-    {
-      value: "2",
-      label: "Unpublish",
-    },
-  ];
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-  const onTextChange = (e) => {
-    e.preventDefault();
-    //    let input = e.target.value;
-    //    console.log(input);
-    setCn_status(e.target.value);
-  };
-  const onTextChange1 = (e) => {
-    e.preventDefault();
-    //    let input = e.target.value;
-    //    console.log(input);
-    setPublish_status(e.target.value);
-  };
-  const onTextChangeSection = (e) => {
-    e.preventDefault();
-    //    let input = e.target.value;
-    //    console.log(input);
-    setCn_status_section(e.target.value);
-  };
-  const onTextChangeWriter = (e) => {
-    e.preventDefault();
-    //    let input = e.target.value;
-    //    console.log(input);
-    setCn_status_writer(e.target.value);
-  };
-  //get user information from localStorage
-  const user = JSON.parse(localStorage.getItem("user"));
-  console.log(user);
-  console.log(user.sopnoid);
-  useEffect(() => {
-    setUserId(user.sopnoid);
-  }, []);
-  console.log(userId);
+  const [section, setSection] = useState("");
+  const [selected, setSelected] = React.useState(false);
 
-  useEffect(() => {
-    if (ar_file) {
-      setImageUrl(URL.createObjectURL(ar_file));
-    }
-  }, [ar_file]);
-
-  useEffect(() => {
-    fetch(`http://nobovabna.com/webapi/nget_all_issue.php`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setIssues(data);
-        setCn_status(data[0]?.issue_refer);
-      });
-  }, []);
-  useEffect(() => {
-    fetch(`http://nobovabna.com/webapi/nget_all_section.php`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setSections(data);
-        setCn_status_section(data[0]?.s_refer);
-      });
-  }, []);
-  useEffect(() => {
-    fetch(`http://nobovabna.com/webapi/nget_all_writer.php`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setWriters(data);
-        setCn_status_writer(data[0]?.w_refer);
-      });
-  }, []);
-
-  const handelSubmit = (e) => {
-    e.preventDefault();
-
-    formData.append("article_type", cn_status_section);
-    formData.append("ar_name", article_title);
-
-    formData.append("writer", cn_status_writer);
-    formData.append("hard_file", hard_file);
-    formData.append("text_info", text_info);
-    formData.append("page_no", page_no);
-    formData.append("info_file", info_file);
-    formData.append("puser", userId);
-    formData.append("issue", cn_status);
-    formData.append("publish_status", publish_status);
-    // formData.append("ar_file", ar_file);
-    //   formData.append(" ", );
-    fetch(`http://nobovabna.com/webapi/article_new.php`, {
-      method: "POST",
-      body: formData,
-    })
-      //  console.log(formData),
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        // setUpdateTable(data);
-        // setFormDate("");
-      });
-
-    //   };
-    // console.log(e.target.serial.value);
-    // console.log(e.target.issue.value);
-    // console.log(e.target.background.value);
-  };
   return (
     <>
-      <PageHeader
-        className="mt-5"
-        title="Add Data"
-        subTitle="Form Adding design with validation"
-        icon={<PeopleOutlineTwoToneIcon fontSize="large" />}
-      />
-      <div className={classes.appMain}>
-        <form onSubmit={handelSubmit}>
-          <Grid
-            container
-            style={
-              {
-                //   width: "1000px",
-                //     display: "flex",
-                //   flexWrap: "wrap",
-                //   textAlign: "center",
-                //   marginTop: "14px",
-                //   marginBottom: "25px",
-                // marginRight: "100px",
-              }
-            }
-            spacing={2}
-          >
-            <Grid item sm={12} md={6}>
-              <FormLabel className="mt-2 ms-2">Issue Select</FormLabel>
-              <TextField
-                style={{ margin: "7px" }}
-                // label="Select"
-                label={<Box></Box>}
-                // value={currency}
-                // value={textValue}
-                value={cn_status}
-                fullWidth
-                onChange={onTextChange}
-                disabled={issues.length === 0 ? true : false}
-                select
-                SelectProps={{
-                  native: true,
-                }}
-              >
-                {issues.map((option) => (
-                  <option
-                    key={option.id}
-                    cn_status={option.issue_refer}
-                    value={option.issue_refer}
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 700 }} aria-label="customized table">
+          <TableHead>
+            <TableRow>
+              <StyledTableCell align="left">
+                <ToggleButton
+                  value="check"
+                  selected={selected}
+                  onChange={() => {
+                    setSelected(!selected);
+                  }}
+                >
+                  <CheckIcon sx={{ color: "#241f1f" }} />
+                </ToggleButton>
+              </StyledTableCell>
+              <StyledTableCell> Serial</StyledTableCell>
+              <StyledTableCell align="right">January - 2022</StyledTableCell>
+              <StyledTableCell align="right">Article-1 (Date)</StyledTableCell>
+              <StyledTableCell align="right">Article-2 (Date)</StyledTableCell>
+              <StyledTableCell align="right">Memo</StyledTableCell>
+
+              <StyledTableCell align="right">Balance</StyledTableCell>
+              <StyledTableCell align="right">Previous Balance</StyledTableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+              <StyledTableRow key={row.name}>
+                <StyledTableCell component="th" scope="row">
+                  <ToggleButton
+                    value="check"
+                    selected={selected}
+                    onChange={() => {
+                      setSelected(!selected);
+                    }}
                   >
-                    {/* <em>None</em> */}
-                    {option.name}
-                  </option>
-                ))}
-              </TextField>
-            </Grid>
-            <Grid item sm={12} md={6}>
-              <FormLabel className="mt-2 ms-2">Section</FormLabel>
-              <TextField
-                style={{ margin: "7px" }}
-                //   label="Service Type"
-                label={<Box></Box>}
-                // value={currency}
-                // value={textValue}
-                value={cn_status_section}
-                fullWidth
-                onChange={onTextChangeSection}
-                // onChange={(handleChange, onTextChange)}
-                disabled={sections.length === 0 ? true : false}
-                select
-                SelectProps={{
-                  native: true,
-                }}
-                //   helperText="Please select your currency"
-              >
-                {sections.map((option) => (
-                  <option key={option.id} value={option.s_refer}>
-                    {option.s_name}
-                  </option>
-                ))}
-              </TextField>
-            </Grid>
-            {/* <Grid item sm={12} md={6}>
-              <FormLabel className="mt-2 ms-2">Section</FormLabel>
-              <TextField
-                style={{ margin: "7px" }}
-                label={<Box></Box>}
-                name="serial"
-                type="text"
-                fullWidth
-                // value={formDate}
-                onChange={(e) => setArticle_type(e.target.value)}
-              />
-            </Grid> */}
-            <Grid item sm={12} md={6}>
-              <FormLabel className="mt-2 ms-2">Title</FormLabel>
-              <TextField
-                style={{ margin: "7px" }}
-                label={<Box></Box>}
-                name="serial"
-                type="text"
-                fullWidth
-                // value={formDate}
-                onChange={(e) => setArticle_title(e.target.value)}
-              />
-            </Grid>
-            <Grid item sm={12} md={6}>
-              <FormLabel className="mt-2 ms-2">Writer Select</FormLabel>
-              <TextField
-                style={{ margin: "7px" }}
-                //   label="Service Type"
-                label={<Box></Box>}
-                // value={currency}
-                // value={textValue}
-                value={cn_status_writer}
-                fullWidth
-                onChange={onTextChangeWriter}
-                // onChange={(handleChange, onTextChange)}
-                disabled={writers.length === 0 ? true : false}
-                select
-                SelectProps={{
-                  native: true,
-                }}
-                //   helperText="Please select your currency"
-              >
-                {writers.map((option) => (
-                  <option key={option.id} value={option.w_refer}>
-                    {option.w_name}
-                  </option>
-                ))}
-              </TextField>
-            </Grid>
-            {/* <Grid item sm={12} md={6}>
-              <FormLabel className="mt-2 ms-2">Writer Select</FormLabel>
-              <TextField
-                style={{ margin: "7px" }}
-                label={<Box></Box>}
-                name="serial"
-                type="text"
-                fullWidth
-                // value={formDate}
-                onChange={(e) => setWriter(e.target.value)}
-              />
-            </Grid> */}
-            <Grid item sm={12} md={6}>
-              <FormLabel className="mt-2 ms-2">Attach pdf</FormLabel>
-              <TextField
-                style={{ margin: "7px" }}
-                label={<Box></Box>}
-                name="serial"
-                type="file"
-                fullWidth
-                // value={formDate}
-                onChange={(e) => setHard_file(e.target?.files[0])}
-              />
-            </Grid>
-            <Grid item sm={12} md={6}>
-              <FormLabel className="mt-2 ms-2">Soft Info</FormLabel>
-              <TextField
-                style={{ margin: "7px" }}
-                label={<Box></Box>}
-                name="serial"
-                type="text"
-                fullWidth
-                // value={formDate}
-                onChange={(e) => setTextInfo(e.target.value)}
-              />
-            </Grid>
-            <Grid item sm={12} md={6}>
-              <FormLabel className="mt-2 ms-2">Page No</FormLabel>
-              <TextField
-                style={{ margin: "7px" }}
-                label={<Box></Box>}
-                name="serial"
-                type="Number"
-                fullWidth
-                // value={formDate}
-                onChange={(e) => setPageNo(e.target.value)}
-              />
-            </Grid>
-
-            <Grid item sm={12} md={6}>
-              <FormLabel className="mt-2 ms-2">Publish Status</FormLabel>
-              <TextField
-                style={{ margin: "7px" }}
-                //   label="Service Type"
-                label={<Box></Box>}
-                // value={currency}
-                // value={textValue}
-                value={publish_status}
-                fullWidth
-                onChange={onTextChange1}
-                // onChange={(handleChange, onTextChange)}
-                select
-                SelectProps={{
-                  native: true,
-                }}
-                //   helperText="Please select your currency"
-              >
-                {publishes.map((option) => (
-                  <option key={option.value} value={option.value}>
-                    {option.label}
-                  </option>
-                ))}
-              </TextField>
-            </Grid>
-
-            <Grid item sm={12} md={6}>
-              <FormLabel className="mt-2 ms-2">Attach Short file</FormLabel>
-              <TextField
-                style={{ margin: "7px" }}
-                id="filled-basic"
-                label={<Box></Box>}
-                color="primary"
-                // name="background"
-                type="file"
-                fullWidth
-                // value={userName}
-                onChange={(e) => setInfoFile(e.target?.files[0])}
-              />
-            </Grid>
-          </Grid>
-
-          <FormControl className="mt-3" component="fieldset">
-            <FormGroup aria-label="position" row>
-              <Box
-                style={{
-                  display: "flex",
-
-                  textAlign: "center",
-                  marginTop: "14px",
-                  marginLeft: "10px",
-                  marginBottom: "25px",
-                  // marginRight: "100px",
-                }}
-              >
-                <Button
-                  variant="contained"
-                  color="warning"
-                  width="25%"
-                  F
-                  sx={{ py: 1, mr: 3 }}
-                  type="submit"
-                >
-                  Reset
-                </Button>
-                <Button
-                  variant="contained"
-                  color="success"
-                  width="25%"
-                  sx={{ py: 1, mr: 3 }}
-                  type="submit"
-                  onClick={handleOpen}
-                >
-                  Save
-                </Button>
-              </Box>
-            </FormGroup>
-          </FormControl>
-        </form>
-        <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box sx={style}>
-            <Typography id="modal-modal-title" variant="h6" component="h2">
-              {/* Data in Response */}
-              Successfully Added Data.
-            </Typography>
-            {/* <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-              Successfully Added Data.
-            </Typography> */}
-          </Box>
-        </Modal>
-      </div>
+                    <CheckIcon />
+                  </ToggleButton>
+                </StyledTableCell>
+                <StyledTableCell component="th" scope="row">
+                  {row.name}
+                </StyledTableCell>
+                <StyledTableCell align="right">{row.calories}</StyledTableCell>
+                <StyledTableCell align="right">{row.fat}</StyledTableCell>
+                <StyledTableCell align="right">{row.carbs}</StyledTableCell>
+                <StyledTableCell align="right">{row.protein}</StyledTableCell>
+                <StyledTableCell align="right">{row.ex1}</StyledTableCell>
+                <StyledTableCell align="right">{row.ex2}</StyledTableCell>
+              </StyledTableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </>
   );
 }
 
 export default AddArticle;
-const IconTextField = ({
-  iconStart,
-  iconEnd,
-  InputProps,
-  showPassword,
-  setShowPassword,
-  ...props
-}) => {
-  // const [showPassword, setShowPassword] = useState(false);
-
-  return (
-    <TextField
-      type={showPassword ? "text" : "password"}
-      {...props}
-      InputProps={{
-        ...InputProps,
-        startAdornment: iconStart ? (
-          <InputAdornment position="start">{iconStart}</InputAdornment>
-        ) : null,
-        endAdornment: iconEnd ? (
-          <InputAdornment
-            style={{ cursor: "pointer" }}
-            onClick={() => setShowPassword(!showPassword)}
-            setShowPassword
-            position="end"
-          >
-            {iconEnd}
-          </InputAdornment>
-        ) : null,
-      }}
-    />
-  );
-};

@@ -24,6 +24,7 @@ import Others from "./../Home/Others/Others";
 import Messages from "./../Home/Messages/Messages";
 import MainHome from './../Home/MainHome/MainHome';
 import Method from "./../Home/Method/Method";
+import ArticleDetails from "./../Home/Article/ArticleDetails";
 // import Home from "../../ClientComponents/Home/Home";
 
 import Header from "./../Header/Header";
@@ -55,6 +56,7 @@ const PaymentMethod = React.lazy(() =>
 const ProjectRate = React.lazy(() =>
   import("./../Home/ProjectRate/ProjectRate.js")
 );
+
 
 
 
@@ -163,7 +165,11 @@ const Routing = () => {
             <Route path="/dashboard/payment/method" element={<Method />} />
             <Route path="/dashboard/menu" element={<Menu />} />
             <Route path="/dashboard/article" element={<Article />} />
-            <Route path="/dashboard/add_page" element={<AddPage />} />
+            <Route
+              path="/dashboard/article/dashboard/reading/history/details"
+              element={<ArticleDetails />}
+            />
+            <Route path="/dashboard/profile" element={<AddPage />} />
             <Route path="/dashboard/orders" element={<Orders />} />
             <Route path="/dashboard/rate" element={<Rate />} />
             <Route path="/dashboard/payment" element={<Payment />} />

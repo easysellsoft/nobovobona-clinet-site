@@ -1,287 +1,110 @@
-import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core";
-import PeopleOutlineTwoToneIcon from "@material-ui/icons/PeopleOutlineTwoTone";
+import React, { useEffect, useState } from "react";
+import { styled } from "@mui/material/styles";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell, { tableCellClasses } from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import CheckIcon from "@mui/icons-material/Check";
+import ToggleButton from "@mui/material/ToggleButton";
 
-// import PageHeader from "../components/PageHeader";
-import { Grid, InputAdornment, TextareaAutosize } from "@mui/material";
-import { FormLabel } from "@mui/material";
-import { TextField } from "@mui/material";
-import { Box } from "@mui/material";
-import { FormControl } from "@mui/material/";
-import { FormGroup } from "@mui/material/";
-import { Button } from "@mui/material";
-import PageHeader from "../Issue/components/PageHeader";
-import { SettingsInputCompositeRounded } from "@material-ui/icons";
-import Visibility from "@mui/icons-material/Visibility";
-
-import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
-const useStyles = makeStyles({
-  appMain: {
-        paddingLeft: "10px",
-      paddingRight: "20px",
-        width: "100%",
-    
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    // backgroundColor:  theme.palette.common.black,
+    backgroundColor: "#778179f2",
+    color: theme.palette.common.white,
   },
-});
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 14,
+  },
+}));
+
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  "&:nth-of-type(odd)": {
+    backgroundColor: theme.palette.action.hover,
+  },
+  // hide last border
+  "&:last-child td, &:last-child th": {
+    border: 0,
+  },
+}));
+
+function createData(serial,name, calories, fat, carbs, protein, ex1, ex2) {
+  return {serial, name, calories, fat, carbs, protein, ex1, ex2 };
+}
+
+const rows = [
+  createData(1,"Frozen yoghurt", 159, 6.0, 24, 4.0, "A", "B"),
+  createData(2,"Ice cream sandwich", 237, 9.0, 37, 4.3, "A", "B"),
+  createData(3,"Eclair", 262, 16.0, 24, 6.0, "A", "B"),
+  createData(4,"Cupcake", 305, 3.7, 67, 4.3, "A", "B"),
+  createData(5,"Gingerbread", 356, 16.0, 49, 3.9, "A", "B"),
+];
 function AddMenu() {
-  const [cn_details, setCn_details] = useState("");
-  const [writer, setWriter] = useState("");
-  // const [title_eng, setTitle_eng] = useState("");
-  const [userId, setUserId] = useState("");
-  const [cn_status, setCn_status] = useState("");
-  // const [sub_title, setSub_title] = useState("");
-  const [publish_date, setPublish_date] = useState("");
-  const [ar_file, setAr_file] = useState(null);
-  const formData = new FormData();
-  const classes = useStyles();
-   const [showPassword, setShowPassword] = useState(false);
-  const currencies = [
-    {
-      value: "0",
-      label: "Unpublish",
-    },
-    {
-      value: "1",
-      label: "Publish",
-    },
-  ];
-  const onTextChange = (e) => {
-    e.preventDefault();
-    //    let input = e.target.value;
-    //    console.log(input);
-    setCn_status(e.target.value);
-  };
+  const [section, setSection] = useState("");
+  const [selected, setSelected] = React.useState(false);
 
-  const handelSubmit = (e) => {
-    e.preventDefault();
-    console.log(ar_file);
-    formData.append("writer", writer);
-    formData.append("cn_details", cn_details);
-    formData.append("puser", userId);
-    formData.append("cn_status", cn_status);
-    formData.append("ar_file", ar_file);
-    //   formData.append(" ", );
-    fetch(`http://nobovabna.com/webapi/writer_new.php`, {
-      method: "POST",
-      body: formData,
-    })
-      //  console.log(formData),
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        // setUpdateTable(data);
-        // setFormDate("");
-      });
-
-    //   };
-    console.log(e.target.serial.value);
-    console.log(e.target.issue.value);
-    console.log(e.target.background.value);
-  };
   return (
     <>
-      <PageHeader
-        className="mt-5"
-        title="New issue"
-        subTitle="Form Adding design with validation"
-        icon={<PeopleOutlineTwoToneIcon fontSize="large" />}
-      />
-      <div className={classes.appMain}>
-        <form onSubmit={handelSubmit}>
-          <Grid
-            container
-            style={
-              {
-                //   width: "1000px",
-                //     display: "flex",
-                //   flexWrap: "wrap",
-                //   textAlign: "center",
-                //   marginTop: "14px",
-                //   marginBottom: "25px",
-                // marginRight: "100px",
-              }
-            }
-            spacing={2}
-          >
-            <Grid item sm={12} md={6}>
-              <FormLabel className="mt-2 ms-2">Writer Name</FormLabel>
-              <TextField
-                style={{ margin: "7px" }}
-                label={<Box></Box>}
-                name="serial"
-                type="text"
-                fullWidth
-                // value={formDate}
-                onChange={(e) => setWriter(e.target.value)}
-              />
-            </Grid>
-            <Grid item sm={12} md={6}>
-              <FormLabel className="mt-2 ms-2">Writer Info</FormLabel>
-              <TextField
-                style={{ margin: "7px" }}
-                label={<Box></Box>}
-                //   variant="outlined"
-                name="issue"
-                type="text"
-                fullWidth
-                // value={toDate}
-                onChange={(e) => setCn_details(e.target.value)}
-              />
-            </Grid>
-            {/* <Grid item sm={12} md={6}>
-              <FormLabel className="mt-2 ms-2">User Id</FormLabel>
-              <TextField
-                style={{ margin: "7px" }}
-                label={<Box></Box>}
-                name="background"
-                type="Number"
-                fullWidth
-                // value={userName}
-                onChange={(e) => setUserId(e.target.value)}
-              />
-            </Grid> */}
-            <Grid item sm={12} md={6}>
-              <FormLabel className="mt-2 ms-2">User Id</FormLabel>
-              <IconTextField
-                label={<Box></Box>}
-                // type="number"
-                type={showPassword ? "text" : "password"}
-                // type="text"
-                showPassword={showPassword}
-                setShowPassword={setShowPassword}
-                fullWidth
-                iconEnd={<Visibility />}
-                onChange={(e) => setUserId(e.target.value)}
-              />
-            </Grid>
-
-            <Grid item sm={12} md={6}>
-              <FormLabel className="mt-2 ms-2">Publish Status</FormLabel>
-              <TextField
-                style={{ margin: "7px" }}
-                //   label="Service Type"
-                label={<Box></Box>}
-                // value={currency}
-                // value={textValue}
-                value={cn_status}
-                fullWidth
-                onChange={onTextChange}
-                // onChange={(handleChange, onTextChange)}
-                select
-                SelectProps={{
-                  native: true,
-                }}
-                //   helperText="Please select your currency"
-              >
-                {currencies.map((option) => (
-                  <option key={option.value} value={option.value}>
-                    {option.label}
-                  </option>
-                ))}
-              </TextField>
-            </Grid>
-
-            <Grid item sm={12} md={6}>
-              <FormLabel className="mt-2 ms-2">Writer Pic</FormLabel>
-              <TextField
-                style={{ margin: "7px" }}
-                id="filled-basic"
-                label={<Box></Box>}
-                color="primary"
-                // name="background"
-                type="file"
-                fullWidth
-                // value={userName}
-                onChange={(e) => setAr_file(e.target?.files[0])}
-              />
-            </Grid>
-          </Grid>
-
-          <FormControl className="mt-3" component="fieldset">
-            <FormGroup aria-label="position" row>
-              <Box
-                style={{
-                  display: "flex",
-
-                  textAlign: "center",
-                  marginTop: "14px",
-                  marginLeft: "10px",
-                  marginBottom: "25px",
-                  // marginRight: "100px",
-                }}
-              >
-                <Button
-                  variant="contained"
-                  color="primary"
-                  width="25%"
-                  sx={{ py: 1, mr: 3 }}
-                  type="submit"
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 700 }} aria-label="customized table">
+          <TableHead>
+            <TableRow>
+              <StyledTableCell align="left">
+                <ToggleButton
+                  value="check"
+                  selected={selected}
+                  onChange={() => {
+                    setSelected(!selected);
+                  }}
                 >
-                  Add
-                </Button>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  width="25%"
-                  F
-                  sx={{ py: 1 }}
-                  type="submit"
-                >
-                  Reset
-                </Button>
-              </Box>
-            </FormGroup>
-          </FormControl>
-        </form>
-      </div>
+                  <CheckIcon sx={{ color: "#241f1f" }} />
+                </ToggleButton>
+              </StyledTableCell>
+              <StyledTableCell align="">Serial</StyledTableCell>
+              {/* <StyledTableCell align=""> Name</StyledTableCell> */}
+              <StyledTableCell align="right">Name</StyledTableCell>
+              {/* <StyledTableCell align="right">Name</StyledTableCell> */}
+              <StyledTableCell align="right">Password</StyledTableCell>
+              <StyledTableCell align="right">Email</StyledTableCell>
+              <StyledTableCell align="right">Phone</StyledTableCell>
+
+              <StyledTableCell align="right">Country</StyledTableCell>
+              <StyledTableCell align="right">Info</StyledTableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+              <StyledTableRow key={row.name}>
+                <StyledTableCell>
+                  <ToggleButton
+                    value="check"
+                    selected={selected}
+                    onChange={() => {
+                      setSelected(!selected);
+                    }}
+                  >
+                    <CheckIcon />
+                  </ToggleButton>
+                </StyledTableCell>
+                <StyledTableCell>{row.serial}</StyledTableCell>
+                <StyledTableCell align="right">{row.name}</StyledTableCell>
+                {/* <StyledTableCell align="">{row.name}</StyledTableCell> */}
+                <StyledTableCell align="right">{row.calories}</StyledTableCell>
+                <StyledTableCell align="right">{row.fat}</StyledTableCell>
+                <StyledTableCell align="right">{row.carbs}</StyledTableCell>
+                <StyledTableCell align="right">{row.protein}</StyledTableCell>
+                <StyledTableCell align="right">{row.ex1}</StyledTableCell>
+                {/* <StyledTableCell align="right">{row.ex2}</StyledTableCell> */}
+              </StyledTableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </>
   );
 }
 
 export default AddMenu;
-
-const IconTextField = ({
-  iconStart,
-  iconEnd,
-  InputProps,
-  showPassword,
-  setShowPassword,
-  ...props
-}) => {
-  // const [showPassword, setShowPassword] = useState(false);
-
-  return (
-    <TextField
-      type={showPassword ? "text" : "password"}
-      {...props}
-      InputProps={{
-        ...InputProps,
-        startAdornment: iconStart ? (
-          <InputAdornment position="start">{iconStart}</InputAdornment>
-        ) : null,
-        endAdornment: iconEnd ? (
-          <InputAdornment
-            style={{ cursor: "pointer" }}
-            onClick={() => setShowPassword(!showPassword)}
-            setShowPassword
-            position="end"
-          >
-            {iconEnd}
-          </InputAdornment>
-        ) : null,
-      }}
-    />
-  );
-};

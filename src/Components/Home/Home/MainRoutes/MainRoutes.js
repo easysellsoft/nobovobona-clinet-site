@@ -50,7 +50,7 @@ const listItemNav = [
   },
 
   {
-    title: "Article",
+    title: "Reading",
     icon: <MdDashboard />,
     to: "/dashboard/article",
     nested: false,
@@ -63,8 +63,8 @@ const listItemNav = [
   },
 
   {
-    title: "Add Page",
-    to: "/dashboard/add_page",
+    title: "Profile",
+    to: "/dashboard/profile",
     icon: <GoProject />,
     nested: false,
   },

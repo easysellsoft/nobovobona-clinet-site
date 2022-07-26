@@ -114,8 +114,8 @@ function AddPaymentMethod() {
             }
             spacing={2}
           >
-            <Grid item sm={12} md={6}>
-              <FormLabel className="mt-2 ms-2">Writer Name</FormLabel>
+            <Grid sx={{ width: "100%" }} item sm={12} md={6}>
+              <FormLabel className="mt-2 ms-2">Account Name</FormLabel>
               <TextField
                 style={{ margin: "7px" }}
                 label={<Box></Box>}
@@ -126,48 +126,47 @@ function AddPaymentMethod() {
                 onChange={(e) => setWriter(e.target.value)}
               />
             </Grid>
-            <Grid item sm={12} md={6}>
-              <FormLabel className="mt-2 ms-2">Writer Info</FormLabel>
+            <Grid sx={{ width: "100%" }} item sm={12} md={6}>
+              <FormLabel className="mt-2 ms-2">Account Number</FormLabel>
               <TextField
                 style={{ margin: "7px" }}
                 label={<Box></Box>}
                 //   variant="outlined"
                 name="issue"
-                type="text"
+                type="number"
                 fullWidth
                 // value={toDate}
                 onChange={(e) => setCn_details(e.target.value)}
               />
             </Grid>
-            {/* <Grid item sm={12} md={6}>
-              <FormLabel className="mt-2 ms-2">User Id</FormLabel>
+
+            <Grid item sx={{ width: "100%" }} sm={12} md={6}>
+              <FormLabel className="mt-2 ms-2">Gateway</FormLabel>
               <TextField
                 style={{ margin: "7px" }}
+                //   label="Service Type"
                 label={<Box></Box>}
-                name="background"
-                type="Number"
+                // value={currency}
+                // value={textValue}
+                value={cn_status}
                 fullWidth
-                // value={userName}
-                onChange={(e) => setUserId(e.target.value)}
-              />
-            </Grid> */}
-            <Grid item sm={12} md={6}>
-              <FormLabel className="mt-2 ms-2">User Id</FormLabel>
-              <IconTextField
-                label={<Box></Box>}
-                // type="number"
-                type={showPassword ? "text" : "password"}
-                // type="text"
-                showPassword={showPassword}
-                setShowPassword={setShowPassword}
-                fullWidth
-                iconEnd={<Visibility />}
-                onChange={(e) => setUserId(e.target.value)}
-              />
+                onChange={onTextChange}
+                // onChange={(handleChange, onTextChange)}
+                select
+                SelectProps={{
+                  native: true,
+                }}
+                //   helperText="Please select your currency"
+              >
+                {currencies.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </TextField>
             </Grid>
-
-            <Grid item sm={12} md={6}>
-              <FormLabel className="mt-2 ms-2">Publish Status</FormLabel>
+            <Grid sx={{ width: "100%" }} item sm={12} md={6}>
+              <FormLabel className="mt-2 ms-2"> Status</FormLabel>
               <TextField
                 style={{ margin: "7px" }}
                 //   label="Service Type"
@@ -192,45 +191,29 @@ function AddPaymentMethod() {
               </TextField>
             </Grid>
 
-            <Grid item sm={12} md={6}>
-              <FormLabel className="mt-2 ms-2">Writer Pic</FormLabel>
-              <TextField
-                style={{ margin: "7px" }}
-                id="filled-basic"
-                label={<Box></Box>}
-                color="primary"
-                // name="background"
-                type="file"
-                fullWidth
-                // value={userName}
-                onChange={(e) => setAr_file(e.target?.files[0])}
-              />
-            </Grid>
-          </Grid>
+            <FormControl className="mt-3" component="fieldset">
+              <FormGroup aria-label="position" row>
+                <Box
+                  style={{
+                    display: "flex",
 
-          <FormControl className="mt-3" component="fieldset">
-            <FormGroup aria-label="position" row>
-              <Box
-                style={{
-                  display: "flex",
-
-                  textAlign: "center",
-                  marginTop: "14px",
-                  marginLeft: "10px",
-                  marginBottom: "25px",
-                  // marginRight: "100px",
-                }}
-              >
-                <Button
-                  variant="contained"
-                  color="primary"
-                  width="25%"
-                  sx={{ py: 1, mr: 3 }}
-                  type="submit"
+                    textAlign: "center",
+                    marginTop: "14px",
+                    marginLeft: "10px",
+                    marginBottom: "25px",
+                    // marginRight: "100px",
+                  }}
                 >
-                  Add
-                </Button>
-                <Button
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    width="25%"
+                    sx={{ py: 1, ml: 1, mt: 2 }}
+                    type="submit"
+                  >
+                    Submit
+                  </Button>
+                  {/* <Button
                   variant="contained"
                   color="primary"
                   width="25%"
@@ -239,10 +222,11 @@ function AddPaymentMethod() {
                   type="submit"
                 >
                   Reset
-                </Button>
-              </Box>
-            </FormGroup>
-          </FormControl>
+                </Button> */}
+                </Box>
+              </FormGroup>
+            </FormControl>
+          </Grid>
         </form>
       </div>
     </>

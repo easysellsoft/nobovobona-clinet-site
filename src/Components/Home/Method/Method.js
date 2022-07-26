@@ -36,11 +36,10 @@ const Method = () => {
                 setShowPayment("xx");
               }}
             >
-              <Box m={2} pt={3}>
-                <Button variant="contained" >
-                  Method
-                </Button>
-              </Box>
+              <ButtonComp title="Method" color="warning" refreshIco />
+              {/* <Box m={2} pt={3}>
+                <Button variant="contained">Method</Button>
+              </Box> */}
             </div>
             <div
               className="btn_prb"
@@ -49,11 +48,12 @@ const Method = () => {
                 setShowTable("dd");
               }}
             >
-              <Box m={2} pt={3}>
+              <ButtonComp title="New" color="info" refreshIco />
+              {/* <Box m={2} pt={3}>
                 <Button variant="contained" margin={5}>
                   New
                 </Button>
-              </Box>
+              </Box> */}
             </div>
           </Box>
         </Box>
