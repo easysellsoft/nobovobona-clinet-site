@@ -69,10 +69,22 @@ const listItemNav = [
     nested: false,
   },
   {
-    title: "Orders",
+    title: "Shipping",
     icon: <RiAccountBoxLine />,
-    to: "/dashboard/Orders",
-    nested: false,
+    to: "/dashboard/shipping/history", //orders
+    nested: true,
+    submenu: [
+      {
+        title: "History",
+        to: "/dashboard/shipping/history",
+        icon: <BiCircle />,
+      },
+      {
+        title: "Address",
+        to: "/dashboard/shipping/address",
+        icon: <BiCircle />,
+      },
+    ],
   },
   {
     title: "Rate",

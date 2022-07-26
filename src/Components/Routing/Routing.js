@@ -16,7 +16,7 @@ import Writer from "./../Home/Writer/Writer";
 import Menu from "./../Home/Menu/Menu";
 import Article from "./../Home/Article/Article";
 import AddPage from "../Home/AddPage/AddPage";
-import Orders from "./../Home/Orders/Orders";
+import Orders from "../Home/Shipping/HistoryShipping";
 import Rate from "./../Home/Rate/Rate";
 import Payment from "./../Home/Payment/Payment";
 import Users from "./../Home/Users/Users";
@@ -29,6 +29,8 @@ import ArticleDetails from "./../Home/Article/ArticleDetails";
 
 import Header from "./../Header/Header";
 import OrderDetails from "../Home/pageComponents/OrderDetails";
+import HistoryShipping from "../Home/Shipping/HistoryShipping";
+import AddAddress from "./../Home/Shipping/AddAddress";
 
 const Login = React.lazy(() => import("./../Authentication/Login/Login"));
 const Error = React.lazy(() => import("../Error/Error"));
@@ -56,6 +58,7 @@ const PaymentMethod = React.lazy(() =>
 const ProjectRate = React.lazy(() =>
   import("./../Home/ProjectRate/ProjectRate.js")
 );
+
 
 
 
@@ -107,7 +110,7 @@ const Routing = () => {
               <MainHome></MainHome>
             }
           >
-            <Route path="/" element={<AdminHome />} />
+            {/* <Route path="/" element={<AdminHome />} />
             <Route path="/issue" element={<Issue />} />
             <Route path="/section" element={<Section />} />
             <Route path="/writer" element={<Writer />} />
@@ -119,7 +122,7 @@ const Routing = () => {
             <Route path="/payment" element={<Payment />} />
             <Route path="/messages" element={<Messages />} />
             <Route path="/users" element={<Users />} />
-            <Route path="/others" element={<Others />} />
+            <Route path="/others" element={<Others />} /> */}
 
             {/*            
             <Route path="/whatsapp_report" element={<WhatsappReport />} />
@@ -139,7 +142,7 @@ const Routing = () => {
             {/* nested route set end */}
             {/* <Route path="/projectRateAdd" element={<ProjectRateAdd />} /> */}
           </Route>
-          <Route
+          {/* <Route
             path="/product/:product_Id"
             element={
               <OrderDetails></OrderDetails>
@@ -147,7 +150,7 @@ const Routing = () => {
               //   <Inventory />
               // </RequireAuth>
             }
-          />
+          /> */}
           <Route
             path="/dashboard"
             element={
@@ -170,7 +173,8 @@ const Routing = () => {
               element={<ArticleDetails />}
             />
             <Route path="/dashboard/profile" element={<AddPage />} />
-            <Route path="/dashboard/orders" element={<Orders />} />
+            <Route path="/dashboard/shipping/history" element={<HistoryShipping />} />
+            <Route path="/dashboard/shipping/address" element={<AddAddress/>} />
             <Route path="/dashboard/rate" element={<Rate />} />
             <Route path="/dashboard/payment" element={<Payment />} />
             <Route path="/dashboard/messages" element={<Messages />} />

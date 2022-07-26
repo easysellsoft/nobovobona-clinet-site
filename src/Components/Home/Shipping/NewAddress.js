@@ -28,13 +28,12 @@ const style = {
 };
 const useStyles = makeStyles({
   appMain: {
-        paddingLeft: "10px",
-      paddingRight: "20px",
-        width: "100%",
-    
+    paddingLeft: "10px",
+    paddingRight: "20px",
+    width: "100%",
   },
 });
-function AddOrders() {
+function NewAddress() {
   const [cn_details, setCn_details] = useState("");
   const [writer, setWriter] = useState("");
   // const [title_eng, setTitle_eng] = useState("");
@@ -45,7 +44,7 @@ function AddOrders() {
   const [ar_file, setAr_file] = useState(null);
   const formData = new FormData();
   const classes = useStyles();
-   const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const currencies = [
     {
       value: "0",
@@ -91,12 +90,7 @@ function AddOrders() {
   };
   return (
     <>
-      <PageHeader
-        className="mt-5"
-        title="New issue"
-        subTitle="Form Adding design with validation"
-        icon={<PeopleOutlineTwoToneIcon fontSize="large" />}
-      />
+    
       <div className={classes.appMain}>
         <form onSubmit={handelSubmit}>
           <Grid
@@ -115,7 +109,7 @@ function AddOrders() {
             spacing={2}
           >
             <Grid item sm={12} md={6}>
-              <FormLabel className="mt-2 ms-2">Writer Name</FormLabel>
+              <FormLabel className="mt-2 ms-2">Reference Name</FormLabel>
               <TextField
                 style={{ margin: "7px" }}
                 label={<Box></Box>}
@@ -127,7 +121,7 @@ function AddOrders() {
               />
             </Grid>
             <Grid item sm={12} md={6}>
-              <FormLabel className="mt-2 ms-2">Writer Info</FormLabel>
+              <FormLabel className="mt-2 ms-2">Name</FormLabel>
               <TextField
                 style={{ margin: "7px" }}
                 label={<Box></Box>}
@@ -139,19 +133,31 @@ function AddOrders() {
                 onChange={(e) => setCn_details(e.target.value)}
               />
             </Grid>
-            {/* <Grid item sm={12} md={6}>
-              <FormLabel className="mt-2 ms-2">User Id</FormLabel>
+            <Grid item sm={12} md={6}>
+              <FormLabel className="mt-2 ms-2">Address</FormLabel>
               <TextField
                 style={{ margin: "7px" }}
                 label={<Box></Box>}
                 name="background"
-                type="Number"
+                type="text"
                 fullWidth
                 // value={userName}
                 onChange={(e) => setUserId(e.target.value)}
               />
-            </Grid> */}
+            </Grid>
             <Grid item sm={12} md={6}>
+              <FormLabel className="mt-2 ms-2">Contact</FormLabel>
+              <TextField
+                style={{ margin: "7px" }}
+                label={<Box></Box>}
+                name="background"
+                type="text"
+                fullWidth
+                // value={userName}
+                onChange={(e) => setUserId(e.target.value)}
+              />
+            </Grid>
+            {/* <Grid item sm={12} md={6}>
               <FormLabel className="mt-2 ms-2">User Id</FormLabel>
               <IconTextField
                 label={<Box></Box>}
@@ -164,10 +170,10 @@ function AddOrders() {
                 iconEnd={<Visibility />}
                 onChange={(e) => setUserId(e.target.value)}
               />
-            </Grid>
+            </Grid> */}
 
             <Grid item sm={12} md={6}>
-              <FormLabel className="mt-2 ms-2">Publish Status</FormLabel>
+              <FormLabel className="mt-2 ms-2">Thana/PS</FormLabel>
               <TextField
                 style={{ margin: "7px" }}
                 //   label="Service Type"
@@ -193,17 +199,31 @@ function AddOrders() {
             </Grid>
 
             <Grid item sm={12} md={6}>
-              <FormLabel className="mt-2 ms-2">Writer Pic</FormLabel>
+              <FormLabel className="mt-2 ms-2">Zila</FormLabel>
               <TextField
                 style={{ margin: "7px" }}
                 id="filled-basic"
                 label={<Box></Box>}
                 color="primary"
                 // name="background"
-                type="file"
+                type="text"
                 fullWidth
                 // value={userName}
-                onChange={(e) => setAr_file(e.target?.files[0])}
+                // onChange={(e) => setAr_file(e.target?.files[0])}
+              />
+            </Grid>
+            <Grid item sm={12} md={6}>
+              <FormLabel className="mt-2 ms-2">Country</FormLabel>
+              <TextField
+                style={{ margin: "7px" }}
+                id="filled-basic"
+                label={<Box></Box>}
+                color="primary"
+                // name="background"
+                type="text"
+                fullWidth
+                // value={userName}
+                // onChange={(e) => setAr_file(e.target?.files[0])}
               />
             </Grid>
           </Grid>
@@ -228,9 +248,9 @@ function AddOrders() {
                   sx={{ py: 1, mr: 3 }}
                   type="submit"
                 >
-                  Add
+                  Submit
                 </Button>
-                <Button
+                {/* <Button
                   variant="contained"
                   color="primary"
                   width="25%"
@@ -239,7 +259,7 @@ function AddOrders() {
                   type="submit"
                 >
                   Reset
-                </Button>
+                </Button> */}
               </Box>
             </FormGroup>
           </FormControl>
@@ -249,38 +269,38 @@ function AddOrders() {
   );
 }
 
-export default AddOrders;
+export default NewAddress;
 
-const IconTextField = ({
-  iconStart,
-  iconEnd,
-  InputProps,
-  showPassword,
-  setShowPassword,
-  ...props
-}) => {
-  // const [showPassword, setShowPassword] = useState(false);
+// const IconTextField = ({
+//   iconStart,
+//   iconEnd,
+//   InputProps,
+//   showPassword,
+//   setShowPassword,
+//   ...props
+// }) => {
+//   // const [showPassword, setShowPassword] = useState(false);
 
-  return (
-    <TextField
-      type={showPassword ? "text" : "password"}
-      {...props}
-      InputProps={{
-        ...InputProps,
-        startAdornment: iconStart ? (
-          <InputAdornment position="start">{iconStart}</InputAdornment>
-        ) : null,
-        endAdornment: iconEnd ? (
-          <InputAdornment
-            style={{ cursor: "pointer" }}
-            onClick={() => setShowPassword(!showPassword)}
-            setShowPassword
-            position="end"
-          >
-            {iconEnd}
-          </InputAdornment>
-        ) : null,
-      }}
-    />
-  );
-};
+//   return (
+//     <TextField
+//       type={showPassword ? "text" : "password"}
+//       {...props}
+//       InputProps={{
+//         ...InputProps,
+//         startAdornment: iconStart ? (
+//           <InputAdornment position="start">{iconStart}</InputAdornment>
+//         ) : null,
+//         endAdornment: iconEnd ? (
+//           <InputAdornment
+//             style={{ cursor: "pointer" }}
+//             onClick={() => setShowPassword(!showPassword)}
+//             setShowPassword
+//             position="end"
+//           >
+//             {iconEnd}
+//           </InputAdornment>
+//         ) : null,
+//       }}
+//     />
+//   );
+// };
