@@ -18,12 +18,33 @@ import AddIssue from "./AddIssue/AddIssue";
 import { TableFooter } from "@material-ui/core";
 import MTable from './components/MTable';
 import SortByAlphaIcon from "@mui/icons-material/SortByAlpha";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import { FaFirstOrderAlt } from "react-icons/fa";
+import { BsCartDash } from "react-icons/bs";
+import { MdOutlinePayments } from "react-icons/md";
+import { RiSecurePaymentFill } from "react-icons/ri";
+import { MdOutlineSubscriptions } from "react-icons/md";
+import { BiPurchaseTag } from "react-icons/bi";
+import { FaShippingFast } from "react-icons/fa";
+import { MdOutlineMessage } from "react-icons/md";
 
 
 
-const styleForButton = {
-  fontSize: "64px",
-
+const styleForTotal = {
+  fontSize: "44px",
+  color: "#063970",
+};
+const styleForActive = {
+  fontSize: "44px",
+  color: "green",
+};
+const styleForInactive = {
+  fontSize: "44px",
+  color: "#7c7c04",
+};
+const styleForPending = {
+  fontSize: "44px",
+  color: "#e1520f",
 };
 const Issue = () => {
   const [show, setShow] = useState(false);
@@ -76,7 +97,9 @@ const Issue = () => {
                 image="/static/images/cards/contemplative-reptile.jpg"
                 alt="green iguana"
               /> */}
-              <SortByAlphaIcon style={styleForButton}></SortByAlphaIcon>
+              <AiOutlineShoppingCart
+                style={styleForTotal}
+              ></AiOutlineShoppingCart>
 
               <CardContent
                 sx={{
@@ -104,7 +127,7 @@ const Issue = () => {
         <Grid item xs={6} md={4}>
           <Card sx={{ maxWidth: 345 }}>
             <CardActionArea sx={{ display: "flex" }}>
-              <SortByAlphaIcon style={styleForButton}></SortByAlphaIcon>
+              <FaFirstOrderAlt style={styleForActive}></FaFirstOrderAlt>
 
               <CardContent
                 sx={{
@@ -132,7 +155,7 @@ const Issue = () => {
         <Grid item xs={6} md={4}>
           <Card sx={{ maxWidth: 345 }}>
             <CardActionArea sx={{ display: "flex" }}>
-              <SortByAlphaIcon style={styleForButton}></SortByAlphaIcon>
+              <BsCartDash style={styleForInactive}></BsCartDash>
 
               <CardContent
                 sx={{
@@ -160,7 +183,7 @@ const Issue = () => {
         <Grid item xs={6} md={4}>
           <Card sx={{ maxWidth: 345 }}>
             <CardActionArea sx={{ display: "flex" }}>
-              <SortByAlphaIcon style={styleForButton}></SortByAlphaIcon>
+              <MdOutlinePayments style={styleForTotal}></MdOutlinePayments>
 
               <CardContent
                 sx={{
@@ -188,13 +211,9 @@ const Issue = () => {
         <Grid item xs={6} md={4}>
           <Card sx={{ maxWidth: 345 }}>
             <CardActionArea sx={{ display: "flex" }}>
-              {/* <CardMedia
-                component="img"
-                height="140"
-                image="/static/images/cards/contemplative-reptile.jpg"
-                alt="green iguana"
-              /> */}
-              <SortByAlphaIcon style={styleForButton}></SortByAlphaIcon>
+              <RiSecurePaymentFill
+                style={styleForPending}
+              ></RiSecurePaymentFill>
 
               <CardContent
                 sx={{
@@ -222,13 +241,8 @@ const Issue = () => {
         <Grid item xs={6} md={4}>
           <Card sx={{ maxWidth: 345 }}>
             <CardActionArea sx={{ display: "flex" }}>
-              {/* <CardMedia
-                component="img"
-                height="140"
-                image="/static/images/cards/contemplative-reptile.jpg"
-                alt="green iguana"
-              /> */}
-              <SortByAlphaIcon style={styleForButton}></SortByAlphaIcon>
+          
+              <MdOutlineSubscriptions style={styleForTotal}></MdOutlineSubscriptions>
 
               <CardContent
                 sx={{
@@ -247,7 +261,7 @@ const Issue = () => {
                   22000
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Total Subscription 
+                  Total Subscription
                 </Typography>
               </CardContent>
             </CardActionArea>
@@ -256,13 +270,8 @@ const Issue = () => {
         <Grid item xs={6} md={4}>
           <Card sx={{ maxWidth: 345 }}>
             <CardActionArea sx={{ display: "flex" }}>
-              {/* <CardMedia
-                component="img"
-                height="140"
-                image="/static/images/cards/contemplative-reptile.jpg"
-                alt="green iguana"
-              /> */}
-              <SortByAlphaIcon style={styleForButton}></SortByAlphaIcon>
+            
+              <BiPurchaseTag style={styleForTotal}></BiPurchaseTag>
 
               <CardContent
                 sx={{
@@ -296,7 +305,7 @@ const Issue = () => {
                 image="/static/images/cards/contemplative-reptile.jpg"
                 alt="green iguana"
               /> */}
-              <SortByAlphaIcon style={styleForButton}></SortByAlphaIcon>
+              <FaShippingFast style={styleForPending}></FaShippingFast>
 
               <CardContent
                 sx={{
@@ -325,7 +334,7 @@ const Issue = () => {
                 image="/static/images/cards/contemplative-reptile.jpg"
                 alt="green iguana"
               /> */}
-              <SortByAlphaIcon style={styleForButton}></SortByAlphaIcon>
+              <MdOutlineMessage style={styleForTotal}></MdOutlineMessage>
 
               <CardContent
                 sx={{
