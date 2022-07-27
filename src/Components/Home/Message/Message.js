@@ -27,8 +27,9 @@ import axios from "axios";
 import useAuth from "../../../Hooks/useAuth";
 import DetailsComp from "./DetailsComp/DetailsComp";
 import UserListComp from "./UserListComp/UserListComp";
+import useSound from "use-sound";
 // import useSound from "use-sound";
-// import msgSend from "../../../Components/Vendors/COMCell_Message sent (ID 1313)_BSB.mp3";
+import msgSend from "../../../Components/Vendors/COMCell_Message sent (ID 1313)_BSB.mp3";
 
 let temp = false;
 const useStyles = makeStyles({
@@ -246,7 +247,7 @@ const Message = () => {
   React.memo(renderMessages, [datas]);
 
   // use Send sound
-  // const [play] = useSound(msgSend);
+  const [play] = useSound(msgSend);
 
   //click function for send message
   const handleSendMessage = (e) => {
@@ -423,7 +424,7 @@ const Message = () => {
           />
         </Grid>
         {/* {Object.keys(singleMsgUser)?.length > 0 ? ( */}
-        
+        <>
           <Grid
             item
             xs={12}
@@ -779,9 +780,8 @@ const Message = () => {
           >
             <DetailsComp userDetails={userDetails} />
           </Grid>
-     
+        </>
       </Grid>
-
     </div>
   );
 };

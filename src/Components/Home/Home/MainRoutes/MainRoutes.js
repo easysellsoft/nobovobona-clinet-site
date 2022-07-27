@@ -52,15 +52,15 @@ const listItemNav = [
   {
     title: "Reading",
     icon: <MdDashboard />,
-    to: "/dashboard/article",
+    to: "/dashboard/reading",
     nested: false,
   },
-  {
-    title: "Menu",
-    to: "/dashboard/menu",
-    icon: <GoProject />,
-    nested: false,
-  },
+  // {
+  //   title: "Menu",
+  //   to: "/dashboard/menu",
+  //   icon: <GoProject />,
+  //   nested: false,
+  // },
 
   {
     title: "Profile",
@@ -86,49 +86,49 @@ const listItemNav = [
       },
     ],
   },
-  {
-    title: "Rate",
-    icon: <RiAccountBoxLine />,
-    to: "/dashboard/rate",
-    nested: false,
-  },
-  {
-    title: "Payment",
-    to: "/dashboard/payment",
-    icon: <GoProject />,
-    nested: false,
-  },
+  // {
+  //   title: "Rate",
+  //   icon: <RiAccountBoxLine />,
+  //   to: "/dashboard/rate",
+  //   nested: false,
+  // },
+  // {
+  //   title: "Payment",
+  //   to: "/dashboard/payment",
+  //   icon: <GoProject />,
+  //   nested: false,
+  // },
   {
     title: "Messages",
     to: "/dashboard/messages",
     icon: <GoProject />,
     nested: false,
   },
-  {
-    title: "Users",
-    to: "/dashboard/users",
-    icon: <GoProject />,
-    nested: false,
-  },
+  // {
+  //   title: "Users",
+  //   to: "/dashboard/users",
+  //   icon: <GoProject />,
+  //   nested: false,
+  // },
 
-  {
-    title: "Others",
-    icon: <MdDashboard />,
-    to: "/dashboard/others",
-    nested: true,
-    submenu: [
-      {
-        title: "Others1",
-        to: "/dashboard/others",
-        icon: <BiCircle />,
-      },
-      {
-        title: "Others1",
-        to: "/dashboard/contact_group",
-        icon: <BiCircle />,
-      },
-    ],
-  },
+  // {
+  //   title: "Others",
+  //   icon: <MdDashboard />,
+  //   to: "/dashboard/others",
+  //   nested: true,
+  //   submenu: [
+  //     {
+  //       title: "Others1",
+  //       to: "/dashboard/others",
+  //       icon: <BiCircle />,
+  //     },
+  //     {
+  //       title: "Others1",
+  //       to: "/dashboard/contact_group",
+  //       icon: <BiCircle />,
+  //     },
+  //   ],
+  // },
 ];
 
 const MainRoutes = () => {

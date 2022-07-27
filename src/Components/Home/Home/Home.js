@@ -30,6 +30,7 @@ import { Avatar, Chip, ListItem, Tooltip } from "@mui/material";
 import LiveClock from "../LiveClock/LiveClock";
 import useAuth from "./../../../Hooks/useAuth";
 import MainRoutes from "./MainRoutes/MainRoutes";
+
 //end
 // const drawerWidth = 240;
 const drawerWidth = 300;
@@ -114,8 +115,7 @@ function Home() {
 
   const handleDrawerOpen = () => {
     // setOpen(true);
-     setOpen(!open);
-   
+    setOpen(!open);
   };
 
   const handleDrawerClose = () => {
@@ -156,19 +156,33 @@ function Home() {
       >
         <DrawerHeader position="static">
           {open ? (
-            <IconButton
-              onClick={handleDrawerClose}
-              style={{
-                color: "#000",
-                position: "fixed",
+            <Box
+              sx={{
+                width: "100%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
               }}
             >
-              {theme.direction === "rtl" ? (
-                <ChevronRightIcon />
-              ) : (
-                <ChevronLeftIcon />
-              )}
-            </IconButton>
+              {/* <h3>Admin</h3> */}
+              <Typography ml={8} variant="h6" component="h6">
+               Admin
+              </Typography>
+              
+              <IconButton
+                onClick={handleDrawerClose}
+                style={{
+                  color: "#000",
+                  // position: "fixed",
+                }}
+              >
+                {theme.direction === "rtl" ? (
+                  <ChevronRightIcon />
+                ) : (
+                  <ChevronLeftIcon />
+                )}
+              </IconButton>
+            </Box>
           ) : (
             <IconButton
               color="inherit"
@@ -272,13 +286,14 @@ function Home() {
           flexGrow: 1,
           px: 2,
           pb: 0,
+          pt: 2,
 
           width: "100%",
           overflow: "auto",
           minHeight: "90vh",
         }}
       >
-        <DrawerHeader />
+        {/* <DrawerHeader /> */}
         <Outlet />
       </Box>
     </Box>
@@ -286,5 +301,3 @@ function Home() {
 }
 
 export default React.memo(Home);
-
-

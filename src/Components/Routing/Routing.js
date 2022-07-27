@@ -31,6 +31,7 @@ import Header from "./../Header/Header";
 import OrderDetails from "../Home/pageComponents/OrderDetails";
 import HistoryShipping from "../Home/Shipping/HistoryShipping";
 import AddAddress from "./../Home/Shipping/AddAddress";
+import Message from "../Home/Message/Message";
 
 const Login = React.lazy(() => import("./../Authentication/Login/Login"));
 const Error = React.lazy(() => import("../Error/Error"));
@@ -166,20 +167,27 @@ const Routing = () => {
             <Route path="/dashboard/order" element={<Section />} />
             <Route path="/dashboard/payment/history" element={<Writer />} />
             <Route path="/dashboard/payment/method" element={<Method />} />
-            <Route path="/dashboard/menu" element={<Menu />} />
-            <Route path="/dashboard/article" element={<Article />} />
+            {/* <Route path="/dashboard/menu" element={<Menu />} /> */}
+            <Route path="/dashboard/reading" element={<Article />} />
             <Route
-              path="/dashboard/article/dashboard/reading/history/details"
+              path="/dashboard/reading/dashboard/reading/history/details"
               element={<ArticleDetails />}
             />
             <Route path="/dashboard/profile" element={<AddPage />} />
-            <Route path="/dashboard/shipping/history" element={<HistoryShipping />} />
-            <Route path="/dashboard/shipping/address" element={<AddAddress/>} />
-            <Route path="/dashboard/rate" element={<Rate />} />
-            <Route path="/dashboard/payment" element={<Payment />} />
-            <Route path="/dashboard/messages" element={<Messages />} />
-            <Route path="/dashboard/users" element={<Users />} />
-            <Route path="/dashboard/others" element={<Others />} />
+            <Route
+              path="/dashboard/shipping/history"
+              element={<HistoryShipping />}
+            />
+            <Route
+              path="/dashboard/shipping/address"
+              element={<AddAddress />}
+            />
+            {/* <Route path="/dashboard/rate" element={<Rate />} />
+            <Route path="/dashboard/payment" element={<Payment />} /> */}
+            {/* <Route path="/dashboard/messages" element={<Messages />} /> */}
+            <Route path="/dashboard/messages" element={<Message />} />
+            {/* <Route path="/dashboard/users" element={<Users />} />
+            <Route path="/dashboard/others" element={<Others />} /> */}
           </Route>
 
           <Route path="/login" element={<Login />} />
