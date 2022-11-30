@@ -3,7 +3,7 @@ import Products from "../pageComponents/Products";
 const MainHome = () => {
     return (
         <div>
-           <Products></Products>
+           {/* <Products></Products> */}
         </div>
     );
 };

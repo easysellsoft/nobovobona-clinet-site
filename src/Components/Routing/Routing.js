@@ -33,6 +33,8 @@ import HistoryShipping from "../Home/Shipping/HistoryShipping";
 import AddAddress from "./../Home/Shipping/AddAddress";
 import Message from "../Home/Message/Message";
 
+import Probondho from "./../Home/pageComponents/Probondho/Probondho";
+
 const Login = React.lazy(() => import("./../Authentication/Login/Login"));
 const Error = React.lazy(() => import("../Error/Error"));
 const Home = React.lazy(() => import("./../Home/Home/Home.js"));
@@ -59,6 +61,7 @@ const PaymentMethod = React.lazy(() =>
 const ProjectRate = React.lazy(() =>
   import("./../Home/ProjectRate/ProjectRate.js")
 );
+
 
 
 
@@ -105,10 +108,10 @@ const Routing = () => {
           <Route
             path="/"
             element={
-              // <PrivateRoute>
-              //   <Home />
-              // </PrivateRoute>
-              <MainHome></MainHome>
+              <PrivateRoute>
+                <Home />
+                {/* <MainHome></MainHome> */}
+              </PrivateRoute>
             }
           >
             {/* <Route path="/" element={<AdminHome />} />
@@ -190,6 +193,8 @@ const Routing = () => {
             <Route path="/dashboard/others" element={<Others />} /> */}
           </Route>
 
+          <Route path="/Probondho" element={<Probondho />} />
+
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>
@@ -236,7 +241,7 @@ const Routing = () => {
           },
         ]}
       >
-        <Footer />
+        {/* <Footer /> */}
       </Box>
     </>
   );
