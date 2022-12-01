@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+  Box,
   Collapse,
   List,
   ListItemButton,
@@ -16,16 +17,18 @@ import { FaRegEnvelope } from "react-icons/fa";
 import { HiHome, HiOutlineDocumentReport } from "react-icons/hi";
 import { ExpandLess, ExpandMore } from "@material-ui/icons";
 import { BiCircle } from "react-icons/bi";
-
+// import img  from "./assets/drawer_logo.png";
 const listItemNav = [
   {
-    title: "Dashboard",
+    // title: "Dashboard",
+    title: "আমার লাইব্রেরি",
     icon: <HiHome />,
-    to: "/dashboard/dashboard",
+    to: "/",
     nested: false,
   },
   {
-    title: "Order",
+    // title: "Order",
+    title: "রিডিং লিস্ট",
     icon: <MdDashboard />,
     to: "/dashboard/order",
     nested: false,
@@ -50,7 +53,8 @@ const listItemNav = [
   },
 
   {
-    title: "Reading",
+    // title: "Reading",
+    title: "অর্ডার লিস্ট",
     icon: <MdDashboard />,
     to: "/dashboard/reading",
     nested: false,
@@ -68,24 +72,24 @@ const listItemNav = [
     icon: <GoProject />,
     nested: false,
   },
-  {
-    title: "Shipping",
-    icon: <RiAccountBoxLine />,
-    to: "/dashboard/shipping/history", //orders
-    nested: true,
-    submenu: [
-      {
-        title: "History",
-        to: "/dashboard/shipping/history",
-        icon: <BiCircle />,
-      },
-      {
-        title: "Address",
-        to: "/dashboard/shipping/address",
-        icon: <BiCircle />,
-      },
-    ],
-  },
+  // {
+  //   title: "Shipping",
+  //   icon: <RiAccountBoxLine />,
+  //   to: "/dashboard/shipping/history", //orders
+  //   nested: true,
+  //   submenu: [
+  //     {
+  //       title: "History",
+  //       to: "/dashboard/shipping/history",
+  //       icon: <BiCircle />,
+  //     },
+  //     {
+  //       title: "Address",
+  //       to: "/dashboard/shipping/address",
+  //       icon: <BiCircle />,
+  //     },
+  //   ],
+  // },
   // {
   //   title: "Rate",
   //   icon: <RiAccountBoxLine />,
@@ -99,11 +103,17 @@ const listItemNav = [
   //   nested: false,
   // },
   {
-    title: "Messages",
+    title: "অভিযোগ",
     to: "/dashboard/messages",
     icon: <GoProject />,
     nested: false,
   },
+  // {
+  //   title: "Messages",
+  //   to: "/dashboard/messages",
+  //   icon: <GoProject />,
+  //   nested: false,
+  // },
   // {
   //   title: "Users",
   //   to: "/dashboard/users",
@@ -156,7 +166,7 @@ const MainRoutes = () => {
                 component={!item.nested && NavLink}
                 to={item?.nested ? null : `${item?.to}`}
                 sx={{
-                  color:"#fff",
+                  color: "#fff",
                   backgroundColor:
                     item?.to === location?.pathname ? "#2999bf" : "transparent",
                   width: "100%",
@@ -170,7 +180,7 @@ const MainRoutes = () => {
                 // activeClassName="active"
                 exact
               >
-                <ListItemIcon sx={{color:"#fff"}}>{item.icon}</ListItemIcon>
+                <ListItemIcon sx={{ color: "#fff" }}>{item.icon}</ListItemIcon>
                 <ListItemText primary={item.title} />
                 {item.nested ? (
                   item.title === title && subOpen ? (
@@ -228,6 +238,16 @@ const MainRoutes = () => {
           );
         })}
       </List>
+      {/* <Box>
+        <img
+          src={img}
+          alt="OTP"
+          style={{
+            width: "150px",
+            height: "auto",
+          }}
+        />
+      </Box> */}
     </div>
   );
 };

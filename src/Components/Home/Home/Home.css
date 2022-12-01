@@ -1,0 +1,22 @@
+.css-js2smr-MuiDrawer-docked {
+   
+    background: #fff;
+}
+.css-whim71-MuiListItemIcon-root {
+    min-width: 50px;
+    /* color: rgba(0, 0, 0, 0.54);
+    -webkit-flex-shrink: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    color: #fff; */
+}
+
+.imgDrawerFooter.MuiBox-root.css-0 {
+    position: absolute;
+    bottom: 50px;
+    left: 12px;
+}

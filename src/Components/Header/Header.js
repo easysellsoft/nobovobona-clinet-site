@@ -225,7 +225,7 @@ const Header = () => {
               Logo
             </Typography>
             <Box sx={{ flexGrow: 1 }} />
-            <Box sx={{ marginLeft: "auto" }}>
+            {/* <Box sx={{ marginLeft: "auto" }}>
               <Typography
                 variant="subtitle2"
                 noWrap
@@ -244,24 +244,16 @@ const Header = () => {
                 Trending Now:
                 .............,.................................................................................................................................................
               </Typography>
-            </Box>
+            </Box> */}
             <Box sx={{ flexGrow: 1 }} />
             <Box sx={{ flexGrow: 1 }} />
-            <Box
-            // sx={{
-            //   display: {
-            //     // xs: "none",
-            //     // sm: "none",
-            //     md: "flex",
-            //   },
-            //   flexDirection: "column",
-            //   alignItems: "center",
-            // }}
+            {/* <Box
+        
             >
               <SearchField></SearchField>
-            </Box>
+            </Box> */}
             {/* show battery lavel  */}
-            <Box
+            {/* <Box
               sx={[
                 {
                   color: "#000",
@@ -280,7 +272,7 @@ const Header = () => {
                 }}
               />
               {battery}%
-            </Box>
+            </Box> */}
             {/* show live clock  */}
             <Box
               sx={{

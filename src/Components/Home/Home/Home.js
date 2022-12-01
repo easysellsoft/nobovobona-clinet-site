@@ -30,10 +30,15 @@ import { Avatar, Chip, ListItem, Tooltip } from "@mui/material";
 import LiveClock from "../LiveClock/LiveClock";
 import useAuth from "./../../../Hooks/useAuth";
 import MainRoutes from "./MainRoutes/MainRoutes";
+import DrawerLogo from './asset/drawer_logo.png';
+import img from './asset/drawer_logo.png';
+import './Home.css';
+import ArticleDemo from "./components/pdfViewer/articleDemo/ArticleDemo";
+import MyLibrary from "./components/myLibrary/MyLibrary";
 
 //end
 // const drawerWidth = 240;
-const drawerWidth = 300;
+const drawerWidth = 285;
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -148,11 +153,12 @@ function Home() {
         sx={{
           "& .MuiDrawer-root": {
             position: "static",
+            backgroundColor: "#fff",
           },
           "& .MuiPaper-root": {
             position: "static",
             backgroundColor: "#063970",
-            borderRadius:"0px 30px 65px 0px"
+            borderRadius: "0px 30px 65px 0px",
           },
         }}
         open={open}
@@ -168,7 +174,12 @@ function Home() {
               }}
             >
               {/* <h3>Admin</h3> */}
-              <Typography sx={{color:"#fff"}} ml={8} variant="h6" component="h6">
+              <Typography
+                sx={{ color: "#fff" }}
+                ml={8}
+                variant="h6"
+                component="h6"
+              >
                 Admin
               </Typography>
 
@@ -251,7 +262,7 @@ function Home() {
                   minWidth: 0,
                   mr: open ? 3 : "auto",
                   justifyContent: "center",
-                  alignItems:"center"
+                  alignItems: "center",
                 }}
               >
                 {index === 0 && (
@@ -277,11 +288,31 @@ function Home() {
                   </Tooltip>
                 )}
               </ListItemIcon>
-              <ListItemText primary={text} sx={{ opacity: open ? 1 : 0, color:"#fff",marginTop:"-6px" }} />
+              <ListItemText
+                primary={text}
+                sx={{ opacity: open ? 1 : 0, color: "#fff", marginTop: "-6px" }}
+              />
             </ListItem>
           ))}
         </List>
         <Divider />
+        <Box
+          sx={{
+            ...(!open && { display: "none" }),
+            // color: "text.primary",
+            // color: "#fff",
+          }}
+          className="imgDrawerFooter"
+        >
+          <img
+            src={img}
+            alt="OTP"
+            style={{
+              width: "250px",
+              height: "auto",
+            }}
+          />
+        </Box>
       </Drawer>
       <Box
         // bgColor="text.disabled"
@@ -300,7 +331,10 @@ function Home() {
         }}
       >
         {/* <DrawerHeader /> */}
-        <Outlet />
+        {/* <ArticleDemo/> */}
+
+        <Outlet>
+        </Outlet>
       </Box>
     </Box>
   );
