@@ -179,7 +179,10 @@ const Header = () => {
       <Box>
         <AppBar
           position="static"
-          sx={{ backgroundColor: "#fff" }}
+          sx={{
+            backgroundColor: "#092b51",
+            borderBottom: "5px solid #2999bf",
+          }}
           // position="fixed"
           // open={open}
           // sx={{

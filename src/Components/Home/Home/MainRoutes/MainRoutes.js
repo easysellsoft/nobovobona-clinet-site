@@ -140,6 +140,7 @@ const MainRoutes = () => {
   const handleSubMenu = () => {
     setSubOpen(!subOpen);
   };
+  console.log("location", location)
   return (
     <div>
       <List
@@ -155,8 +156,9 @@ const MainRoutes = () => {
                 component={!item.nested && NavLink}
                 to={item?.nested ? null : `${item?.to}`}
                 sx={{
+                  color:"#fff",
                   backgroundColor:
-                    item?.to === location?.pathname ? "#C7E5F5" : "#fff",
+                    item?.to === location?.pathname ? "#2999bf" : "transparent",
                   width: "100%",
                   borderLeft:
                     item?.to === location?.pathname && "5px solid #A3A0FB",
@@ -165,10 +167,10 @@ const MainRoutes = () => {
                   handleSubMenu();
                   setTitle(item.title);
                 }}
-                activeClassName="active"
+                // activeClassName="active"
                 exact
               >
-                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemIcon sx={{color:"#fff"}}>{item.icon}</ListItemIcon>
                 <ListItemText primary={item.title} />
                 {item.nested ? (
                   item.title === title && subOpen ? (
@@ -203,15 +205,18 @@ const MainRoutes = () => {
                           activeClassName="active"
                           sx={[
                             {
+                              color: "#fff",
                               backgroundColor:
                                 subItem.to === location.pathname
-                                  ? "#C7E5F5"
-                                  : "#fff",
+                                  ? "#2999bf"
+                                  : "transparent",
                             },
                           ]}
                           exact
                         >
-                          <ListItemIcon>{subItem.icon}</ListItemIcon>
+                          <ListItemIcon sx={{ color: "#fff" }}>
+                            {subItem.icon}
+                          </ListItemIcon>
                           <ListItemText primary={subItem.title} />
                         </ListItemButton>
                       );

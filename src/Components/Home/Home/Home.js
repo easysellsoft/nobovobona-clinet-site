@@ -58,6 +58,7 @@ const closedMixin = (theme) => ({
 
 const DrawerHeader = styled("div")(({ theme }) => ({
   width: "100",
+  // backgroundColor:"#777",
   display: "flex",
   alignItems: "center",
   justifyContent: "flex-end",
@@ -150,11 +151,13 @@ function Home() {
           },
           "& .MuiPaper-root": {
             position: "static",
+            backgroundColor: "#063970",
+            borderRadius:"0px 30px 65px 0px"
           },
         }}
         open={open}
       >
-        <DrawerHeader position="static">
+        <DrawerHeader position="static" style={{}}>
           {open ? (
             <Box
               sx={{
@@ -165,14 +168,14 @@ function Home() {
               }}
             >
               {/* <h3>Admin</h3> */}
-              <Typography ml={8} variant="h6" component="h6">
-               Admin
+              <Typography sx={{color:"#fff"}} ml={8} variant="h6" component="h6">
+                Admin
               </Typography>
-              
+
               <IconButton
                 onClick={handleDrawerClose}
                 style={{
-                  color: "#000",
+                  color: "#fff",
                   // position: "fixed",
                 }}
               >
@@ -191,7 +194,8 @@ function Home() {
               edge="start"
               sx={{
                 ...(open && { display: "none" }),
-                color: "text.primary",
+                // color: "text.primary",
+                color: "#fff",
               }}
             >
               <MenuIcon />
@@ -247,6 +251,7 @@ function Home() {
                   minWidth: 0,
                   mr: open ? 3 : "auto",
                   justifyContent: "center",
+                  alignItems:"center"
                 }}
               >
                 {index === 0 && (
@@ -257,7 +262,7 @@ function Home() {
                       }}
                     >
                       <BiLogOutCircle
-                        color="#000"
+                        color="#fff"
                         onClick={() => {
                           localStorage.removeItem("user");
                           localStorage.removeItem("ip");
@@ -272,7 +277,7 @@ function Home() {
                   </Tooltip>
                 )}
               </ListItemIcon>
-              <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+              <ListItemText primary={text} sx={{ opacity: open ? 1 : 0, color:"#fff",marginTop:"-6px" }} />
             </ListItem>
           ))}
         </List>
@@ -283,6 +288,7 @@ function Home() {
         component="main"
         sx={{
           bgcolor: "#FBFAFA",
+          // bgcolor: "yell",
           flexGrow: 1,
           px: 2,
           pb: 0,
