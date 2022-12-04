@@ -178,7 +178,7 @@ const Header = () => {
       <CssBaseline />
       <Box>
         <AppBar
-          position="static"
+          position="fixed"
           sx={{
             backgroundColor: "#092b51",
             borderBottom: "5px solid #2999bf",

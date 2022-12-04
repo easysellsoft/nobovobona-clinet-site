@@ -156,9 +156,13 @@ function Home() {
             backgroundColor: "#fff",
           },
           "& .MuiPaper-root": {
-            position: "static",
+            // position: "static",
+            // backgroundColor: "#063970",
+            // borderRadius: "0px 30px 65px 0px",
+            position: "fixed",
             backgroundColor: "#063970",
             borderRadius: "0px 30px 65px 0px",
+            top:"70px"
           },
         }}
         open={open}
@@ -328,6 +332,7 @@ function Home() {
           width: "100%",
           overflow: "auto",
           minHeight: "90vh",
+          marginTop:"90px"
         }}
       >
         {/* <DrawerHeader /> */}

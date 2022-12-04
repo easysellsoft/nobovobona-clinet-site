@@ -34,7 +34,7 @@ const listItemNav = [
     nested: false,
   },
   {
-    title: "Payment",
+    title: "পেমেন্ট",
     icon: <FaRegEnvelope />,
     to: "/dashboard/payment/history",
     nested: true,
@@ -67,7 +67,7 @@ const listItemNav = [
   // },
 
   {
-    title: "Profile",
+    title: "প্রোফাইল",
     to: "/dashboard/profile",
     icon: <GoProject />,
     nested: false,

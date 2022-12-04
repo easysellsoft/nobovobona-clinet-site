@@ -17,6 +17,7 @@
 
 .imgDrawerFooter.MuiBox-root.css-0 {
     position: absolute;
-    bottom: 50px;
+    bottom: 74px;
     left: 12px;
+    opacity: .4;
 }
