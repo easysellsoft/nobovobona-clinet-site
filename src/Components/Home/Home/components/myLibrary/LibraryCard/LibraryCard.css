@@ -100,19 +100,21 @@ img.img-fluid.propertiesImg1 {
 } */
 /* new style of imgage start ============== */
 .container{
-  width: 250px;
-  height: 350px;
-  background: url('https://4061b388c48358dc7139-15a98bbe77f8c9caf5324f3866115857.ssl.cf1.rackcdn.com/poem1992-00-00-the-riots.jpg');
-  background-size: 250px 350px;
-  background-repeat: no-repeat;
+  width: 217px;
   
-  /* backgorund-position: 30px 30px; */
+  height: 100%;
+  margin-top: 50px;
+  margin-right: 25px;
+  background: url('https://nobovabna.com/webapi/files/018188045201007202001/issue_October-2022/647qqe_nadi_songkha.jpg');
+  background-size: 217px auto;
+  background-repeat: no-repeat;
   position: relative;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   perspective: 1000px;
 }
+
 .cover{
   width: 250px;
   height: 100%;
@@ -131,23 +133,11 @@ figure{
   display: block;
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: auto;
   backface-visibility: hidden;
-  /* img{
-    width:100%;
-    height:100%;
-  } */
 }
 
 
-figure.front{
-  background-color: green;
-}
-
-figure.back{
-  background-color: green;
-  transform: rotateY(180deg)
-}
 
 .author{
   width: 250px;
@@ -159,5 +149,31 @@ figure.back{
  font-size: 120%;
   
 }
+figure.front {
+    /* background-color: green; */
+}
+
+figure.back {
+    /* background-color: green; */
+    transform: rotateY(180deg);
+}
+
+.cover {
+    width: 217px;
+    height: auto;
+    /* margin-left: -20px; */
+    /* margin-top: 10px; */
+    position: absolute;
+    transform: rotateY(0deg);
+    transform-style: preserve-3d;
+    transform-origin: left;
+    transition: all .3s ease-in;
+}
+
+/* 
+element.style {
+    width: 217px;
+    height: auto;
+} */
 
 /* new style of imgage end ============== */

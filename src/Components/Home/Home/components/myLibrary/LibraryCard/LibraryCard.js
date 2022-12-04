@@ -96,7 +96,7 @@ const LibraryCard = () => {
                       alignItems: "center",
                       overflow: "hidden",
                       backgroundColor: "#dfdfdf",
-                      height: "330px",
+                      height: "350px",
                       // transform: "translate(-50%,-90%)",
                       // left: "50%",
                       // top: "30%"
@@ -106,8 +106,9 @@ const LibraryCard = () => {
                       <div class="cover ">
                         <figure class="front ">
                           <img
-                            style={{ width: "100%", height: "100%" }}
-                            src="https://images-na.ssl-images-amazon.com/images/I/71FCRKNUxML.jpg"
+                            style={{ width: "217px", height: "auto" }}
+                            // src="https://images-na.ssl-images-amazon.com/images/I/71FCRKNUxML.jpg"
+                            src="https://nobovabna.com/webapi/files/018188045201007202001/issue_October-2022/647qqe_nadi_songkha.jpg"
                             alt="img"
                           />
                           {/* <img src={item.image_url} alt="img" /> */}
@@ -115,8 +116,9 @@ const LibraryCard = () => {
                         <figure class="back">
                           {/* <img src="https://www.hankbukowski.com/wp-content/uploads/2013/03/chinaski_drinking.jpg" /> */}
                           <img
-                            style={{ width: "250px", height: "100%" }}
-                            src={item.image_url}
+                            style={{ width: "217px", height: "auto" }}
+                            // src={item.image_url}
+                            src="https://nobovabna.com/webapi/files/018188045201007202001/issue_October-2022/59y2yv_cover_2.jpg"
                             alt="img"
                           />
                         </figure>
