@@ -22,6 +22,7 @@ import Typography from "@mui/material/Typography";
 import { Card, CardMedia, Grid, Stack } from "@mui/material";
 import { GrZoomIn } from "react-icons/gr";
 import { Comment, ModeComment } from "@mui/icons-material";
+import "./LibraryCard.css";
 
 const style = {
   position: "absolute",
@@ -86,6 +87,7 @@ const LibraryCard = () => {
               >
                 <Stack sx={{ width: "90%", border: "1px solid #d5c9c9" }}>
                   <Box
+                    // author
                     sx={{
                       position: "relative",
                       marginBottom: "10px",
@@ -95,15 +97,39 @@ const LibraryCard = () => {
                       overflow: "hidden",
                       backgroundColor: "#dfdfdf",
                       height: "330px",
+                      // transform: "translate(-50%,-90%)",
+                      // left: "50%",
+                      // top: "30%"
                     }}
                   >
-                    <div class="panel__image panel__image--book">
+                    <div class="container">
+                      <div class="cover ">
+                        <figure class="front ">
+                          <img
+                            style={{ width: "100%", height: "100%" }}
+                            src="https://images-na.ssl-images-amazon.com/images/I/71FCRKNUxML.jpg"
+                            alt="img"
+                          />
+                          {/* <img src={item.image_url} alt="img" /> */}
+                        </figure>
+                        <figure class="back">
+                          {/* <img src="https://www.hankbukowski.com/wp-content/uploads/2013/03/chinaski_drinking.jpg" /> */}
+                          <img
+                            style={{ width: "250px", height: "100%" }}
+                            src={item.image_url}
+                            alt="img"
+                          />
+                        </figure>
+                      </div>
+                    </div>
+
+                    {/* <div class="panel__image panel__image--book">
                       <a href="/dd" class="books__book__image">
                         <div class="books__book__img">
                           <img src={item.image_url} alt="img" />
                         </div>
                       </a>
-                    </div>
+                    </div> */}
                   </Box>
 
                   <Box sx={{ padding: "15px" }}>

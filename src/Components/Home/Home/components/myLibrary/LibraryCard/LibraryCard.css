@@ -1,0 +1,163 @@
+/* .propertiesImgArea2 {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px 6px 0px 0px;
+  z-index: 5;
+  cursor: pointer;
+}
+.propertiesImgArea2:before {
+     content: "";
+    height: 40%;
+    width: 100%;
+    background-image: linear-gradient(to top, #000, transparent);
+    opacity: 80%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+img.img-fluid.propertiesImg1 {
+  border-radius: 6px 6px 0px 0px;
+  transform: scale(1);
+  transition: all 0.3s ease-in-out;
+  z-index: 5;
+}
+
+.propertiesCard1:hover img.img-fluid.propertiesImg1 {
+  transform: scale(1.05);
+}
+.react-icon3.MuiBox-root.css-0 {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    overflow: hidden;
+    visibility: hidden; 
+     opacity: 0;
+    margin-top: -25%;
+    margin-left: -25%;
+    transition: all 0.3s ease-in-out;
+    z-index: 5;
+}
+.propertiesCard1:hover .react-icon3 {
+  opacity: 1;
+  visibility: visible;
+} */
+
+
+/* for effect of image end */
+/* .panel__image.panel__image--book {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.books__book__img img {
+    width: 150px;
+    height: auto;
+
+}
+.books__book__img{
+  box-shadow: -4px 7px 5px 0px rgba(0,0,0,0.75);
+-webkit-box-shadow: -4px 7px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: -4px 7px 5px 0px rgba(0,0,0,0.75);
+} */
+
+/* 
+.books__book__img {
+	width: 100%;
+	will-change: transform;
+	transform-origin: 0 100%;
+	transform: rotate(-10deg);
+	transition: transform 0.3s ease-out;
+}
+
+.books__book__img:hover {
+    transform: rotate(0);
+} */
+
+/* .author__image-wrapper::before,
+.books__book__image::before {
+    display: block;
+    content: "";
+    height: 20%;
+    width: 45%;
+    position: absolute;
+    background-image: url(https://i.imgur.com/5udcDlp.png);
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    top: 84%;
+    left: 35%;
+    right: 0;
+    transition: all 0.2s ease-out;
+    transform-origin: 30% 50%;
+    pointer-events: none;
+} */
+
+/* .books__book__image:hover {
+    position: relative;
+} */
+/* new style of imgage start ============== */
+.container{
+  width: 250px;
+  height: 350px;
+  background: url('https://4061b388c48358dc7139-15a98bbe77f8c9caf5324f3866115857.ssl.cf1.rackcdn.com/poem1992-00-00-the-riots.jpg');
+  background-size: 250px 350px;
+  background-repeat: no-repeat;
+  
+  /* backgorund-position: 30px 30px; */
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  perspective: 1000px;
+}
+.cover{
+  width: 250px;
+  height: 100%;
+  position: absolute;
+ 
+  transform: rotateY(0deg);
+  transform-style: preserve-3d;
+  transform-origin: left;
+  transition: all .3s ease-in;
+}
+.container:hover .cover {
+  transform: rotateY(-180deg);
+}
+figure{
+  margin: 0;
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  /* img{
+    width:100%;
+    height:100%;
+  } */
+}
+
+
+figure.front{
+  background-color: green;
+}
+
+figure.back{
+  background-color: green;
+  transform: rotateY(180deg)
+}
+
+.author{
+  width: 250px;
+  height: 50px;
+  position: relative;
+  left: 50%;
+  top: 30%;
+  transform: translate(-50%,-90%);
+ font-size: 120%;
+  
+}
+
+/* new style of imgage end ============== */
