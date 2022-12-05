@@ -63,7 +63,7 @@ const Message = () => {
   }, []);
 
   const classes = useStyles();
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(localStorage.getItem("nobovabna_client"));
   const [msgUserList, setMsgUserList] = React.useState([]);
   const [singleMsgUser, setSingleMsgUser] = React.useState({});
   const [msgList, setMsgList] = React.useState([]);
@@ -109,7 +109,7 @@ const Message = () => {
 
   useEffect(() => {
     const formData = new FormData();
-    formData.append("SopnoID", user?.sopnoid);
+    formData.append("SopnoID", user?.user_id);
     formData.append("action", "fetch");
     axios
       .post(`${user.master_url}/profile/login/api/mroom_all.php`, formData)
@@ -132,7 +132,7 @@ const Message = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [user?.master_url, user?.sopnoid, userSearchText]);
+  }, [user?.master_url, user?.user_id, userSearchText]);
 
   const handleSingleUserMessage = (singleUser) => {
     setSingleMsgUser(singleUser);
@@ -149,7 +149,7 @@ const Message = () => {
     setJoinFunc(singleUser?.m_room);
 
     const formData = new FormData();
-    formData.append("SopnoID", user.sopnoid);
+    formData.append("SopnoID", user.user_id);
     formData.append("pref", singleUser?.m_room);
     formData.append("action", "select");
     const data = axios
@@ -191,7 +191,7 @@ const Message = () => {
   //for attach file message data
   const attachFileMsgData = (singleUser) => {
     const formData = new FormData();
-    formData.append("SopnoID", user.sopnoid);
+    formData.append("SopnoID", user.user_id);
     formData.append("pref", singleUser.m_room);
     formData.append("action", "fetch");
     axios
@@ -257,7 +257,7 @@ const Message = () => {
     // console.log(msgText);
     if (attachFile) {
       const formData = new FormData();
-      formData.append("poster", user.sopnoid);
+      formData.append("poster", user.user_id);
       formData.append("room_id", singleMsgUser?.m_room);
       formData.append("heada", "attachment");
       formData.append("image", attachFile);
@@ -285,7 +285,7 @@ const Message = () => {
     } else {
       if (!socketId) {
         const formData = new FormData();
-        formData.append("poster", user.sopnoid);
+        formData.append("poster", user.user_id);
         formData.append("t_comment", msgText);
         formData.append("room_id", singleMsgUser?.m_room);
 
@@ -327,7 +327,7 @@ const Message = () => {
             date.getDate(),
           purposea: "ghorami_message",
           devipa: ip,
-          sendera: user.sopnoid,
+          sendera: user.user_id,
           rooma: singleMsgUser?.m_room,
           heada: sameMsg.length > 0 ? "reply" : "new",
           at_reply_ida: sameMsg.length > 0 ? replySameObj?.at_rid : "",
@@ -360,7 +360,7 @@ const Message = () => {
 
   const userDetailsFunction = (singleUser) => {
     const formData = new FormData();
-    formData.append("SopnoID", user.sopnoid);
+    formData.append("SopnoID", user.user_id);
     formData.append("action", "fetch");
     formData.append("pref", singleUser.m_room);
     axios

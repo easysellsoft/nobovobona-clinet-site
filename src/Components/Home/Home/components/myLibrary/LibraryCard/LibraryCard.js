@@ -159,7 +159,7 @@ const LibraryCard = () => {
                         >
                           {item?.writer} - {item.publish_date}
                         </Typography>
-                        <Comment />
+                        {/* <Comment /> */}
                       </Stack>
                       <Typography
                         variant="p"
@@ -182,7 +182,7 @@ const LibraryCard = () => {
                           paddingBottom: "30px",
                         }}
                       >
-                        <Button
+                        {/* <Button
                           onClick={handleOpen}
                           sx={{
                             color: "#fff",
@@ -194,12 +194,16 @@ const LibraryCard = () => {
                           // color="success"
                         >
                           <GrZoomIn style={{ fontSize: "18px" }} />
-                        </Button>
+                        </Button> */}
                         <Button
                           sx={{
                             padding: "10px 35px",
-                            backgroundColor: "#f0f0f0",
-                            color: "green",
+                            backgroundColor: "#092B51",
+                            color: "#fff",
+                            "&:hover": {
+                              backgroundColor: "#2999BF",
+                              color: "#fff",
+                            },
                           }}
                           onClick={() => handleDetails(item.issue_refer)}
                           variant="text"

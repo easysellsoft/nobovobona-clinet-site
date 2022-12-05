@@ -36,17 +36,17 @@ const listItemNav = [
   {
     title: "পেমেন্ট",
     icon: <FaRegEnvelope />,
-    to: "/dashboard/payment/history",
+    to: "/payment/history",
     nested: true,
     submenu: [
       {
         title: "History",
-        to: "/dashboard/payment/history",
+        to: "/payment/history",
         icon: <BiCircle />,
       },
       {
         title: "Method",
-        to: "/dashboard/payment/method",
+        to: "/payment/method",
         icon: <BiCircle />,
       },
     ],
@@ -56,7 +56,14 @@ const listItemNav = [
     // title: "Reading",
     title: "অর্ডার লিস্ট",
     icon: <MdDashboard />,
-    to: "/dashboard/reading",
+    to: "/orderList",
+    nested: false,
+  },
+  {
+    // title: "Reading",
+    title: "সিপমেন্ট",
+    icon: <MdDashboard />,
+    to: "/shipment",
     nested: false,
   },
   // {
@@ -68,7 +75,7 @@ const listItemNav = [
 
   {
     title: "প্রোফাইল",
-    to: "/dashboard/profile",
+    to: "/profile",
     icon: <GoProject />,
     nested: false,
   },

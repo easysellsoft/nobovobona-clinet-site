@@ -20,12 +20,12 @@ const AcceptMsgModal = ({ open, handleClose, offer, handleReloadChat }) => {
   };
   // console.log(offer);
   const [note, setNote] = React.useState("");
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(localStorage.getItem("nobovabna_client"));
   const handleAccept = () => {
     let axios = require("axios");
     let FormData = require("form-data");
     let data = new FormData();
-    data.append("SopnoID", user?.sopnoid);
+    data.append("SopnoID", user?.user_id);
     data.append("offer_refer", offer?.of_refer);
     data.append("states", "2");
     data.append("action_type", offer?.of_action);

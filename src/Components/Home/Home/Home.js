@@ -130,7 +130,8 @@ function Home() {
   };
 
   //get user information from localStorage
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(localStorage.getItem("nobovabna_client"));
+  console.log(user)
 
   // get data or object from context auth provider
   const { pageRefresh, setPageRefresh } = useAuth();

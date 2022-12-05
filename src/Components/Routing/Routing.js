@@ -12,11 +12,10 @@ import OtpReportPage from "./../Home/OtpReportPage/OtpReport";
 import SmsReportPage from "./../Home/SmsReportPage/SmsReport";
 import Issue from "../Home/Issue/Issue";
 import Section from "./../Home/Section/Section";
-import Writer from "./../Home/Writer/Writer";
+
 import Menu from "./../Home/Menu/Menu";
-import Article from "./../Home/Article/Article";
-import AddPage from "../Home/AddPage/AddPage";
-import Orders from "../Home/Shipping/HistoryShipping";
+// import Article from "../Home/OrderList/OrderList";
+// import Orders from "../Home/Shipping/HistoryShipping";
 import Rate from "./../Home/Rate/Rate";
 import Payment from "./../Home/Payment/Payment";
 import Users from "./../Home/Users/Users";
@@ -24,18 +23,19 @@ import Others from "./../Home/Others/Others";
 import Messages from "./../Home/Messages/Messages";
 import MainHome from "./../Home/MainHome/MainHome";
 import Method from "./../Home/Method/Method";
-import ArticleDetails from "./../Home/Article/ArticleDetails";
+// import ArticleDetails from "../Home/OrderList/ArticleDetails";
 // import Home from "../../ClientComponents/Home/Home";
 
 import Header from "./../Header/Header";
-import OrderDetails from "../Home/pageComponents/OrderDetails";
-import HistoryShipping from "../Home/Shipping/HistoryShipping";
-import AddAddress from "./../Home/Shipping/AddAddress";
+// import OrderDetails from "../Home/pageComponents/OrderDetails";
+// import HistoryShipping from "../Home/Shipping/HistoryShipping";
+// import AddAddress from "./../Home/Shipping/AddAddress";
 import Message from "../Home/Message/Message";
 
 import Probondho from "./../Home/pageComponents/Probondho/Probondho";
 import MyLibrary from "../Home/Home/components/myLibrary/MyLibrary";
 import ArticleDemo from "../Home/Home/components/pdfViewer/articleDemo/ArticleDemo";
+// import OrderList from "../Home/OrderList/OrderList";
 
 const Login = React.lazy(() => import("./../Authentication/Login/Login"));
 const Error = React.lazy(() => import("../Error/Error"));
@@ -45,24 +45,30 @@ const AdminHome = React.lazy(() => import("./../Home/AdminHome/AdminHome.js"));
 const AdminDashboard = React.lazy(() =>
   import("./../Home/AdminDashboard/AdminDashboard.js")
 );
-const Investment = React.lazy(() =>
-  import("./../Home/Investment/Investment.js")
+const OrderList = React.lazy(() => import("../Home/OrderList/OrderList"));
+const PaymentHistory = React.lazy(() =>
+  import("../Home/PaymentHistory/PaymentHistory")
 );
-const Suppliers = React.lazy(() =>
-  import("./../Home/Home/Suppliers/Suppliers.js")
-);
-const NewPayment = React.lazy(() =>
-  import("./../Home/Home/NewPayment/NewPayment.js")
-);
-const ReceivedPayment = React.lazy(() =>
-  import("./../Home/Home/ReceivedPayment/ReceivedPayment.js")
-);
-const PaymentMethod = React.lazy(() =>
-  import("./../Home/Home/PaymentMethod/PaymentMethod.js")
-);
-const ProjectRate = React.lazy(() =>
-  import("./../Home/ProjectRate/ProjectRate.js")
-);
+const Shipment = React.lazy(() => import("../Home/Shipment/Shipment"));
+const Profile = React.lazy(() => import("../Home/Profile/Profile"));
+// const Investment = React.lazy(() =>
+//   import("./../Home/Investment/Investment.js")
+// );
+// const Suppliers = React.lazy(() =>
+//   import("./../Home/Home/Suppliers/Suppliers.js")
+// );
+// const NewPayment = React.lazy(() =>
+//   import("./../Home/Home/NewPayment/NewPayment.js")
+// );
+// const ReceivedPayment = React.lazy(() =>
+//   import("./../Home/Home/ReceivedPayment/ReceivedPayment.js")
+// );
+// const PaymentMethod = React.lazy(() =>
+//   import("./../Home/Home/PaymentMethod/PaymentMethod.js")
+// );
+// const ProjectRate = React.lazy(() =>
+//   import("./../Home/ProjectRate/ProjectRate.js")
+// );
 
 const Routing = () => {
   //scroll to top window size
@@ -109,28 +115,31 @@ const Routing = () => {
               </PrivateRoute>
             }
           >
-            {/* <Route path="/" element={<AdminHome />} /> */}
             <Route path="/" element={<MyLibrary />} />
             <Route path="/library/:referId" element={<ArticleDemo />} />
+            <Route path="/orderList" element={<OrderList />} />
+            {/* <Route path="/payment/history" element={<Writer />} /> */}
+            <Route path="/payment/history" element={<PaymentHistory />} />
+            <Route path="/shipment" element={<Shipment />} />
             <Route path="/dashboard/dashboard" element={<Issue />} />
             <Route path="/dashboard/order" element={<Section />} />
-            <Route path="/dashboard/payment/history" element={<Writer />} />
+
             <Route path="/dashboard/payment/method" element={<Method />} />
             {/* <Route path="/dashboard/menu" element={<Menu />} /> */}
-            <Route path="/dashboard/reading" element={<Article />} />
-            <Route
+            {/* <Route path="/dashboard/reading" element={<Article />} /> */}
+            {/* <Route
               path="/dashboard/reading/dashboard/reading/history/details"
               element={<ArticleDetails />}
-            />
-            <Route path="/dashboard/profile" element={<AddPage />} />
-            <Route
+            /> */}
+            <Route path="/profile" element={<Profile />} />
+            {/* <Route
               path="/dashboard/shipping/history"
               element={<HistoryShipping />}
             />
             <Route
               path="/dashboard/shipping/address"
               element={<AddAddress />}
-            />
+            /> */}
             {/* <Route path="/dashboard/rate" element={<Rate />} />
             <Route path="/dashboard/payment" element={<Payment />} /> */}
             {/* <Route path="/dashboard/messages" element={<Messages />} /> */}

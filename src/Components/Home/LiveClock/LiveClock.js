@@ -15,7 +15,7 @@ const LiveClock = () => {
     <div>
       <span
         style={{
-          color: "#000",
+          color: "#fff",
           fontSize: "1rem",
           marginRight: "1rem",
           fontWeight: "bold",
@@ -51,7 +51,7 @@ const LiveClock = () => {
             }}
           />
         </Box>{" "} */}
-        <span>{time?.toLocaleTimeString()}</span>
+        <span style={{ color: "white !important" }}>{time?.toLocaleTimeString()}</span>
       </span>
     </div>
   );

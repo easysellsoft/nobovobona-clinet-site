@@ -63,7 +63,7 @@ const MessageList = ({
   handleReloadChat,
   datas,
 }) => {
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(localStorage.getItem("nobovabna_client"));
   const [offer, setOffer] = React.useState({});
   const classes = useStyles();
   const [check, setCheck] = React.useState([]);
@@ -87,7 +87,7 @@ const MessageList = ({
     let axios = require("axios");
     let FormData = require("form-data");
     let data = new FormData();
-    data.append("SopnoID", user?.sopnoid);
+    data.append("SopnoID", user?.user_id);
     data.append("offer_refer", offerDeny?.of_refer);
     data.append("states", "0");
     data.append("action_type", offerDeny?.of_action);
@@ -114,7 +114,7 @@ const MessageList = ({
 
   return (
     <Box>
-      {msg?.at_poster === user?.sopnoid ? (
+      {msg?.at_poster === user?.user_id ? (
         // for right side message
         <Box
           sx={{

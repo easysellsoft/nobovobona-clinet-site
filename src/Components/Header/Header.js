@@ -56,6 +56,7 @@ import {
 import AddBusinessRoundedIcon from "@mui/icons-material/AddBusinessRounded";
 import DrawerComp from "./Drawer";
 import useAuth from '../../Hooks/useAuth';
+import logo from "../../assets/logo/nobovabna_logo_white.png"
 // import Product from "./pageComponents/Product";
 
 const drawerWidth = 240;
@@ -157,7 +158,8 @@ const Header = () => {
  
 
   //get user information from localStorage
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(localStorage.getItem("nobovabna_client"));
+  console.log(user)
 
   // get data or object from context auth provider
   const { pageRefresh, setPageRefresh } = useAuth();
@@ -222,7 +224,13 @@ const Header = () => {
                 navigate("/");
               }}
             >
-              Logo
+              <Box sx={{ display: "flex", justifyContent:"center", alignItems:"center"}}>
+                <img
+                  style={{ height: "50px", width: "auto",padding:"7px" }}
+                  src={logo}
+                  alt="missing"
+                />
+              </Box>
             </Typography>
             <Box sx={{ flexGrow: 1 }} />
             {/* <Box sx={{ marginLeft: "auto" }}>
@@ -283,12 +291,13 @@ const Header = () => {
                 },
                 flexDirection: "column",
                 alignItems: "center",
+             
               }}
             >
               <LiveClock />
               <span
                 style={{
-                  color: "#000",
+                  color: "#fff",
                   fontSize: "1rem",
                   marginRight: "1rem",
                   fontWeight: "bold",
@@ -300,7 +309,7 @@ const Header = () => {
             {user ? (
               <Button
                 onClick={() => {
-                  localStorage.removeItem("user");
+                  localStorage.removeItem("nobovabna_client");
                   localStorage.removeItem("ip");
                   localStorage.removeItem("uniqId");
                   localStorage.removeItem("temp");

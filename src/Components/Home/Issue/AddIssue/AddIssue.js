@@ -77,11 +77,11 @@ function AddIssue() {
   };
 
   //get user information from localStorage
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(localStorage.getItem("nobovabna_client"));
   console.log(user)
-  console.log(user.sopnoid);
+  console.log(user.user_id);
   useEffect(() => {
-    setUserId(user.sopnoid);
+    setUserId(user.user_id);
   }, [])
   console.log(userId);
 

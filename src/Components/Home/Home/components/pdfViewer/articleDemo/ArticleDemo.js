@@ -31,6 +31,7 @@ import MainLoading from "../../../../../Shared/MainLoading";
 // import Loading from "../../../../Shared/Loading";
 // import WriterProfile from "./WriterProfile";
 import { Visibility } from '@mui/icons-material/Visibility';
+import TablePagination from "@mui/material/TablePagination";
 
 //
 
@@ -48,6 +49,18 @@ function ArticleDemo() {
   const [chapterDetails, setChapterDetails] = useState([]);
   const [getId, setGetId] = useState(null);
   const [writerId, setWriterId] = useState(null);
+  //  pagination start ===============
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+   const handleChangePage = (event, newPage) => {
+     setPage(newPage);
+   };
+
+   const handleChangeRowsPerPage = (event) => {
+     setRowsPerPage(+event.target.value);
+     setPage(0);
+   };
+  //  pagination end ===============
   //   const { referId, chapterId } = params;
 
   const handleFullScreen = () => {
@@ -208,60 +221,85 @@ console.log("paici ", lekhok)
                   </ListSubheader>
                 }
               >
-                {chapterList.map((item) => (
-                  <ListItemButton
-                    style={{ marginTop: "20px", padding: "2px 2px 2px 15px" }}
-                    key={item.chapter_id}
-                  >
-                    <ListItemIcon style={{ minWidth: "34px" }}>
-                      <Box className="progressBox2">
-                        <Box class="progress-layout">
-                          <Box class="process-circle"></Box>
-                          <Box class="process-circle"></Box>
-                          <Box class="process-circle"></Box>
-                          <Box class="progress-content">
-                            <Box class="item-parcent">
-                              {" "}
-                              <SendIcon
-                                style={{
-                                  fontSize: "18px",
-                                  margin: "0px",
-                                  color: "#068B87",
-                                }}
-                              />
+                {chapterList
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map((item) => (
+                    <ListItemButton
+                      style={{ marginTop: "20px", padding: "2px 2px 2px 15px" }}
+                      key={item.chapter_id}
+                    >
+                      <ListItemIcon style={{ minWidth: "34px" }}>
+                        <Box className="progressBox2">
+                          <Box class="progress-layout">
+                            <Box class="process-circle"></Box>
+                            <Box class="process-circle"></Box>
+                            <Box class="process-circle"></Box>
+                            <Box class="progress-content">
+                              <Box class="item-parcent">
+                                {" "}
+                                <SendIcon
+                                  style={{
+                                    fontSize: "18px",
+                                    margin: "0px",
+                                    color: "#068B87",
+                                  }}
+                                />
+                              </Box>
                             </Box>
                           </Box>
                         </Box>
-                      </Box>
 
-                      {/* <SendIcon style={{ fontSize: "24px", margin: "0px" }} /> */}
-                    </ListItemIcon>
-                    <ListItemText
-                      onClick={() => {
-                        setWriterId(item.writer);
-                        handleChapterId(item.chapter_id);
-                      }}
-                      style={{ cursor: "pointer" }}
-                    >
-                      <Typography
-                        variant="h3"
-                        component="h2"
-                        sx={{
-                          color: "#212121",
-                          fontWeight: "700",
-                          fontSize: "18px",
-                          lineHeight: "1.2",
-                          // marginTop: "15px",
-                          // marginBottom: "20px",
-                          letterSpacing: "0.5px",
-                          textTransform: "initialize",
+                        {/* <SendIcon style={{ fontSize: "24px", margin: "0px" }} /> */}
+                      </ListItemIcon>
+                      <ListItemText
+                        onClick={() => {
+                          setWriterId(item.writer);
+                          handleChapterId(item.chapter_id);
                         }}
+                        style={{ cursor: "pointer" }}
                       >
-                        {item.chapter_head}
-                      </Typography>{" "}
-                    </ListItemText>
-                  </ListItemButton>
-                ))}
+                        <Typography
+                          variant="h3"
+                          component="h2"
+                          sx={{
+                            color: "#212121",
+                            fontWeight: "700",
+                            fontSize: "18px",
+                            lineHeight: "1.2",
+                            // marginTop: "15px",
+                            // marginBottom: "20px",
+                            letterSpacing: "0.5px",
+                            textTransform: "initialize",
+                          }}
+                        >
+                          {item.chapter_head}
+                        </Typography>{" "}
+                      </ListItemText>
+                    </ListItemButton>
+                  ))}
+                <Box
+                  sx={{
+                    display: {
+                      lg: "none",
+                      md: "block",
+                      sm: "block",
+                      xs: "block",
+                    },
+                  }}
+                >
+                  {" "}
+                  {/* pagination start ==== */}
+                  <TablePagination
+                    rowsPerPageOptions={[5, 10]}
+                    component="div"
+                    count={chapterList.length}
+                    rowsPerPage={rowsPerPage}
+                    page={page}
+                    onPageChange={handleChangePage}
+                    onRowsPerPageChange={handleChangeRowsPerPage}
+                  />
+                  {/* pagination end ==== */}
+                </Box>
               </List>
             </Card>
           </Grid>

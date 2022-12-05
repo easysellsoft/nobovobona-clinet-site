@@ -1,14 +1,15 @@
 import React from "react";
-import AddWriter from "./AddWriter";
-const Writer = () => {
+import PaymentHistoryTable from "./PaymentHistoryTable";
+
+const PaymentHistory = () => {
   return (
     <div>
       <div style={{ width: "100%" }} className="mb-5 mt-2">
         {/* <AddSection></AddSection> */}
-        <AddWriter/>
+        <PaymentHistoryTable />
       </div>
     </div>
   );
 };
 
-export default Writer;
+export default React.memo(PaymentHistory);

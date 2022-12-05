@@ -3,13 +3,13 @@ import React from "react";
 import socketIO from "socket.io-client";
 export const AuthContext = React.createContext(null);
 
-const ENDPOINT = "http://173.212.230.192:3400/";
+const ENDPOINT = "https://yeapbe.com:3450/";
 let socket;
 
 const AuthProvider = ({ children }) => {
   const [pageRefresh, setPageRefresh] = React.useState(false);
 
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(localStorage.getItem("nobovabna_client"));
 
   socket = socketIO(ENDPOINT, {
     transports: ["websocket"],

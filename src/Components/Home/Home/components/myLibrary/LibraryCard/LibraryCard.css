@@ -106,7 +106,7 @@ img.img-fluid.propertiesImg1 {
   margin-top: 50px;
   margin-right: 25px;
   background: url('https://nobovabna.com/webapi/files/018188045201007202001/issue_October-2022/647qqe_nadi_songkha.jpg');
-  background-size: 217px auto;
+  background-size: 100% auto;
   background-repeat: no-repeat;
   position: relative;
   left: 50%;
@@ -115,7 +115,7 @@ img.img-fluid.propertiesImg1 {
   perspective: 1000px;
 }
 
-.cover{
+/* .cover{
   width: 250px;
   height: 100%;
   position: absolute;
@@ -124,7 +124,7 @@ img.img-fluid.propertiesImg1 {
   transform-style: preserve-3d;
   transform-origin: left;
   transition: all .3s ease-in;
-}
+} */
 .container:hover .cover {
   transform: rotateY(-180deg);
 }
@@ -159,8 +159,8 @@ figure.back {
 }
 
 .cover {
-    width: 217px;
-    height: auto;
+    width: 100%;
+    height: 100%;
     /* margin-left: -20px; */
     /* margin-top: 10px; */
     position: absolute;
@@ -170,10 +170,10 @@ figure.back {
     transition: all .3s ease-in;
 }
 
-/* 
+
 element.style {
-    width: 217px;
+    width: 100%;
     height: auto;
-} */
+}
 
 /* new style of imgage end ============== */

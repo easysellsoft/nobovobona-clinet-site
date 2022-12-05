@@ -40,13 +40,13 @@ const PrivateRoute = ({ children }) => {
     formData.append("action_type", name);
     axios
       .post(
-        "https://ghorami.com/profile/login/api/uinsert_sesion.php",
+        "https://nobovabna.com/webapi/client_api/fun_uinsert.php",
         formData
       )
       .then((res) => {
         // console.log(res.data);
         setCheck(false);
-        localStorage.setItem("user", JSON.stringify(res.data));
+        localStorage.setItem("nobovabna_client", JSON.stringify(res.data));
         localStorage.setItem("ip", JSON.stringify(ip));
         localStorage.setItem("temp", temp);
       })
@@ -56,14 +56,14 @@ const PrivateRoute = ({ children }) => {
   };
 
   // localStorage.setItem("user", JSON.stringify("fyvgb"));
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(localStorage.getItem("nobovabna_client"));
 
   console.log(user);
   if (check && !user) {
     return <div className="text-center py-5">Loading...</div>;
   }
 
-  if (user && location.search?.length === 0 && user?.sopnoid) {
+  if (user && location.search?.length === 0 && user?.user_id) {
     return children;
   } else if (location.search.length > 0 && sopnoID && name === "room") {
     return roomID ? (

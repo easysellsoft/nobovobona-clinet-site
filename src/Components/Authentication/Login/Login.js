@@ -25,8 +25,10 @@ const Login = () => {
   const [password, setPassword] = React.useState("");
   const location = useLocation();
   //const user = JSON.parse(localStorage.getItem("user"));
+  console.log("location dekh", location)
   const navigate = useNavigate();
-  const redirectUi = location.state ? location.state.from : "/";
+  // const redirectUi = location.state ? location.state.from : "/";
+  const redirectUi = location?.state ? location.state.from : "/";
   const formData = new FormData();
 
   //for cookies
@@ -52,7 +54,7 @@ const Login = () => {
   //remember me data get
   React.useEffect(() => {
     const data = localStorage.getItem("RData");
-    // console.log(data);
+    console.log(data);
     if (data) {
       setEmail(decodeSourceObject(data).email);
       setPassword(decodeSourceObject(data).password);
@@ -108,20 +110,30 @@ const Login = () => {
       // console.log("remove");
       localStorage.removeItem("RData");
     }
-    formData.append("MobileNumber", email);
+    // formData.append("MobileNumber", email);
+    // formData.append("pass", password);
+    formData.append("p_number", email);
     formData.append("pass", password);
-    fetch(`https://ghorami.com/profile/fun_uinsert.php`, {
+    formData.append("ip", JSON.stringify(ip));
+    formData.append("encode", encodeSourceObject({ email, password }));
+    // fetch(`https://ghorami.com/profile/fun_uinsert.php`, {
+    fetch(`https://nobovabna.com/webapi/client_api/user_login.php`, {
       method: "POST",
       body: formData,
     })
       .then((res) => res.json())
       .then((res) => {
-        if (res[0]?.sopnoid) {
-          localStorage.setItem("user", JSON.stringify(res?.[0]));
+        if (res[0]?.user_id) {
+          // localStorage.setItem("user", JSON.stringify(res?.[0]));
+          console.log("paici",res)
+          localStorage.setItem("nobovabna_client", JSON.stringify(res?.[0]));
           localStorage.setItem("ip", JSON.stringify(ip));
           localStorage.setItem("temp", temp);
-
-          navigate?.(redirectUi);
+         console.log("aikhan porjonto ashce")
+          navigate(redirectUi);
+          // navigate("/");
+          // navigate("/dashboard");
+          // navigate("/");
         } else {
           swal("Error", "Check Email or Password Again!", "error");
         }
@@ -140,7 +152,7 @@ const Login = () => {
         backgroundPosition: "center",
         // height: "100vh"
         // height: window.innerHeight >= 500 ? "calc(100vh - 0px)" : "calc(100vh)",
-        height: "753px"
+        height: "753px",
       }}
     >
       <Container
@@ -282,7 +294,7 @@ const Login = () => {
                 </FormGroup>
                 <Button size="small">
                   <a
-                    href="https://ghorami.com/profile/login/l-forgetpass.php?MobileNumber"
+                    href="https://nobovabna.com/webapi/client_api/l-forgetpass.php?MobileNumber"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
