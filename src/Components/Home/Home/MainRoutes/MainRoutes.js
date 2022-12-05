@@ -111,7 +111,7 @@ const listItemNav = [
   // },
   {
     title: "অভিযোগ",
-    to: "/dashboard/messages",
+    to: "ovijug",
     icon: <GoProject />,
     nested: false,
   },

@@ -35,6 +35,7 @@ import Message from "../Home/Message/Message";
 import Probondho from "./../Home/pageComponents/Probondho/Probondho";
 import MyLibrary from "../Home/Home/components/myLibrary/MyLibrary";
 import ArticleDemo from "../Home/Home/components/pdfViewer/articleDemo/ArticleDemo";
+import Ovijug from "../Home/Ovijug/Ovijug";
 // import OrderList from "../Home/OrderList/OrderList";
 
 const Login = React.lazy(() => import("./../Authentication/Login/Login"));
@@ -143,7 +144,8 @@ const Routing = () => {
             {/* <Route path="/dashboard/rate" element={<Rate />} />
             <Route path="/dashboard/payment" element={<Payment />} /> */}
             {/* <Route path="/dashboard/messages" element={<Messages />} /> */}
-            <Route path="/dashboard/messages" element={<Message />} />
+            {/* <Route path="/dashboard/messages" element={<Message />} /> */}
+            <Route path="/ovijug" element={<Ovijug />} />
             {/* <Route path="/dashboard/users" element={<Users />} />
             <Route path="/dashboard/others" element={<Others />} /> */}
           </Route>
