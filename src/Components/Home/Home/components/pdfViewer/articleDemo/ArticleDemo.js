@@ -30,13 +30,13 @@ import ArticleRight from "./ArticleRight/ArticleRight";
 import MainLoading from "../../../../../Shared/MainLoading";
 // import Loading from "../../../../Shared/Loading";
 // import WriterProfile from "./WriterProfile";
-import { Visibility } from '@mui/icons-material/Visibility';
+import { Visibility } from "@mui/icons-material/Visibility";
 import TablePagination from "@mui/material/TablePagination";
 
 //
 
 function ArticleDemo() {
-  const {referId} = useParams()
+  const { referId } = useParams();
   const [sliderRef, setSliderRef] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(null);
@@ -53,37 +53,46 @@ function ArticleDemo() {
   //  pagination start ===============
   const [page, setPage] = useState(0);
   // const [rowsPerPage, setRowsPerPage] = useState(25);
-  const [chapterListLength, setChapterListLength] = useState(null);
-  const [rowsPerPage, setRowsPerPage] = useState(141);
-  // const [rowsPerPage, setRowsPerPage] = useState(chapterListLength || null);
+  const [chapterListLength, setChapterListLength] = useState(0);
+  // const [rowsPerPage, setRowsPerPage] = useState(141);
+  // const [rowsPerPage, setRowsPerPage] = useState(`${chapterListLength}`);
+  const [rowsPerPage, setRowsPerPage] = useState(null);
   // const [rowsPerPage, setRowsPerPage] = useState(() => {
   //   if (window.innerWidth < 900) {
   //     return 5;
   //   }
-    
+
   //   if (window.innerWidth > 900) {
   //     return 25;
   //   }
   // });
-  //  useEffect(() => {
-  //    window.addEventListener("resize", () => {
-  //      window.innerWidth > 600
-  //        ? setChapterListLength(140)
-  //        : setChapterListLength(5);
-  //    });
-  //  }, []);
+  useEffect(() => {
+    if (chapterListLength) {
+      // console.log(" paisci hetere");
+       setRowsPerPage(chapterListLength);
+      window.addEventListener("resize", () => {
+        if (window.innerWidth < 700) {
+          console.log(" mobile device a ashce");
+          setRowsPerPage(5);
+        } else {
+          console.log(" desktop device a ashce");
+          setRowsPerPage(chapterListLength);
+        }
+      });
+    }
+  }, [chapterListLength]);
   // useEffect(() => {
   //   setRowsPerPage(chapterListLength);
   // }, [chapterListLength]);
 
-   const handleChangePage = (event, newPage) => {
-     setPage(newPage);
-   };
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
 
-   const handleChangeRowsPerPage = (event) => {
-     setRowsPerPage(+event.target.value);
-     setPage(0);
-   };
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
   //  pagination end ===============
   //   const { referId, chapterId } = params;
 
@@ -93,7 +102,7 @@ function ArticleDemo() {
   // const handleLekhok = () => {
   //   setLekhok(true);
   // }
-  
+
   //challenge endd
   useEffect(() => {
     setGetId(chapterList[0]?.chapter_id);
@@ -109,8 +118,9 @@ function ArticleDemo() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
+        console.log(data);
         setChapterList(data);
+        setChapterListLength(data.length);
       });
   }, []);
 
@@ -144,9 +154,11 @@ function ArticleDemo() {
     dots: false,
     afterChange: (currentSlide) => setCurrentSlide(currentSlide),
   };
-console.log("paici ", lekhok)
-console.log("paici halare", rowsPerPage);
-console.log("paici halare", chapterList.length);
+  // console.log("paici ", lekhok);
+  console.log("paici halare", rowsPerPage);
+  console.log("paici chapterListLength", chapterListLength);
+  console.log("paici halare ar", chapterList.length);
+  console.log("chapterList", chapterList);
   return (
     <Box
       sx={{
@@ -223,7 +235,7 @@ console.log("paici halare", chapterList.length);
                   width: "100%",
                   height: "550px",
                   overflowX: "hidden",
-                  overflowY:"auto"
+                  overflowY: "auto",
                 }}
                 component="nav"
                 aria-labelledby="nested-list-subheader"
@@ -253,7 +265,12 @@ console.log("paici halare", chapterList.length);
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((item) => (
                     <ListItemButton
-                      style={{ marginTop: "20px", padding: "2px 2px 2px 15px", overflowX:"hidden", overflowY:"auto" }}
+                      style={{
+                        marginTop: "20px",
+                        padding: "2px 2px 2px 15px",
+                        overflowX: "hidden",
+                        overflowY: "auto",
+                      }}
                       key={item.chapter_id}
                     >
                       <ListItemIcon style={{ minWidth: "34px" }}>
@@ -309,9 +326,9 @@ console.log("paici halare", chapterList.length);
                   sx={{
                     display: {
                       lg: "none",
-                      md: "block",
-                      sm: "block",
-                      xs: "block",
+                      md: "none",
+                      sm: "inherit",
+                      xs: "inherit",
                     },
                   }}
                 >
