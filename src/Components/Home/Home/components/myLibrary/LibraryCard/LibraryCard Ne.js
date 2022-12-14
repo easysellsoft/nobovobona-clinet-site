@@ -22,7 +22,7 @@ import Typography from "@mui/material/Typography";
 import { Card, CardMedia, Grid, Stack } from "@mui/material";
 import { GrZoomIn } from "react-icons/gr";
 import { Comment, ModeComment } from "@mui/icons-material";
-import "./LibraryCard.css";
+import "./LibraryCardNe.css";
 
 const style = {
   position: "absolute",
@@ -63,7 +63,7 @@ const LibraryCard = () => {
     window.addEventListener("resize", updateWidth);
     return () => window.removeEventListener("resize", updateWidth);
   }, []);
-
+console.log("coverlist", coverList)
   return (
     <div className="">
       {/* {multiData.map((item) => ( */}
@@ -99,8 +99,31 @@ const LibraryCard = () => {
                   >
                     <div class="panel__image panel__image--book">
                       <a href="/dd" class="books__book__image">
-                        <div class="books__book__img">
-                          <img src={item.image_url} alt="img" width="150px" />
+                        <div
+                          class="books__book__img page"
+                          style={{
+                            background: `url(${"https://nobovabna.com/webapi/cover/put_pic.png"})`,
+                          }}
+                        >
+                          <span
+                            style={{
+                              content: "",
+                              width: "20px",
+                              height: " 100%",
+                              // backgroundImage: `url(${"https://thumbs.dreamstime.com/z/isolated-white-background-antique-book-side-view-isolated-white-background-antique-book-side-view-166110265.jpg"})`,
+                              backgroundImage: `url(${item.left_side_pic})`,
+                              backgroundSize: "100% 100%",
+                              backgroundRepeat: "no-repeat",
+                              position: "absolute",
+                              top: "-3px",
+                              left: "37px",
+                              transform:
+                                "skewY(-45deg) translate(-57px, -43px)",
+                              // transform: "rotate(-8deg) skewX(5deg) scale(.8)",
+                              // transform: rotate(-8deg) skewX(5deg) scale(.8);
+                            }}
+                          ></span>
+                          <img src={item.image_url} alt="img" />
                         </div>
                       </a>
                     </div>
@@ -153,7 +176,6 @@ const LibraryCard = () => {
                           paddingBottom: "30px",
                         }}
                       >
-                    
                         <Button
                           sx={{
                             padding: "10px 35px",
