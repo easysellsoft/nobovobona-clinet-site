@@ -163,7 +163,7 @@ function Home() {
             position: "fixed",
             backgroundColor: "#063970",
             borderRadius: "0px 30px 65px 0px",
-            top:"70px"
+            top: "70px",
           },
         }}
         open={open}
@@ -185,7 +185,7 @@ function Home() {
                 variant="h6"
                 component="h6"
               >
-                Admin
+                ভার্চুয়াল লাইব্রেরি
               </Typography>
 
               <IconButton
@@ -252,7 +252,7 @@ function Home() {
 
         <Divider />
         <List>
-          {["LogOut"].map((text, index) => (
+          {["লগআউট"].map((text, index) => (
             <ListItem
               button
               key={text}
@@ -271,7 +271,7 @@ function Home() {
                 }}
               >
                 {index === 0 && (
-                  <Tooltip title="LogOut" arrow placement="right-start">
+                  <Tooltip title="লগআউট" arrow placement="right-start">
                     <span
                       style={{
                         fontSize: "1.8rem",
@@ -333,14 +333,13 @@ function Home() {
           width: "100%",
           overflow: "auto",
           minHeight: "90vh",
-          marginTop:"90px"
+          marginTop: "90px",
         }}
       >
         {/* <DrawerHeader /> */}
         {/* <ArticleDemo/> */}
 
-        <Outlet>
-        </Outlet>
+        <Outlet></Outlet>
       </Box>
     </Box>
   );

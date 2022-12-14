@@ -224,9 +224,15 @@ const Header = () => {
                 navigate("/");
               }}
             >
-              <Box sx={{ display: "flex", justifyContent:"center", alignItems:"center"}}>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
                 <img
-                  style={{ height: "50px", width: "auto",padding:"7px" }}
+                  style={{ height: "50px", width: "auto", padding: "7px" }}
                   src={logo}
                   alt="missing"
                 />
@@ -291,8 +297,7 @@ const Header = () => {
                 },
                 flexDirection: "column",
                 alignItems: "center",
-                color:"#fff"
-             
+                color: "#fff",
               }}
             >
               <LiveClock />
@@ -322,7 +327,7 @@ const Header = () => {
                 variant="contained"
               >
                 <LogoutIcon sx={{ marginRight: "10px" }} />
-                Log Out
+                লগআউট
               </Button>
             ) : (
               <Button

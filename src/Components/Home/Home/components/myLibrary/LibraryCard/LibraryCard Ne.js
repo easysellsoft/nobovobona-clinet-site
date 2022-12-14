@@ -69,14 +69,14 @@ console.log("coverlist", coverList)
       {/* {multiData.map((item) => ( */}
       <Grid container spacing={2}>
         {coverList.map((item) => (
-          <Grid item sm={12} md={6} lg={4}>
+          <Grid item xs={12} sm={12} md={12} lg={4}>
             {" "}
             <Box className="cardGalleryArea" sx={{ margin: "10px" }}>
               {" "}
               <Card
                 sx={{
                   width: "100%",
-                  height: "auto",
+                  height: "550px",
                   position: "relative",
                   boxShadow: "none",
                   display: "flex",
@@ -94,36 +94,45 @@ console.log("coverlist", coverList)
                       alignItems: "center",
                       overflow: "hidden",
                       backgroundColor: "#dfdfdf",
-                      height: "330px",
+                      height: {
+                        lg: "330px",
+                        md: "300px",
+                        sm: "280px",
+                        xs: "280px",
+                      },
                     }}
                   >
                     <div class="panel__image panel__image--book">
                       <a href="/dd" class="books__book__image">
                         <div
                           class="books__book__img page"
-                          style={{
-                            background: `url(${"https://nobovabna.com/webapi/cover/put_pic.png"})`,
-                          }}
+                          // style={{
+                          //   background: `url(${"https://nobovabna.com/webapi/cover/put_pic.png"})`,
+                          // }}
                         >
                           <span
                             style={{
                               content: "",
-                              width: "20px",
+                              width: "10px",
                               height: " 100%",
                               // backgroundImage: `url(${"https://thumbs.dreamstime.com/z/isolated-white-background-antique-book-side-view-isolated-white-background-antique-book-side-view-166110265.jpg"})`,
                               backgroundImage: `url(${item.left_side_pic})`,
                               backgroundSize: "100% 100%",
                               backgroundRepeat: "no-repeat",
                               position: "absolute",
-                              top: "-3px",
-                              left: "37px",
+                              top: "-10px",
+                              left: "46px",
                               transform:
                                 "skewY(-45deg) translate(-57px, -43px)",
                               // transform: "rotate(-8deg) skewX(5deg) scale(.8)",
                               // transform: rotate(-8deg) skewX(5deg) scale(.8);
                             }}
                           ></span>
-                          <img src={item.image_url} alt="img" />
+                          <img
+                            src={item.image_url}
+                            // style={{ width: { lg: "190px", md: "170px", sm: "135px", xs:"130px" } }}
+                            alt="img"
+                          />
                         </div>
                       </a>
                     </div>
@@ -172,8 +181,8 @@ console.log("coverlist", coverList)
                           display: "flex",
                           justifyContent: "space-between",
                           alignItems: "center",
-                          marginTop: "10px",
-                          paddingBottom: "30px",
+                          // marginTop: "10px",
+                          // paddingBottom: "30px",
                         }}
                       >
                         <Button

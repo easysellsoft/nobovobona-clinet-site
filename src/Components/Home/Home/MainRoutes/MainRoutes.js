@@ -40,12 +40,12 @@ const listItemNav = [
     nested: true,
     submenu: [
       {
-        title: "History",
+        title: "হিস্টোরি",
         to: "/payment/history",
         icon: <BiCircle />,
       },
       {
-        title: "Method",
+        title: "মেথড",
         to: "/payment/method",
         icon: <BiCircle />,
       },
@@ -61,7 +61,7 @@ const listItemNav = [
   },
   {
     // title: "Reading",
-    title: "সিপমেন্ট",
+    title: "শিপমেন্ট",
     icon: <MdDashboard />,
     to: "/shipment",
     nested: false,

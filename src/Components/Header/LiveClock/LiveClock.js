@@ -15,42 +15,13 @@ const LiveClock = () => {
     <div>
       <span
         style={{
-          color: "#000",
+          color: "#fff",
           fontSize: "1rem",
           marginRight: "1rem",
           fontWeight: "bold",
         }}
       >
-        {/* <Box
-          sx={[
-            {
-              display: {
-                sm: "none",
-
-                md: "inline",
-              },
-
-              // animation: "rotate 2s ease-in-out infinite",
-              "@keyframes rotate": {
-                from: {
-                  transform: "rotate(0deg)",
-                  // make different style
-                },
-                to: {
-                  transform: "rotate(360deg)",
-                },
-              },
-            },
-          ]}
-        >
-          <RiTimer2Line
-            style={{
-              marginTop: "0.1rem",
-              display: "inline",
-              fontSize: "1.2rem",
-            }}
-          />
-        </Box>{" "} */}
+       
         <span>{time?.toLocaleTimeString()}</span>
       </span>
     </div>
