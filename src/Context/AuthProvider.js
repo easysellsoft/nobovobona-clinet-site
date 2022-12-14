@@ -3,7 +3,7 @@ import React from "react";
 import socketIO from "socket.io-client";
 export const AuthContext = React.createContext(null);
 
-const ENDPOINT = "https://yeapbe.com:3450/";
+const ENDPOINT = "https://yeapbe.com:3400/";
 let socket;
 
 const AuthProvider = ({ children }) => {

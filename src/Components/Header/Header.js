@@ -291,6 +291,7 @@ const Header = () => {
                 },
                 flexDirection: "column",
                 alignItems: "center",
+                color:"#fff"
              
               }}
             >

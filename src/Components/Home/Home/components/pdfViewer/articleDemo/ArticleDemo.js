@@ -36,6 +36,7 @@ import TablePagination from "@mui/material/TablePagination";
 //
 
 function ArticleDemo() {
+  const {referId} = useParams()
   const [sliderRef, setSliderRef] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(null);
@@ -51,7 +52,30 @@ function ArticleDemo() {
   const [writerId, setWriterId] = useState(null);
   //  pagination start ===============
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(5);
+  // const [rowsPerPage, setRowsPerPage] = useState(25);
+  const [chapterListLength, setChapterListLength] = useState(null);
+  const [rowsPerPage, setRowsPerPage] = useState(141);
+  // const [rowsPerPage, setRowsPerPage] = useState(chapterListLength || null);
+  // const [rowsPerPage, setRowsPerPage] = useState(() => {
+  //   if (window.innerWidth < 900) {
+  //     return 5;
+  //   }
+    
+  //   if (window.innerWidth > 900) {
+  //     return 25;
+  //   }
+  // });
+  //  useEffect(() => {
+  //    window.addEventListener("resize", () => {
+  //      window.innerWidth > 600
+  //        ? setChapterListLength(140)
+  //        : setChapterListLength(5);
+  //    });
+  //  }, []);
+  // useEffect(() => {
+  //   setRowsPerPage(chapterListLength);
+  // }, [chapterListLength]);
+
    const handleChangePage = (event, newPage) => {
      setPage(newPage);
    };
@@ -78,7 +102,7 @@ function ArticleDemo() {
 
   useEffect(() => {
     const formData = new FormData();
-    formData.append("con_refer", "8BU8NV");
+    formData.append("con_refer", referId);
     fetch("https://nobovabna.com/webapi/web_magazine/all_article_list.php", {
       method: "POST",
       body: formData,
@@ -121,6 +145,8 @@ function ArticleDemo() {
     afterChange: (currentSlide) => setCurrentSlide(currentSlide),
   };
 console.log("paici ", lekhok)
+console.log("paici halare", rowsPerPage);
+console.log("paici halare", chapterList.length);
   return (
     <Box
       sx={{
@@ -195,7 +221,9 @@ console.log("paici ", lekhok)
               <List
                 sx={{
                   width: "100%",
-                  height: "100%",
+                  height: "550px",
+                  overflowX: "hidden",
+                  overflowY:"auto"
                 }}
                 component="nav"
                 aria-labelledby="nested-list-subheader"
@@ -225,7 +253,7 @@ console.log("paici ", lekhok)
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((item) => (
                     <ListItemButton
-                      style={{ marginTop: "20px", padding: "2px 2px 2px 15px" }}
+                      style={{ marginTop: "20px", padding: "2px 2px 2px 15px", overflowX:"hidden", overflowY:"auto" }}
                       key={item.chapter_id}
                     >
                       <ListItemIcon style={{ minWidth: "34px" }}>
